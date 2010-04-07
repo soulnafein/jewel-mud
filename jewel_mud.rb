@@ -11,6 +11,6 @@ class JewelMud < GServer
   end
 
   def serve(session)
-    Game.instance.new_session(session)
+    Game.instance.enter_game(session)
   end
 end

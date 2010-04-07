@@ -5,7 +5,7 @@ class Game
 
   def initialize
     @world = World.new
-    @event_manager = EventManager.new(@world)
+    @event_manager = EventManager.new()
     commands = [SayCommand, ShutdownCommand, LookCommand, GoCommand]
     @input_processor = InputProcessor.new(commands, @event_manager)
     @shutdown_requested = false
@@ -14,33 +14,26 @@ class Game
   def run
     Thread.abort_on_exception = true
     Thread.new do
-      loop do
-        process_events
-        exit if @shutdown_requested
+      until @shutdown_requested
+        @event_manager.process_events
       end
+      exit
     end
   end
 
-  def new_session(session)
-    session.puts "Qual'e' il tuo nome?"
-    name = session.readline.chomp
-    session.puts "Benvenuto #{name}"
-    player = Player.new(name, session)
-    @world.add_player(player)
+  def enter_game(session)
+    authentication_process = AuthenticationProcess.new(session)
+    player = authentication_process.execute
+    add_event(player, @world.locations.first, :enter, :origin => :nowhere)
     @input_processor.process_player_commands(player)
   end
 
-  def add_event(from, to, kind, msg=nil)
-    @event_manager.add_event(from, to, kind, msg)
+  def add_event(from, to, kind, args=nil)
+    @event_manager.add_event(Event.new(from,to,kind,args))
   end
 
   def shutdown
     @shutdown_requested = true
-  end
-
-  private
-  def process_events
-    @event_manager.process_events
   end
 end
 

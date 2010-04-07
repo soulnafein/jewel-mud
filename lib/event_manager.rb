@@ -1,13 +1,12 @@
 class EventManager
-  def initialize(world)
-    @world = world
+  def initialize()
     @events = []
     @mutex = Mutex.new
   end
 
-  def add_event(from,to,kind,args=[])
+  def add_event(event)
     @mutex.synchronize do
-      @events.push(Event.new(from,to,kind,args))
+      @events.push(event)
     end
   end
 

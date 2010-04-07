@@ -10,6 +10,7 @@ class ShutdownCommand
   end
 
   def execute_as(player)
+    puts "shutting down"
     Game.instance.shutdown
   end
 end

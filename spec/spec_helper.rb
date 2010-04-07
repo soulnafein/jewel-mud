@@ -13,3 +13,8 @@ module Build
     Player.new("David", StringIO.new)
   end
 end
+
+def expect_event(from, to, kind, args=nil)
+  Game.instance.should_receive(:add_event).once.
+      with(from, to, kind, args)
+end

@@ -5,8 +5,12 @@ class InputProcessor
 
   def process_player_commands(player)
    loop do
+     begin
       cmd = parse_input_from_session(player.session)
       cmd.execute_as(player) if cmd
+     rescue NoCommandFound
+      player.session.puts("I beg you pardon? What are you trying to say?")  
+     end
     end
   end
 
@@ -16,6 +20,6 @@ class InputProcessor
       command = command_class.parse(input)
       return command if command 
     end
-    raise NoCommandFound
+    raise NoCommandFound.new
   end
 end
