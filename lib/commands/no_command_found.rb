@@ -1,0 +1,2 @@
+class NoCommandFound < Exception
+end
