@@ -7,6 +7,6 @@ class AuthenticationProcess
     @session.puts("What's your character name?")
     name = @session.readline.chomp.capitalize
     @session.puts("Welcome to Britannia #{name}!")
-    Player.new(name, @session)
+    Character.new(name, @session)
   end
 end

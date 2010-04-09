@@ -12,8 +12,8 @@ class SayCommand
     end
   end
 
-  def execute_as(player)
-    player.notification("You said: #{@message}")
-    Game.instance.add_event(player, player.current_location, :talk, :message => @message)
+  def execute_as(character)
+    character.notification("You said: #{@message}")
+    Game.instance.add_event(character, character.current_location, :talk, :message => @message)
   end
 end

@@ -23,12 +23,12 @@ describe ShutdownCommand do
 
   context "When executing" do
     it "should shutdown game" do
-      player = Player.new("David", nil)
+      character = Character.new("David", nil)
       cmd = ShutdownCommand.new
 
       Game.instance.should_receive(:shutdown)
 
-      cmd.execute_as(player)
+      cmd.execute_as(character)
     end
   end
 end

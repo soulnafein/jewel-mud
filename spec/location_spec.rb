@@ -6,9 +6,9 @@ describe Location do
       location = Location.new(1, "A title", "A description")
       location.add_exit(Exit.new("north", nil))
       location.add_exit(Exit.new("south", nil))
-      location.add_player(Build.a_player)
+      location.add_character(Build.a_character)
 
-      observer = Player.new("Observer", nil)
+      observer = Character.new("Observer", nil)
 
       look_event = Event.new(observer, location, :look)
 
@@ -30,7 +30,7 @@ describe Location do
       it "should send the exit description to the observer" do
         location = Location.new(1, "A title", "A description")
         location.add_exit(Exit.new("west", nil, "Exit description"))
-        observer = Player.new("Observer", nil)
+        observer = Character.new("Observer", nil)
         look_event = Event.new(observer, location, :look, :target => "west")
 
         expect_event(location, observer, :show, :message => "Exit description")
@@ -42,7 +42,7 @@ describe Location do
     context "When the exit does not exist" do
       it "should let the observer know" do
         location = Location.new(1, "A title", "A description")
-        observer = Player.new("Observer", nil)
+        observer = Character.new("Observer", nil)
         look_event = Event.new(observer, location, :look, :target => "west")
 
         expect_event(location, observer, :show, :message => "There isn't anything called 'west' here.")
@@ -53,15 +53,15 @@ describe Location do
   end
 
   context "When someone say something in the location" do
-    it "should dispatch what said to all the players in the location" do
-      speaker = Player.new("Speaker")
+    it "should dispatch what said to all the characters in the location" do
+      speaker = Character.new("Speaker")
       location = Location.new(1, "Title", "Description")
       talk_event = Event.new(speaker, location, :talk, :message => "Hello everyone")
 
-      a_person = Player.new("Person 1")
-      another_person = Player.new("Person 2")
+      a_person = Character.new("Person 1")
+      another_person = Character.new("Person 2")
       [a_person, another_person].each do |person|
-        location.add_player(person)
+        location.add_character(person)
         expect_event(location, person, :show, :message => "Speaker said: Hello everyone")
       end
 
@@ -71,82 +71,82 @@ describe Location do
 
   context "When someone leaves the location" do
     before :each do
-      @player = Player.new("David")
+      @character = Character.new("David")
       @location = Location.new(1, "title", "description")
       @destination = Location.new(2, "destination", "destination")
       @location.add_exit(Exit.new("east", @destination))
     end
 
-    it "should remove player from current location" do
-      @location.add_player(@player)
-      leave_event = Event.new(@player, @location, :leave, :exit => "east")
+    it "should remove character from current location" do
+      @location.add_character(@character)
+      leave_event = Event.new(@character, @location, :leave, :exit => "east")
 
       @location.on_leave(leave_event)
 
-      @location.players.should be_empty
+      @location.characters.should be_empty
     end
 
     it "should send an enter event to the destination" do
-      @location.add_player(@player)
-      leave_event = Event.new(@player, @location, :leave, :exit => "east")
+      @location.add_character(@character)
+      leave_event = Event.new(@character, @location, :leave, :exit => "east")
 
-      expect_event(@player, @destination, :enter, :origin => @location)
+      expect_event(@character, @destination, :enter, :origin => @location)
       @location.on_leave(leave_event)
     end
 
-    it "should notifiy other players in the location" do
-      other_player = Player.new("other")
-      @location.add_player(@player)
-      @location.add_player(other_player)
+    it "should notifiy other characters in the location" do
+      other_character = Character.new("other")
+      @location.add_character(@character)
+      @location.add_character(other_character)
 
-      leave_event = Event.new(@player, @location, :leave, :exit => "east")
+      leave_event = Event.new(@character, @location, :leave, :exit => "east")
 
-      expect_event(@player, @destination, :enter, :origin => @location)
-      expect_event(@location, other_player, :show, :message => "David leaves east")
+      expect_event(@character, @destination, :enter, :origin => @location)
+      expect_event(@location, other_character, :show, :message => "David leaves east")
       @location.on_leave(leave_event)
     end
   end
 
   context "When entering the location" do
     before :each do
-      @player = Player.new("David")
+      @character = Character.new("David")
       @origin = Location.new(2, "origin", "description")
       @location = Location.new(1, "title", "description")
       @origin.add_exit(Exit.new("east", @location))
       @location.add_exit(Exit.new("west", @origin))
     end
-    it "should add the player at the list of player" do
-      enter_event = Event.new(@player, @location, :enter, :origin => @origin)
+    it "should add the character at the list of character" do
+      enter_event = Event.new(@character, @location, :enter, :origin => @origin)
 
       @location.on_enter(enter_event)
 
-      @location.players.should include(@player)
+      @location.characters.should include(@character)
     end
 
-    it "should notify other players in the location" do
-      other_player = Player.new("Player that was already there")
-      @location.add_player(other_player)
-      enter_event = Event.new(@player, @location, :enter, :origin => @origin)
+    it "should notify other characters in the location" do
+      other_character = Character.new("Character that was already there")
+      @location.add_character(other_character)
+      enter_event = Event.new(@character, @location, :enter, :origin => @origin)
 
-      expect_event(@location, other_player, :show, :message => "David arrives walking from west")
-      expect_event(@player, @location, :look)
+      expect_event(@location, other_character, :show, :message => "David arrives walking from west")
+      expect_event(@character, @location, :look)
       @location.on_enter(enter_event)
     end
 
     it "should change notification when appearing magically" do
-      other_player = Player.new("Player that was already there")
-      @location.add_player(other_player)
-      enter_event = Event.new(@player, @location, :enter, :origin => :nowhere)
+      other_character = Character.new("Character that was already there")
+      @location.add_character(other_character)
+      enter_event = Event.new(@character, @location, :enter, :origin => :nowhere)
 
-      expect_event(@location, other_player, :show, :message => "David appears out of thin air")
-      expect_event(@player, @location, :look)
+      expect_event(@location, other_character, :show, :message => "David appears out of thin air")
+      expect_event(@character, @location, :look)
       @location.on_enter(enter_event)
     end
 
-    it "should show description of the room to the player" do
-      enter_event = Event.new(@player, @location, :enter, :origin => @origin)
+    it "should show description of the room to the character" do
+      enter_event = Event.new(@character, @location, :enter, :origin => @origin)
       
-      expect_event(@player, @location, :look)
+      expect_event(@character, @location, :look)
       @location.on_enter(enter_event)
     end
   end

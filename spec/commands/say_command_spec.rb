@@ -19,22 +19,22 @@ describe SayCommand do
 
   context "When executing a command" do
     before :each do
-      @player = Build.a_player 
+      @character = Build.a_character
       @message = "Hello World!"
       @cmd = SayCommand.new(@message)
     end
 
     it "should add a talk event for the room" do
       Game.instance.should_receive(:add_event).
-          with(@player, @player.current_location, :talk, :message => @message)
+          with(@character, @character.current_location, :talk, :message => @message)
 
-      @cmd.execute_as(@player)
+      @cmd.execute_as(@character)
     end
 
-    it "should notify player of what he said" do
-      @player.should_receive(:notification).with("You said: " + @message)
+    it "should notify character of what he said" do
+      @character.should_receive(:notification).with("You said: " + @message)
       
-      @cmd.execute_as(@player)
+      @cmd.execute_as(@character)
     end
   end
 end

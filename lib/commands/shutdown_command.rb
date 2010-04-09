@@ -9,7 +9,7 @@ class ShutdownCommand
     return ShutdownCommand.new if input =~ /^shutdown$/i
   end
 
-  def execute_as(player)
+  def execute_as(character)
     puts "shutting down"
     Game.instance.shutdown
   end

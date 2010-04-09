@@ -3,13 +3,13 @@ class InputProcessor
     @commands, @event_manager = commands, event_manager
   end
 
-  def process_player_commands(player)
+  def process_character_commands(character)
    loop do
      begin
-      cmd = parse_input_from_session(player.session)
-      cmd.execute_as(player) if cmd
+      cmd = parse_input_from_session(character.session)
+      cmd.execute_as(character) if cmd
      rescue NoCommandFound
-      player.session.puts("I beg you pardon? What are you trying to say?")  
+      character.session.puts("I beg you pardon? What are you trying to say?")  
      end
     end
   end

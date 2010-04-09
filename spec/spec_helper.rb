@@ -9,8 +9,8 @@ end
 require 'jewel_mud'
 
 module Build
-  def self.a_player
-    Player.new("David", StringIO.new)
+  def self.a_character
+    Character.new("David", StringIO.new)
   end
 end
 

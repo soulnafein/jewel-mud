@@ -1,13 +1,13 @@
 require "spec/spec_helper"
 
 describe AuthenticationProcess do
-  it "should create a new player from session" do
+  it "should create a new character from session" do
     session = mock_answers
     authentication_process = AuthenticationProcess.new(session)
 
-    player = authentication_process.execute
+    character = authentication_process.execute
 
-    player.name.should == "Zelgadis"
+    character.name.should == "Zelgadis"
   end
 
   def mock_answers

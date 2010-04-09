@@ -1,4 +1,4 @@
-class Player
+class Character
   attr_reader :name, :current_location, :session
 
   def initialize(name, session=nil)
