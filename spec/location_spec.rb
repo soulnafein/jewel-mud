@@ -4,6 +4,8 @@ describe Location do
   context "When looked by someone" do
     it "should send a show event to the observer" do
       location = Location.new(1, "A title", "A description")
+      location.add_exit(Exit.new("north", nil))
+      location.add_exit(Exit.new("south", nil))
       location.add_player(Build.a_player)
 
       observer = Player.new("Observer", nil)
@@ -11,11 +13,13 @@ describe Location do
       look_event = Event.new(observer, location, :look)
 
       expected_description = "You see:\n\r" +
-              "A title\n\r\n\r" +
-              "A description\n\r\n\r"+
+              "A title\n\r" +
+              "A description\n\r"+
               "People:\n\r" +
-              "David\n\r\n\r"
-      expect_event(location, observer, :show, :message => expected_description) 
+              "David\n\r" +
+              "Exits:\n\r" +
+              "north, south\n\r"
+      expect_event(location, observer, :show, :message => expected_description)
 
       location.on_look(look_event)
     end

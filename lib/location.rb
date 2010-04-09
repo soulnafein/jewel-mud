@@ -27,13 +27,15 @@ class Location
   def on_look(e)
     observer = e.from
     output = "You see:\n\r" +
-             "#{title}\n\r\n\r" +
-             "#{description}\n\r\n\r"+
+             "#{title}\n\r" +
+             "#{description}\n\r"+
              "People:\n\r"
     other_players = @players.except(observer)
     other_players.each do |p|
       output += "#{p.name}\n\r"
     end
+    output += "Exits:\n\r"
+    output += @exits.map { |exit| exit.name }.join(", ")
     output += "\n\r"
     add_event(self, observer, :show, :message => output)
   end
