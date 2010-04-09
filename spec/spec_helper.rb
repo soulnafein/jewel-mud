@@ -14,7 +14,7 @@ module Build
   end
 end
 
-def expect_event(from, to, kind, args=nil)
+def expect_event(from, to, kind, args={})
   Game.instance.should_receive(:add_event).once.
       with(from, to, kind, args)
 end

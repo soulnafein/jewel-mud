@@ -26,18 +26,13 @@ class Location
 
   def on_look(e)
     observer = e.from
-    output = "You see:\n\r" +
-             "#{title}\n\r" +
-             "#{description}\n\r"+
-             "People:\n\r"
-    other_players = @players.except(observer)
-    other_players.each do |p|
-      output += "#{p.name}\n\r"
+    target = e.args[:target]
+
+    if target
+      send_target_description(observer, target)
+    else
+      send_room_description(observer)
     end
-    output += "Exits:\n\r"
-    output += @exits.map { |exit| exit.name }.join(", ")
-    output += "\n\r"
-    add_event(self, observer, :show, :message => output)
   end
 
   def on_talk(event)
@@ -68,5 +63,28 @@ class Location
     end
 
     add_event(event.from, self, :look)
+  end
+
+  private
+  def send_room_description(observer)
+    output = "You see:\n\r" +
+             "#{title}\n\r" +
+             "#{description}\n\r"+
+             "People:\n\r"
+    other_players = @players.except(observer)
+    other_players.each do |p|
+      output += "#{p.name}\n\r"
+    end
+    output += "Exits:\n\r"
+    output += @exits.map { |exit| exit.name }.join(", ")
+    output += "\n\r"
+    add_event(self, observer, :show, :message => output)
+  end
+
+  def send_target_description(observer, target)
+    exit = @exits.find { |e| e.name == target }
+    message = "There isn't anything called '#{target}' here."
+    message = exit.description if exit
+    add_event(self, observer, :show, :message => message)
   end
 end

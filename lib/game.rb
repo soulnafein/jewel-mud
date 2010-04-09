@@ -28,7 +28,7 @@ class Game
     @input_processor.process_player_commands(player)
   end
 
-  def add_event(from, to, kind, args=nil)
+  def add_event(from, to, kind, args={})
     @event_manager.add_event(Event.new(from,to,kind,args))
   end
 
@@ -37,6 +37,6 @@ class Game
   end
 end
 
-def add_event(from, to, kind, args=nil)
+def add_event(from, to, kind, args={})
   Game.instance.add_event(from, to, kind, args)
 end

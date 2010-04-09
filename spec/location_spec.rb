@@ -25,6 +25,33 @@ describe Location do
     end
   end
 
+  context "When someone look for an exit in the location" do
+    context "When the exit exist" do
+      it "should send the exit description to the observer" do
+        location = Location.new(1, "A title", "A description")
+        location.add_exit(Exit.new("west", nil, "Exit description"))
+        observer = Player.new("Observer", nil)
+        look_event = Event.new(observer, location, :look, :target => "west")
+
+        expect_event(location, observer, :show, :message => "Exit description")
+
+        location.on_look(look_event)
+      end
+    end
+
+    context "When the exit does not exist" do
+      it "should let the observer know" do
+        location = Location.new(1, "A title", "A description")
+        observer = Player.new("Observer", nil)
+        look_event = Event.new(observer, location, :look, :target => "west")
+
+        expect_event(location, observer, :show, :message => "There isn't anything called 'west' here.")
+
+        location.on_look(look_event)
+      end
+    end
+  end
+
   context "When someone say something in the location" do
     it "should dispatch what said to all the players in the location" do
       speaker = Player.new("Speaker")
