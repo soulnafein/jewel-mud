@@ -4,11 +4,11 @@ class Location
   def initialize(uid, title, description)
     @uid, @title, @description = uid, title, description
     @characters = []
-    @exits = []
+    @exits = Exits.new
   end
 
   def add_exit(exit)
-    @exits << exit
+    @exits.add(exit)
   end
 
   def add_character(character)
@@ -18,10 +18,6 @@ class Location
 
   def remove_character(character)
     @characters.delete(character)
-  end
-
-  def get_exit(direction)
-    @exits.find { |d| d.name == direction }
   end
 
   def on_look(e)
@@ -43,7 +39,7 @@ class Location
   end
 
   def on_leave(event)
-    exit = get_exit(event.args[:exit])
+    exit = @exits.find_by_name(event.args[:exit])
     remove_character(event.from)
     add_event(event.from, exit.destination, :enter, :origin => self) if exit
     @characters.each do |character|
@@ -54,7 +50,7 @@ class Location
   def on_enter(event)
     add_character(event.from)
     origin = event.args[:origin]
-    exit = @exits.find { |e| e.destination == origin }
+    exit = @exits.find_by_destination(origin)
 
     @characters.except(event.from).each do |character|
       notification = "#{event.from.name} appears out of thin air"
@@ -76,13 +72,13 @@ class Location
       output += "#{p.name}\n\r"
     end
     output += "Exits:\n\r"
-    output += @exits.map { |exit| exit.name }.join(", ")
+    output += @exits.get_list_of_names
     output += "\n\r"
     add_event(self, observer, :show, :message => output)
   end
 
   def send_target_description(observer, target)
-    exit = @exits.find { |e| e.name == target }
+    exit = @exits.find_by_name(target)
     message = "There isn't anything called '#{target}' here."
     message = exit.description if exit
     add_event(self, observer, :show, :message => message)
