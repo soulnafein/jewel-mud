@@ -14,10 +14,16 @@ class Game
   def run
     Thread.abort_on_exception = true
     Thread.new do
-      until @shutdown_requested
-        @event_manager.process_events
+      begin
+        until @shutdown_requested
+          @event_manager.process_events
+        end
+      rescue Exception => e
+        puts e.message
+        puts e.backtrace.inspect
+      ensure
+        exit
       end
-      exit
     end
   end
 

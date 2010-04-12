@@ -4,9 +4,9 @@ class AuthenticationProcess
   end
 
   def execute
-    @session.puts("What's your character name?")
-    name = @session.readline.chomp.capitalize
-    @session.puts("Welcome to Britannia #{name}!")
+    @session.write("What's your character name?")
+    name = @session.read.capitalize
+    @session.write("Welcome to Britannia #{name}!")
     Character.new(name, @session)
   end
 end

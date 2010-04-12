@@ -11,7 +11,8 @@ class JewelMud < GServer
     Game.instance.run
   end
 
-  def serve(session)
-    Game.instance.enter_game(session)
+  def serve(socket)
+    telnet_session = TelnetSession.new(socket)
+    Game.instance.enter_game(telnet_session)
   end
 end

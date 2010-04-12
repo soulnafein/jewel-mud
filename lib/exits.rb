@@ -1,6 +1,6 @@
 class Exits
-  def initialize
-    @exits = []
+  def initialize(exits = [])
+    @exits = exits
   end
 
   def find_by_name(name)

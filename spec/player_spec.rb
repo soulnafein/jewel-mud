@@ -14,7 +14,7 @@ describe Character do
     character = Build.a_character
     event = Event.new(character, character, :show, :message => "Oh Yeah!")
 
-    character.session.should_receive(:puts).with("Oh Yeah!")
+    character.session.should_receive(:write).with("Oh Yeah!")
 
     character.on_show(event)
   end

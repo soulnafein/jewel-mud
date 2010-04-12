@@ -10,7 +10,7 @@ require 'jewel_mud'
 
 module Build
   def self.a_character
-    Character.new("David", StringIO.new)
+    Character.new("David", TelnetSession.new(StringIO.new))
   end
 end
 

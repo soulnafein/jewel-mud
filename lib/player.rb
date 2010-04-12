@@ -6,7 +6,7 @@ class Character
   end
 
   def notification(msg)
-    @session.puts msg
+    @session.write msg
   end
 
   def move_to(location)

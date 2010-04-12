@@ -2,7 +2,9 @@ require "spec/spec_helper"
 
 describe AuthenticationProcess do
   it "should create a new character from session" do
-    session = mock_answers
+    socket = mock_answers
+    session = TelnetSession.new(socket)
+    
     authentication_process = AuthenticationProcess.new(session)
 
     character = authentication_process.execute
