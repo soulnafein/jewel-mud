@@ -1,0 +1,17 @@
+Features implemented:
+
+movement (go east, go west, north, south, n, s and so on)
+look (just exits and main room)
+say (in room chat)
+shutdown (shutdown the server)
+colours in telnet
+
+TODO:
+
+persist characters and login
+choose character description (gender, short description)
+look characters
+simple items
+get items
+equip items
+see equipment
