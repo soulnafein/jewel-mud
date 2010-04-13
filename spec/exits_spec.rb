@@ -43,14 +43,32 @@ describe Exits do
     end
   end
 
-  it "should provide a comma separated list of exits names" do
-    exits = Exits.new
-    exits.add(Exit.new("west", nil))
-    exits.add(Exit.new("east", nil))
-    exits.add(Exit.new("north", nil))
 
-    names = exits.get_list_of_names
+  context "When showing list of exit names" do
+    it "should provide a comma separated list of exits names" do
+      exits = Exits.new
+      exits.add(Exit.new("west", nil))
+      exits.add(Exit.new("east", nil))
+      exits.add(Exit.new("north", nil))
 
-    names.should == "west, east, north"
+      names = exits.get_list_of_names
+
+      names.should == "[color=green]You see exits leading west, east and north.[/color]\n\r"
+    end
+
+    it "should change description for single exit" do
+      exits = Exits.new
+      exits.add(Exit.new("down", nil))
+
+      names = exits.get_list_of_names
+
+      names.should == "[color=green]You see only one exit leading down[/color]\n\r"
+    end
+
+    it "should not show anything when there are no exits" do
+      exits = Exits.new
+
+      exits.get_list_of_names.should be_empty
+    end
   end
 end

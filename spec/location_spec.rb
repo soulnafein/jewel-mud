@@ -6,6 +6,7 @@ describe Location do
       location = Location.new(1, "A title", "A description")
       location.add_exit(Exit.new("north", nil))
       location.add_exit(Exit.new("south", nil))
+      location.add_exit(Exit.new("east", nil))
       location.add_character(Build.a_character)
 
       observer = Character.new("Observer", nil)
@@ -13,12 +14,11 @@ describe Location do
       look_event = Event.new(observer, location, :look)
 
       expected_description = "You see:\n\r" +
-              "A title\n\r" +
+              "[color=red]A title[/color]\n\r" +
               "A description\n\r"+
               "People:\n\r" +
               "David\n\r" +
-              "Exits:\n\r" +
-              "north, south\n\r"
+              "[color=green]You see exits leading north, south and east.[/color]\n\r"
       expect_event(location, observer, :show, :message => expected_description)
 
       location.on_look(look_event)
@@ -94,6 +94,15 @@ describe Location do
       @location.on_leave(leave_event)
     end
 
+    it "should notify the actor if the destination does not exist" do
+      @location.add_character(@character)
+      leave_event = Event.new(@character, @location, :leave, :exit => "not_existing")
+
+      expect_event(@location, @character, :show,
+          :message => "You can't go in that direction.")
+      @location.on_leave(leave_event)
+    end
+
     it "should notifiy other characters in the location" do
       other_character = Character.new("other")
       @location.add_character(@character)
@@ -115,6 +124,7 @@ describe Location do
       @origin.add_exit(Exit.new("east", @location))
       @location.add_exit(Exit.new("west", @origin))
     end
+    
     it "should add the character at the list of character" do
       enter_event = Event.new(@character, @location, :enter, :origin => @origin)
 

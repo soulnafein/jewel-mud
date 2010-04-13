@@ -30,6 +30,15 @@ describe TelnetSession do
 
       telnet_session.write("Something to write")
     end
+
+    it "should replace color tags with appropriate VT100 code" do
+      socket = mock
+      socket.should_receive(:puts).with("\e[31mRed\e[0m and \e[34mBlue\e[0m")
+
+      telnet_session = TelnetSession.new(socket)
+
+      telnet_session.write("[color=red]Red[/color] and [color=blue]Blue[/color]")
+    end
   end
 end
 

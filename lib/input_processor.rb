@@ -15,7 +15,7 @@ class InputProcessor
   end
 
   def parse_input_from_session(session)
-    input = session.read.strip
+    input = session.read
     @commands.each do |command_class|
       command = command_class.parse(input)
       return command if command 

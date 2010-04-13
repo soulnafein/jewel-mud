@@ -40,10 +40,14 @@ class Location
 
   def on_leave(event)
     exit = @exits.find_by_name(event.args[:exit])
-    remove_character(event.from)
-    add_event(event.from, exit.destination, :enter, :origin => self) if exit
-    @characters.each do |character|
-      add_event(self, character, :show, :message => "#{event.from.name} leaves #{exit.name}")
+    if exit.nil?
+      add_event(self, event.from, :show, :message => "You can't go in that direction.") 
+    else
+      remove_character(event.from)
+      add_event(event.from, exit.destination, :enter, :origin => self) if exit
+      @characters.each do |character|
+        add_event(self, character, :show, :message => "#{event.from.name} leaves #{exit.name}")
+      end
     end
   end
 
@@ -51,6 +55,7 @@ class Location
     add_character(event.from)
     origin = event.args[:origin]
     exit = @exits.find_by_destination(origin)
+
 
     @characters.except(event.from).each do |character|
       notification = "#{event.from.name} appears out of thin air"
@@ -62,18 +67,17 @@ class Location
   end
 
   private
+
   def send_room_description(observer)
     output = "You see:\n\r" +
-             "#{title}\n\r" +
-             "#{description}\n\r"+
-             "People:\n\r"
+            "[color=red]#{title}[/color]\n\r" +
+            "#{description}\n\r"+
+            "People:\n\r"
     other_characters = @characters.except(observer)
     other_characters.each do |p|
       output += "#{p.name}\n\r"
     end
-    output += "Exits:\n\r"
     output += @exits.get_list_of_names
-    output += "\n\r"
     add_event(self, observer, :show, :message => output)
   end
 
