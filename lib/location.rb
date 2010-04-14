@@ -40,7 +40,7 @@ class Location
 
   def on_leave(event)
     exit = @exits.find_by_name(event.args[:exit])
-    if exit.nil?
+    if exit.nil? || exit.destination.nil?
       add_event(self, event.from, :show, :message => "You can't go in that direction.") 
     else
       remove_character(event.from)
