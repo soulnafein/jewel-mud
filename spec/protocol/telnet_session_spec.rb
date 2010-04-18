@@ -1,9 +1,17 @@
 require "spec/spec_helper"
 
 describe TelnetSession do
+
   before :each do
     @socket = mock
     @telnet_session = TelnetSession.new(@socket)
+    @a_option = 42.chr
+    @iac = TelnetCodes::IAC
+    @do = TelnetCodes::DO
+    @dont = TelnetCodes::DONT
+    @wont = TelnetCodes::WONT
+    @will = TelnetCodes::WILL
+    @ayt = TelnetCodes::AYT
   end
 
   context "When reading input from socket" do
@@ -30,6 +38,42 @@ describe TelnetSession do
     it "should ignore bare NUL" do
       when_input_is "Line with \0 line feed alone\r\n"
       result.should == "Line with  line feed alone"
+    end
+
+    it "should answer DOs with WONT" do
+      when_input_is "A line with a double IAC followed by a DO #{@iac+@iac}#{@iac+@do+@a_option}"
+      @socket.should_receive(:print).with("#{@iac+@wont+@a_option}")
+      result.should == "A line with a double IAC followed by a DO"
+    end
+
+    it "should answer DONTs with WONT" do
+      when_input_is "A line with a double IAC followed by a DONT #{@iac+@iac}#{@iac+@dont+@a_option}"
+      @socket.should_receive(:print).with("#{@iac+@wont+@a_option}")
+      result.should == "A line with a double IAC followed by a DONT"
+    end
+
+    it "should answer WILLs with DONT" do
+      when_input_is "A line with a double IAC followed by a WILL #{@iac+@iac}#{@iac+@will+@a_option}"
+      @socket.should_receive(:print).with("#{@iac+@dont+@a_option}")
+      result.should == "A line with a double IAC followed by a WILL"
+    end
+
+    it "should answer WONTs with DONT" do
+      when_input_is "A line with a double IAC followed by a WONT #{@iac+@iac}#{@iac+@wont+@a_option}"
+      @socket.should_receive(:print).with("#{@iac+@dont+@a_option}")
+      result.should == "A line with a double IAC followed by a WONT"
+    end
+
+    it "should reply to Are you there questions" do
+      when_input_is "Some kind of message #{@iac+@ayt} with are you there inside"
+      @socket.should_receive(:puts).with("JewelMUD is still here")
+      result.should == "Some kind of message  with are you there inside"
+    end
+
+    it "should ignore other telnet codes" do
+      when_input_is "Messages with random codes #{@iac+50.chr+@iac+103.chr+@iac+103.chr}"
+      @socket.should_not_receive(:puts)
+      result.should == "Messages with random codes"
     end
   end
 
