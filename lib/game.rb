@@ -28,7 +28,7 @@ class Game
   end
 
   def enter_game(session)
-    authentication_process = AuthenticationProcess.new(session)
+    authentication_process = AuthenticationProcess.new(session, @world)
     character = authentication_process.execute
     add_event(character, @world.locations.first, :enter, :origin => :nowhere)
     @input_processor.process_character_commands(character)

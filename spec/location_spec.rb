@@ -13,12 +13,12 @@ describe Location do
 
       look_event = Event.new(observer, location, :look)
 
-      expected_description = "You see:\n\r" +
-              "[color=red]A title[/color]\n\r" +
-              "A description\n\r"+
-              "People:\n\r" +
-              "David\n\r" +
-              "[color=green]You see exits leading north, south and east.[/color]\n\r"
+      expected_description = "You see:\n" +
+              "[color=red]A title[/color]\n" +
+              "A description\n"+
+              "People:\n" +
+              "David\n" +
+              "[color=green]You see exits leading north, south and east.[/color]\n"
       expect_event(location, observer, :show, :message => expected_description)
 
       location.on_look(look_event)

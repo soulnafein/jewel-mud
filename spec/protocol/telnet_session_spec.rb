@@ -75,19 +75,31 @@ describe TelnetSession do
       @socket.should_not_receive(:puts)
       result.should == "Messages with random codes"
     end
+
+    it "should manage backspace correctly" do
+      when_input_is "\bDavol\b\bid"
+
+      result.should == "David"
+    end
   end
 
   context "When writing to the socket" do
-    it "should deliver same text to socket" do
-      @socket.should_receive(:puts).with("Something to write")
+    it "should add correct new line at the end" do
+      @socket.should_receive(:print).with("Something to write\r\n")
 
       @telnet_session.write("Something to write")
     end
 
     it "should replace color tags with appropriate VT100 code" do
-      @socket.should_receive(:puts).with("\e[31mRed\e[0m and \e[34mBlue\e[0m")
+      @socket.should_receive(:print).with("\e[31mRed\e[0m and \e[34mBlue\e[0m\r\n")
 
       @telnet_session.write("[color=red]Red[/color] and [color=blue]Blue[/color]")
+    end
+
+    it "should replace line feed to the right telnet combination CR + LF" do
+      @socket.should_receive(:print).with("New lines here \r\n here \r\n and here\r\n")
+
+      @telnet_session.write("New lines here \n here \n and here")
     end
   end
 

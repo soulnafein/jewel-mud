@@ -1,8 +1,8 @@
 class Character
-  attr_reader :name, :current_location, :session
+  attr_reader :name, :password, :current_location, :session
 
-  def initialize(name, session=nil)
-    @name, @session = name, session
+  def initialize(name, session=nil, password=nil)
+    @name, @session, @password = name, session, password
   end
 
   def notification(msg)
@@ -15,5 +15,9 @@ class Character
 
   def on_show(e)
     notification(e.args[:message])
+  end
+
+  def bind_session(session)
+    @session = session
   end
 end

@@ -53,7 +53,7 @@ describe Exits do
 
       names = exits.get_list_of_names
 
-      names.should == "[color=green]You see exits leading west, east and north.[/color]\n\r"
+      names.should == "[color=green]You see exits leading west, east and north.[/color]\n"
     end
 
     it "should change description for single exit" do
@@ -62,7 +62,7 @@ describe Exits do
 
       names = exits.get_list_of_names
 
-      names.should == "[color=green]You see only one exit leading down[/color]\n\r"
+      names.should == "[color=green]You see only one exit leading down[/color]\n"
     end
 
     it "should not show anything when there are no exits" do

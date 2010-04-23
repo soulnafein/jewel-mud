@@ -28,11 +28,11 @@ class Exits
   end
 
   def description_for_single_exit(exit_names)
-    "[color=green]You see only one exit leading #{exit_names.first}[/color]\n\r"
+    "[color=green]You see only one exit leading #{exit_names.first}[/color]\n"
   end
 
   def description_for_multiple_exits(exit_names)
     names_separated = exit_names[0..-2].join(", ") + " and " + exit_names[-1]
-    "[color=green]You see exits leading #{names_separated}.[/color]\n\r"
+    "[color=green]You see exits leading #{names_separated}.[/color]\n"
   end
 end

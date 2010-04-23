@@ -69,13 +69,13 @@ class Location
   private
 
   def send_room_description(observer)
-    output = "You see:\n\r" +
-            "[color=red]#{title}[/color]\n\r" +
-            "#{description}\n\r"+
-            "People:\n\r"
+    output = "You see:\n" +
+            "[color=red]#{title}[/color]\n" +
+            "#{description}\n"+
+            "People:\n"
     other_characters = @characters.except(observer)
     other_characters.each do |p|
-      output += "#{p.name}\n\r"
+      output += "#{p.name}\n"
     end
     output += @exits.get_list_of_names
     add_event(self, observer, :show, :message => output)

@@ -3,6 +3,7 @@ class World
 
   def initialize
     @locations = YAML.load_file('db/dikuworld.yaml')
+    @characters = []
     print_memstat
   end
 
@@ -25,5 +26,15 @@ class World
       --------------------------
     """
     puts statistics
+  end
+
+  def get_character_by_name_and_password(name, password)
+    @characters.find { |c| c.name == name and c.password == password }
+  end
+
+  def create_new_character(name, session, password)
+    character = Character.new(name, session, password)
+    @characters.push(character)
+    character
   end
 end

@@ -29,7 +29,7 @@ class TelnetFilter
   end
 
   def handle_options(input)
-    while is_there_a_iac_in input
+    while there_is_a_iac_in input
       if input.sub!(Regexp.new("(^|[^#{IAC}])#{IAC}[#{DO}#{DONT}](.)"), '\1')
         @socket.print "#{IAC+WONT}#{$2}"
       elsif input.sub!(Regexp.new("(^|[^#{IAC}])#{IAC}[#{WILL}#{WONT}](.)"), '\1')
@@ -44,7 +44,7 @@ class TelnetFilter
     input
   end
 
-  def is_there_a_iac_in(input)
+  def there_is_a_iac_in(input)
     input.index("#{IAC}")
   end
 

@@ -6,11 +6,12 @@ class TelnetSession
   def read
     input = @socket.readline
     input = TelnetFilter.new(@socket).filter_input(input)
+    input = adjust_backspace(input)
     input.chomp.strip
   end
 
   def write(text)
-    @socket.puts replace_color_tags(text)
+    @socket.print adjust_new_lines(replace_color_tags(text))
   end
 
   private
@@ -28,5 +29,15 @@ class TelnetSession
       COLOR_CODES[$1]
     end.
             gsub(/\[\/color\]/i, RESET_CODE)
+  end
+
+  def adjust_new_lines(text)
+    text.gsub(/\n/,"\r\n") + "\r\n"
+  end
+
+  def adjust_backspace(text)
+    return text if not text.include?("\b")
+    a_character_followed_by_backspace = Regexp.new("(^|[^\b])\b")
+    adjust_backspace text.sub(a_character_followed_by_backspace, "")
   end
 end
