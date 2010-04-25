@@ -6,7 +6,7 @@ class Game
   def initialize
     @world = World.new
     @event_manager = EventManager.new()
-    commands = [SayCommand, ShutdownCommand, LookCommand, GoCommand]
+    commands = [SayCommand, ShutdownCommand, LookCommand, GoCommand, EmoteCommand]
     @input_processor = InputProcessor.new(commands, @event_manager)
     @shutdown_requested = false
   end

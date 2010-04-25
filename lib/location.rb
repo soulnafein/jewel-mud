@@ -38,6 +38,13 @@ class Location
     end
   end
 
+  def on_emote(event)
+    @characters.except(event.from).each do |character|
+      notification = "#{event.from.name} #{event.args[:message]}"
+      add_event(self, character, :show, :message => notification)
+    end
+  end
+
   def on_leave(event)
     exit = @exits.find_by_name(event.args[:exit])
     if exit.nil? || exit.destination.nil?
