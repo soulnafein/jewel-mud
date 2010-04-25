@@ -18,26 +18,56 @@ class AuthenticationProcess
 
   private
   def create_new_character
-    @session.write("What's your character name?")
-    name = @session.read.capitalize
-    @session.write("Choose a password for #{name}:")
-    password = @session.read
-    @session.write("Welcome to Britannia #{name}!")
-    @world.create_new_character(name, @session, password)
+    @name = ask_name
+    @password = ask_new_password
+    @description = ask_description
+    @character = @world.create_new_character(@name, @session, @password)
+    visualize_welcome_message(@character.name)
+    @character
   end
 
   def login
-    @session.write("What's your character name?")
-    name = @session.read.capitalize
+    @name = ask_name
     @session.write("Password:")
-    password = @session.read
-    character = @world.get_character_by_name_and_password(name, password)
-    if not character
+    @password = @session.read
+    @character = @world.get_character_by_name_and_password(@name, @password)
+    if not @character
       @session.write("Wrong details, try again.")
       return login
     end
-    character.bind_session(@session)
-    @session.write("Welcome to Britannia #{name}!")
-    character
+    @character.bind_session(@session)
+    @session.write("Welcome to Britannia #{@name}!")
+    @character
   end
+
+  def ask_name
+    @session.write("What's your character name?")
+    @session.read.capitalize
+  end
+
+  def visualize_welcome_message(name)
+    @session.write("Welcome to Britannia #{name}!")
+  end
+
+  def ask_new_password
+    @session.write("Choose a password for #{@name}:")
+    @session.read
+  end
+
+  def ask_description
+    @session.write "Choose a description that other players will " +
+                    "see when they look to your character.\r\n" +
+                    "Enter a line with END written in it when you finished."
+    description = ""
+    line = ""
+    while line.downcase != "end"
+      line = @session.read
+      if line.downcase != "end"
+        description += line + "\n"
+        @session.write line
+      end
+    end
+    description
+  end
+
 end

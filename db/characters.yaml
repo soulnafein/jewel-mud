@@ -1,0 +1,7 @@
+--- 
+- !ruby/object:Character 
+  name: David
+  password: pass
+  session: !ruby/object:TelnetSession 
+    socket: !ruby/object:TCPSocket {}
+

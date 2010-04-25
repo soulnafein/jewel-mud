@@ -2,17 +2,19 @@ class World
   attr_reader :locations
 
   def initialize
-    @locations = YAML.load_file('db/dikuworld.yaml')
+    @locations = []
     @characters = []
+    load_world
     print_memstat
   end
 
   def print_memstat
-    locations = exits = 0
+    locations = exits = characters = 0
 
     ObjectSpace.each_object do |obj|
       locations += 1 if obj.class == Location
       exits += 1 if obj.class == Exit
+      characters += 1 if obj.class == Character
     end
 
     statistics = """
@@ -22,6 +24,7 @@ class World
 
         Locations: #{locations}
         Exits: #{exits}
+        Characters: #{characters}
 
       --------------------------
     """
@@ -35,6 +38,18 @@ class World
   def create_new_character(name, session, password)
     character = Character.new(name, session, password)
     @characters.push(character)
+    persist_world
     character
+  end
+
+  def persist_world
+    File.open( 'db/characters.yaml', 'w' ) do |out|
+      YAML.dump(@characters, out )
+    end
+  end
+
+  def load_world
+    @locations = YAML.load_file('db/dikuworld.yaml')
+    @characters = YAML.load_file('db/characters.yaml')
   end
 end

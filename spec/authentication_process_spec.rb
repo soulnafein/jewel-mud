@@ -74,6 +74,16 @@ describe AuthenticationProcess do
     expect_input(session, "zelgadis")
     expect_message(session, "Choose a password for Zelgadis:")
     expect_input(session, "pa55w0rd")
+    expect_message(session, "Choose a description that other players will " +
+                            "see when they look to your character.\r\n" +
+                            "Enter a line with END written in it when you finished.")
+    expect_input(session, "First line of description.")
+    expect_message(session, "First line of description.")
+    expect_input(session, "Second line of description.")
+    expect_message(session, "Second line of description.")
+    expect_input(session, "Last line of description.")
+    expect_message(session, "Last line of description.")
+    expect_input(session, "END")
     expect_message(session, "Welcome to Britannia Zelgadis!")
     session
   end
