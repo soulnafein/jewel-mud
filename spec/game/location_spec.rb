@@ -1,6 +1,10 @@
 require "spec/spec_helper"
 
 describe Location do
+  before :each do
+    @telnet_session = mock.as_null_object
+  end
+
   context "When looked by someone" do
     it "should send a show event to the observer" do
       location = Location.new(1, "A title", "A description")
@@ -9,7 +13,7 @@ describe Location do
       location.add_exit(Exit.new("east", nil))
       location.add_character(Build.a_character)
 
-      observer = Character.new("Observer", nil)
+      observer = Character.new("Observer", @telnet_session)
 
       look_event = Event.new(observer, location, :look)
 
@@ -19,7 +23,8 @@ describe Location do
               "People:\n" +
               "David\n" +
               "[color=green]You see exits leading north, south and east.[/color]\n"
-      expect_event(location, observer, :show, :message => expected_description)
+
+      @telnet_session.should_receive(:write).with(expected_description)
 
       location.on_look(look_event)
     end
@@ -30,10 +35,10 @@ describe Location do
       it "should send the exit description to the observer" do
         location = Location.new(1, "A title", "A description")
         location.add_exit(Exit.new("west", nil, "Exit description"))
-        observer = Character.new("Observer", nil)
+        observer = Character.new("Observer", @telnet_session)
         look_event = Event.new(observer, location, :look, :target => "west")
 
-        expect_event(location, observer, :show, :message => "Exit description")
+        @telnet_session.should_receive(:write).with("Exit description")
 
         location.on_look(look_event)
       end
@@ -42,12 +47,15 @@ describe Location do
     context "When the exit does not exist" do
       it "should let the observer know" do
         location = Location.new(1, "A title", "A description")
-        observer = Character.new("Observer", nil)
+        observer = Character.new("Observer", @telnet_session)
         look_event = Event.new(observer, location, :look, :target => "west")
 
-        expect_event(location, observer, :show, :message => "There isn't anything called 'west' here.")
+        @telnet_session.should_receive(:write).with("There isn't anything called 'west' here.")
 
         location.on_look(look_event)
+
+
+
       end
     end
   end

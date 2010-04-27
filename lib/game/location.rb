@@ -5,6 +5,9 @@ class Location
     @uid, @title, @description = uid, title, description
     @characters = []
     @exits = Exits.new
+    @communication_handler = CommunicationHandler.new
+    @emotes_handler = EmotesHandler.new
+    @sight_handler = SightHandler.new
   end
 
   def add_exit(exit)
@@ -20,29 +23,22 @@ class Location
     @characters.delete(character)
   end
 
-  def on_look(e)
-    observer = e.from
-    target = e.args[:target]
-
-    if target
-      send_target_description(observer, target)
-    else
-      send_room_description(observer)
+  def notify_all_characters_except(excluded_character, notification)
+    @characters.except(excluded_character).each do |character|
+      add_event(self, character, :show, :message => notification)
     end
+  end
+
+  def on_look(e)
+    @sight_handler.handle_look(e)
   end
 
   def on_talk(event)
-    @characters.except(event.from).each do |character|
-      notification = "#{event.from.name} said: #{event.args[:message]}"
-      add_event(self, character, :show, :message => notification)
-    end
+    @communication_handler.handle_say(event)
   end
 
   def on_emote(event)
-    @characters.except(event.from).each do |character|
-      notification = "#{event.from.name} #{event.args[:message]}"
-      add_event(self, character, :show, :message => notification)
-    end
+    @emotes_handler.handle_emote(event)
   end
 
   def on_leave(event)
@@ -73,9 +69,14 @@ class Location
     add_event(event.from, self, :look)
   end
 
-  private
+  def get_entity_description(target)
+    exit = @exits.find_by_name(target)
+    message = "There isn't anything called '#{target}' here."
+    message = exit.description if exit
+    message
+  end
 
-  def send_room_description(observer)
+  def description_for(observer)
     output = "You see:\n" +
             "[color=red]#{title}[/color]\n" +
             "#{description}\n"+
@@ -85,13 +86,7 @@ class Location
       output += "#{p.name}\n"
     end
     output += @exits.get_list_of_names
-    add_event(self, observer, :show, :message => output)
+    output
   end
 
-  def send_target_description(observer, target)
-    exit = @exits.find_by_name(target)
-    message = "There isn't anything called '#{target}' here."
-    message = exit.description if exit
-    add_event(self, observer, :show, :message => message)
-  end
 end
