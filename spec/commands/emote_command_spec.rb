@@ -22,19 +22,20 @@ describe EmoteCommand do
       @character = Build.a_character
       @message = "licks her finger"
       @cmd = EmoteCommand.new(@message)
+      @event_handler = mock.as_null_object
     end
 
     it "should add an emote event to the room" do
-      Game.instance.should_receive(:add_event).
-          with(@character, @character.current_location, :emote, :message => @message)
+      @event_handler.should_receive(:add_event).
+          with(Event.new(@character, @character.current_location, :emote, :message => @message))
 
-      @cmd.execute_as(@character)
+      @cmd.execute_as(@character, @event_handler)
     end
 
     it "should notify character of his emote" do
       @character.should_receive(:notification).with("You emote: #{@character.name} #{@message}")
       
-      @cmd.execute_as(@character)
+      @cmd.execute_as(@character, @event_handler)
     end
   end
 end

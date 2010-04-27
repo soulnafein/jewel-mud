@@ -12,8 +12,8 @@ class EmoteCommand
     end
   end
 
-  def execute_as(character)
+  def execute_as(character, event_handler)
     character.notification("You emote: #{character.name} #{@message}")
-    Game.instance.add_event(character, character.current_location, :emote, :message => @message)
+    event_handler.add_event(Event.new(character, character.current_location, :emote, :message => @message))
   end
 end

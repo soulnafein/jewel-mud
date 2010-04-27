@@ -23,7 +23,7 @@ class GoCommand
     nil
   end
 
-  def execute_as(character)
-    Game.instance.add_event(character, character.current_location, :leave, :exit => @exit)
+  def execute_as(character, event_handler)
+    event_handler.add_event(Event.new(character, character.current_location, :leave, :exit => @exit))
   end
 end

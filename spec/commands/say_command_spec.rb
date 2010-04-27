@@ -22,19 +22,20 @@ describe SayCommand do
       @character = Build.a_character
       @message = "Hello World!"
       @cmd = SayCommand.new(@message)
+      @event_handler = mock.as_null_object
     end
 
     it "should add a talk event for the room" do
-      Game.instance.should_receive(:add_event).
-          with(@character, @character.current_location, :talk, :message => @message)
+      @event_handler.should_receive(:add_event).
+          with(Event.new(@character, @character.current_location, :talk, :message => @message))
 
-      @cmd.execute_as(@character)
+      @cmd.execute_as(@character, @event_handler)
     end
 
     it "should notify character of what he said" do
       @character.should_receive(:notification).with("You said: " + @message)
       
-      @cmd.execute_as(@character)
+      @cmd.execute_as(@character, @event_handler)
     end
   end
 end

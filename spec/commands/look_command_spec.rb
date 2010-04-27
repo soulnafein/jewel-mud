@@ -30,13 +30,14 @@ describe LookCommand do
 
   context "When executing" do
     it "should shutdown game" do
+      event_handler = mock
       character = Character.new("David", nil)
       cmd = LookCommand.new("east")
 
-      Game.instance.should_receive(:add_event).
-              with(character, character.current_location, :look, :target => "east")
+      event_handler.should_receive(:add_event).
+              with(Event.new(character, character.current_location, :look, :target => "east"))
 
-      cmd.execute_as(character)
+      cmd.execute_as(character, event_handler)
     end
   end
 end

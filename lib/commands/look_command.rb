@@ -15,7 +15,7 @@ class LookCommand
     end
   end
 
-  def execute_as(character)
-    Game.instance.add_event(character,character.current_location,:look, :target => @target)
+  def execute_as(character, event_handler)
+    event_handler.add_event(Event.new(character,character.current_location,:look, :target => @target))
   end
 end

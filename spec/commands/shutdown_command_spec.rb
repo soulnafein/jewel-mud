@@ -28,7 +28,7 @@ describe ShutdownCommand do
 
       Game.instance.should_receive(:shutdown)
 
-      cmd.execute_as(character)
+      cmd.execute_as(character, nil)
     end
   end
 end

@@ -112,13 +112,14 @@ describe GoCommand do
 
   context "When executing" do
     it "should send a leave event to the current location" do
+      @event_handler = mock
       character = Build.a_character
       cmd = GoCommand.new("east")
 
-      Game.instance.should_receive(:add_event).
-              with(character, character.current_location, :leave, :exit => "east")
+      @event_handler.should_receive(:add_event).
+              with(Event.new(character, character.current_location, :leave, :exit => "east"))
 
-      cmd.execute_as(character)
+      cmd.execute_as(character, @event_handler)
     end
   end
 end

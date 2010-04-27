@@ -20,4 +20,8 @@ class Character
   def bind_session(session)
     @session = session
   end
+
+  def to_yaml_properties
+    ['@name', '@password']
+  end
 end

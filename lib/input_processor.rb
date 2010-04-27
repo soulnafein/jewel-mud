@@ -7,7 +7,7 @@ class InputProcessor
    loop do
      begin
       cmd = parse_input_from_session(character.session)
-      cmd.execute_as(character) if cmd
+      cmd.execute_as(character, @event_manager) if cmd
      rescue NoCommandFound
       character.session.write("I beg you pardon? What are you trying to say?")  
      end
