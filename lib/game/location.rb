@@ -22,24 +22,8 @@ class Location
 
   def notify_all_characters_except(excluded_character, notification)
     @characters.except(excluded_character).each do |character|
-      add_event(self, character, :show, :message => notification)
+      character.notification(notification)
     end
-  end
-
-  def on_look(e)
-    SightHandler.new.handle_look(e)
-  end
-
-  def on_talk(event)
-    CommunicationHandler.new.handle_talk(event)
-  end
-
-  def on_emote(event)
-    EmotesHandler.new.handle_emote(event)
-  end
-
-  def on_leave(event)
-    MovementHandler.new.handle_leave(event)
   end
 
   def character_leaving(character, direction)
@@ -49,10 +33,6 @@ class Location
     notify_all_characters_except(character, "#{character.name} leaves #{exit.name}.")
     remove_character(character)
     add_event(character, exit.destination, :enter, :origin => self)
-  end
-
-  def on_enter(event)
-    MovementHandler.new.handle_enter(event)
   end
 
   def get_entity_description(target)

@@ -9,13 +9,4 @@ describe Character do
 
     character.current_location.should == location
   end
-
-  it "should send a notification to the current session" do
-    character = Build.a_character
-    event = Event.new(character, character, :show, :message => "Oh Yeah!")
-
-    character.session.should_receive(:write).with("Oh Yeah!")
-
-    character.on_show(event)
-  end
 end

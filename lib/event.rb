@@ -6,6 +6,7 @@ class Event
   end
 
   def ==(other)
+    return false if other.nil?
     @from == other.from &&
     @to == other.to &&
     @kind == other.kind &&

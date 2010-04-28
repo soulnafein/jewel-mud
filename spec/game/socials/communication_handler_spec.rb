@@ -11,7 +11,7 @@ describe CommunicationHandler do
       another_person = Character.new("Person 2")
       [a_person, another_person].each do |person|
         location.add_character(person)
-        expect_event(location, person, :show, :message => "Speaker said: Hello everyone")
+        person.should_receive(:notification, "Speaker licks her finger")
       end
 
       CommunicationHandler.new.handle_talk(talk_event)

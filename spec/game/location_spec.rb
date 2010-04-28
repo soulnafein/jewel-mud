@@ -38,12 +38,12 @@ describe Location do
     end
 
     it "should notify other characters in the location" do
-      other_character = Character.new("other")
+      other_character = Character.new("other", mock.as_null_object)
       @location.add_character(@character)
       @location.add_character(other_character)
 
       expect_event(@character, @destination, :enter, :origin => @location)
-      expect_event(@location, other_character, :show, :message => "David leaves east.")
+      other_character.should_receive(:notification, "David leaves east.")
       
       @location.character_leaving(@character, "east")
     end

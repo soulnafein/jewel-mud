@@ -1,4 +1,11 @@
 class MovementHandler
+  def initialize(event_handler=nil)
+    @event_handler = event_handler
+    return if not @event_handler 
+    @event_handler.subscribe(self, :enter)
+    @event_handler.subscribe(self, :leave)
+  end
+
   def handle_enter(event)
     character = event.from
     destination = event.to

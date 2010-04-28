@@ -13,10 +13,6 @@ class Character
     @current_location = location
   end
 
-  def on_show(e)
-    notification(e.args[:message])
-  end
-
   def bind_session(session)
     @session = session
   end

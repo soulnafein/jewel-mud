@@ -40,7 +40,7 @@ describe SightHandler do
 
         @telnet_session.should_receive(:write).with("Exit description")
 
-        location.on_look(look_event)
+        SightHandler.new.handle_look(look_event)
       end
     end
 
@@ -52,10 +52,7 @@ describe SightHandler do
 
         @telnet_session.should_receive(:write).with("There isn't anything called 'west' here.")
 
-        location.on_look(look_event)
-
-
-
+        SightHandler.new.handle_look(look_event)
       end
     end
   end

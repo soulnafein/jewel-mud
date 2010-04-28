@@ -11,7 +11,7 @@ describe EmotesHandler do
       another_person = Character.new("Person 2")
       [a_person, another_person].each do |person|
         location.add_character(person)
-        expect_event(location, person, :show, :message => "Speaker licks her finger")
+        person.should_receive(:notification, "Speaker licks her finger")
       end
 
       EmotesHandler.new.handle_emote(emote_event) 

@@ -1,4 +1,10 @@
 class SightHandler
+  def initialize(event_handler=nil)
+    @event_handler = event_handler
+    return if not @event_handler
+    @event_handler.subscribe(self, :look)
+  end
+
   def handle_look(e)
     observer = e.from
     location = e.to
