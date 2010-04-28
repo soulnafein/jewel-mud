@@ -4,7 +4,6 @@ class MovementHandler
     destination = event.to
     origin = event.args[:origin]
 
-
     destination.add_character(character)
 
     exit = destination.exit_to(origin)

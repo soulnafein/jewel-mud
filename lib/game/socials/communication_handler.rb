@@ -1,5 +1,5 @@
 class CommunicationHandler
-  def handle_say(e)
+  def handle_talk(e)
     speaker = e.from
     location = e.to
     message = e.args[:message]

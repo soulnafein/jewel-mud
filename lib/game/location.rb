@@ -31,7 +31,7 @@ class Location
   end
 
   def on_talk(event)
-    CommunicationHandler.new.handle_say(event)
+    CommunicationHandler.new.handle_talk(event)
   end
 
   def on_emote(event)
