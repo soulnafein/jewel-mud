@@ -96,7 +96,8 @@ describe Location do
 
   context "When someone leaves the location" do
     before :each do
-      @character = Character.new("David")
+      @telnet_session = mock.as_null_object
+      @character = Character.new("David", @telnet_session)
       @location = Location.new(1, "title", "description")
       @destination = Location.new(2, "destination", "destination")
       @location.add_exit(Exit.new("east", @destination))
@@ -123,8 +124,7 @@ describe Location do
       @location.add_character(@character)
       leave_event = Event.new(@character, @location, :leave, :exit => "not_existing")
 
-      expect_event(@location, @character, :show,
-          :message => "You can't go in that direction.")
+      @telnet_session.should_receive(:write).with("You can't go in that direction.")
       @location.on_leave(leave_event)
     end
 
@@ -136,7 +136,7 @@ describe Location do
       leave_event = Event.new(@character, @location, :leave, :exit => "east")
 
       expect_event(@character, @destination, :enter, :origin => @location)
-      expect_event(@location, other_character, :show, :message => "David leaves east")
+      expect_event(@location, other_character, :show, :message => "David leaves east.")
       @location.on_leave(leave_event)
     end
   end

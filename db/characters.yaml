@@ -2,3 +2,6 @@
 - !ruby/object:Character 
   name: David
   password: pass
+- !ruby/object:Character 
+  name: Gabriele
+  password: "24783"

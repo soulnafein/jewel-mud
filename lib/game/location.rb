@@ -5,9 +5,6 @@ class Location
     @uid, @title, @description = uid, title, description
     @characters = []
     @exits = Exits.new
-    @communication_handler = CommunicationHandler.new
-    @emotes_handler = EmotesHandler.new
-    @sight_handler = SightHandler.new
   end
 
   def add_exit(exit)
@@ -30,43 +27,32 @@ class Location
   end
 
   def on_look(e)
-    @sight_handler.handle_look(e)
+    SightHandler.new.handle_look(e)
   end
 
   def on_talk(event)
-    @communication_handler.handle_say(event)
+    CommunicationHandler.new.handle_say(event)
   end
 
   def on_emote(event)
-    @emotes_handler.handle_emote(event)
+    EmotesHandler.new.handle_emote(event)
   end
 
   def on_leave(event)
-    exit = @exits.find_by_name(event.args[:exit])
-    if exit.nil? || exit.destination.nil?
-      add_event(self, event.from, :show, :message => "You can't go in that direction.") 
-    else
-      remove_character(event.from)
-      add_event(event.from, exit.destination, :enter, :origin => self) if exit
-      @characters.each do |character|
-        add_event(self, character, :show, :message => "#{event.from.name} leaves #{exit.name}")
-      end
-    end
+    MovementHandler.new.handle_leave(event)
+  end
+
+  def character_leaving(character, direction)
+    exit = @exits.find_by_name(direction)
+    raise ExitNotAvailable.new if exit.nil?
+
+    notify_all_characters_except(character, "#{character.name} leaves #{exit.name}.")
+    remove_character(character)
+    add_event(character, exit.destination, :enter, :origin => self)
   end
 
   def on_enter(event)
-    add_character(event.from)
-    origin = event.args[:origin]
-    exit = @exits.find_by_destination(origin)
-
-
-    @characters.except(event.from).each do |character|
-      notification = "#{event.from.name} appears out of thin air"
-      notification = "#{event.from.name} arrives walking from #{exit.name}" if exit
-      add_event(self, character, :show, :message => notification)
-    end
-
-    add_event(event.from, self, :look)
+    MovementHandler.new.handle_enter(event)
   end
 
   def get_entity_description(target)
@@ -87,6 +73,10 @@ class Location
     end
     output += @exits.get_list_of_names
     output
+  end
+
+  def exit_to(destination)
+    @exits.find_by_destination(destination)
   end
 
 end
