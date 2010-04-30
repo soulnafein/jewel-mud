@@ -6,8 +6,7 @@ Dir["lib/**/*.rb"].each {|file| require file }
 
 
 class JewelMud < GServer
-  def initialize(*args)
-    super(*args)
+  def starting
     Game.instance.run
   end
 

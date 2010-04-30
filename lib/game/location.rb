@@ -36,9 +36,9 @@ class Location
   end
 
   def get_entity_description(target)
-    exit = @exits.find_by_name(target)
+    entity = entity_by_name(target)
     message = "There isn't anything called '#{target}' here."
-    message = exit.description if exit
+    message = entity.description if entity
     message
   end
 
@@ -57,6 +57,13 @@ class Location
 
   def exit_to(destination)
     @exits.find_by_destination(destination)
+  end
+
+  private
+  def entity_by_name(name)
+    entity = @exits.find_by_name(name)
+    entity = @characters.find { |c| c.name == name } if not entity
+    entity
   end
 
 end

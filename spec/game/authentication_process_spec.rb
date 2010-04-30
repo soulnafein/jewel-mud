@@ -4,9 +4,12 @@ describe AuthenticationProcess do
   it "should create a new character from session" do
     world = mock
     session = valid_character_creation_answers
+    expected_description = "First line of description.\n" +
+            "Second line of description.\n" +
+            "Last line of description.\n"
     world.should_receive(:create_new_character).
-            with("Zelgadis", session, "pa55w0rd").
-            and_return(Character.new("Zelgadis", session, "pa55w0rd"))
+            with("Zelgadis", session, "pa55w0rd", expected_description).
+            and_return(Character.new("Zelgadis", session, "pa55w0rd", expected_description ))
     authentication_process = AuthenticationProcess.new(session, world)
 
     character = authentication_process.execute

@@ -2,9 +2,23 @@
 - !ruby/object:Character 
   name: David
   password: pass
+  description: 
 - !ruby/object:Character 
   name: Gabriele
   password: "24783"
+  description: 
 - !ruby/object:Character 
   name: Damian
   password: pass
+  description: 
+- !ruby/object:Character 
+  name: David
+  password: xeno
+  description: 
+- !ruby/object:Character 
+  name: David
+  password: pass
+  description: |
+    Not a real.
+    Description...
+

@@ -35,8 +35,8 @@ class World
     @characters.find { |c| c.name == name and c.password == password }
   end
 
-  def create_new_character(name, session, password)
-    character = Character.new(name, session, password)
+  def create_new_character(name, session, password, description)
+    character = Character.new(name, session, password, description)
     @characters.push(character)
     persist_world
     character

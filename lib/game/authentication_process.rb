@@ -21,7 +21,7 @@ class AuthenticationProcess
     @name = ask_name
     @password = ask_new_password
     @description = ask_description
-    @character = @world.create_new_character(@name, @session, @password)
+    @character = @world.create_new_character(@name, @session, @password, @description)
     visualize_welcome_message(@character.name)
     @character
   end
