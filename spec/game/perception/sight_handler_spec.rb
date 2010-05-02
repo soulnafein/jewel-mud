@@ -33,7 +33,7 @@ describe SightHandler do
   context "When someone look towards a direction" do
     context "When the exit exist" do
       it "should send the exit description to the observer" do
-        @location.add_exit(Exit.new("west", nil, "Exit description"))
+        @location.add_exit(Exit.new("West", nil, "Exit description"))
 
         look_event = Event.new(@observer, @location, :look, :target => "west")
 
@@ -57,7 +57,7 @@ describe SightHandler do
   context "When someone looks at another character" do
     it "should send the character description to the observer" do
       @location.add_character(Character.new("Pino",nil, nil, "A description" ))
-      look_event = Event.new(@observer, @location, :look, :target => "Pino")
+      look_event = Event.new(@observer, @location, :look, :target => "pino")
 
       @telnet_session.should_receive(:write).with("A description")
 

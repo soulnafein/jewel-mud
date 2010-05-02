@@ -4,7 +4,7 @@ class Exits
   end
 
   def find_by_name(name)
-    @exits.find { |exit| exit.name == name}
+    @exits.find { |exit| exit.name.downcase == name.downcase}
   end
 
   def find_by_destination(destination)

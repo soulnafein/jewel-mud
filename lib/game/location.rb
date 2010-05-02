@@ -62,7 +62,7 @@ class Location
   private
   def entity_by_name(name)
     entity = @exits.find_by_name(name)
-    entity = @characters.find { |c| c.name == name } if not entity
+    entity = @characters.find { |c| c.name.downcase == name.downcase } if not entity
     entity
   end
 

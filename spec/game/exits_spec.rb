@@ -2,9 +2,9 @@ require "spec/spec_helper"
 
 describe Exits do
   context "When looking for an exit by name" do
-    it "should return the exit if exists" do
+    it "should return the exit if exists, ignoring case" do
       exits = Exits.new
-      expected_exit = Exit.new("west", nil, nil)
+      expected_exit = Exit.new("West", nil, nil)
       exits.add(expected_exit)
 
       exit = exits.find_by_name("west")
