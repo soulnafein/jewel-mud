@@ -1,15 +1,16 @@
 class ShutdownCommand
   attr_reader :args
   
-  def initialize(*args)
+  def initialize(character, event_manager, *args)
+    @character, @event_manager = character, event_manager
     @args = args
   end
 
-  def self.parse(input)
-    return ShutdownCommand.new if input =~ /^shutdown$/i
+  def self.parse(input, character, event_manager)
+    return ShutdownCommand.new(character, event_manager) if input =~ /^shutdown$/i
   end
 
-  def execute_as(character, event_handler)
+  def execute
     Game.instance.shutdown
   end
 end

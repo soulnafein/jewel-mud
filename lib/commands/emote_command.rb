@@ -1,19 +1,19 @@
 class EmoteCommand
-  attr_reader :args
+  attr_reader :message
   
-  def initialize(*args)
-    @args = args
+  def initialize(character, event_manager, *args)
+    @character, @event_manager = character, event_manager
     @message = args.first
   end
 
-  def self.parse(input)
+  def self.parse(input, character, event_manager)
     if input =~ /emote (.*)/i
-      return EmoteCommand.new($1)
+      return EmoteCommand.new(character, event_manager, $1)
     end
   end
 
-  def execute_as(character, event_handler)
-    character.notification("You emote: #{character.name} #{@message}")
-    event_handler.add_event(Event.new(character, character.current_location, :emote, :message => @message))
+  def execute
+    @character.notification("You emote: #{@character.name} #{@message}")
+    @event_manager.add_event(Event.new(@character, @character.current_location, :emote, :message => @message))
   end
 end

@@ -3,25 +3,25 @@ require "spec/spec_helper"
 describe LookCommand do
   context "When parsing a look command without arguments" do
     it "should create a new look command" do
-      cmd = LookCommand.parse("look")
+      cmd = LookCommand.parse("look", nil, nil)
 
       cmd.class.should == LookCommand
     end
 
     it "should ignore case of command" do
-      cmd = LookCommand.parse("LooK")
+      cmd = LookCommand.parse("LooK", nil, nil)
 
       cmd.class.should == LookCommand
     end
 
     it "should ignore 'look' appearing in other contexts" do
-      cmd = LookCommand.parse("say you should LOOK above you")
+      cmd = LookCommand.parse("say you should LOOK above you", nil, nil)
 
       cmd.should be_nil
     end
 
     it "should capture the object looked" do
-      cmd = LookCommand.parse("look east")
+      cmd = LookCommand.parse("look east", nil, nil)
 
       cmd.class.should == LookCommand
       cmd.target.should == "east"
@@ -32,12 +32,12 @@ describe LookCommand do
     it "should shutdown game" do
       event_handler = mock
       character = Character.new("David", nil)
-      cmd = LookCommand.new("east")
+      cmd = LookCommand.new(character, event_handler, "east")
 
       event_handler.should_receive(:add_event).
               with(Event.new(character, character.current_location, :look, :target => "east"))
 
-      cmd.execute_as(character, event_handler)
+      cmd.execute
     end
   end
 end

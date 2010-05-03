@@ -7,20 +7,22 @@ describe InputProcessor do
       @another_command = mock(:another_command)
       @the_right_command = mock(:the_right_command)
       @commands = [@a_command, @the_right_command, @another_command ]
-      @input_processor = InputProcessor.new(@commands, nil)
+      @command_manager = mock.as_null_object
+      @input_processor = InputProcessor.new(@commands, nil, @command_manager)
     end
 
     it "should match input against each command" do
-      expected_command = SayCommand.new("Hello there!")
-      @the_right_command.should_receive(:parse).with("say Hello there!").
+      expected_command = SayCommand.new(nil, nil, "Hello there!")
+      socket = StringIO.new("say Hello there!")
+      session = TelnetSession.new(socket)
+      character = Character.new("David", session)
+      @the_right_command.should_receive(:parse).with("say Hello there!",character, nil).
               and_return(expected_command)
       @a_command.should_receive(:parse).and_return(nil)
 
 
-      socket = StringIO.new("say Hello there!")
-      session = TelnetSession.new(socket)
 
-      cmd = @input_processor.parse_input_from_session(session)
+      cmd = @input_processor.parse_input_from_session(character)
 
       cmd.should == expected_command
     end
@@ -30,8 +32,9 @@ describe InputProcessor do
 
       socket = StringIO.new("castigate David")
       session = TelnetSession.new(socket)
+      character = Character.new("David", session)
 
-      invalid_input = lambda { @input_processor.parse_input_from_session(session)}
+      invalid_input = lambda { @input_processor.parse_input_from_session(character)}
       invalid_input.should raise_error NoCommandFound
     end
   end
