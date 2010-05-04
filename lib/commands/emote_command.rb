@@ -1,14 +1,14 @@
 class EmoteCommand
   attr_reader :message
   
-  def initialize(character, event_manager, *args)
-    @character, @event_manager = character, event_manager
+  def initialize(character, *args)
+    @character = character
     @message = args.first
   end
 
-  def self.parse(input, character, event_manager)
+  def self.parse(input, character)
     if input =~ /emote (.*)/i
-      return EmoteCommand.new(character, event_manager, $1)
+      return EmoteCommand.new(character, $1)
     end
   end
 

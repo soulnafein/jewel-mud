@@ -3,14 +3,14 @@ require "spec/spec_helper"
 describe EmoteCommand do
   context "When parsing input a valid input" do
     it "should create a new emote command" do
-      cmd = EmoteCommand.parse("emote licks her finger", nil, nil)
+      cmd = EmoteCommand.parse("emote licks her finger", nil)
 
       cmd.class.should == EmoteCommand
       cmd.message.should == "licks her finger"
     end
 
     it "should ignore case of command" do
-      cmd = EmoteCommand.parse("EMOTE licks her finger", nil, nil)
+      cmd = EmoteCommand.parse("EMOTE licks her finger", nil)
 
       cmd.class.should == EmoteCommand
       cmd.message.should == "licks her finger"
@@ -23,8 +23,7 @@ describe EmoteCommand do
       @location = mock.as_null_object
       @character.move_to(@location)
       @message = "licks her finger"
-      @event_handler = mock.as_null_object
-      @cmd = EmoteCommand.new(@character, @event_handler, @message)
+      @cmd = EmoteCommand.new(@character, @message)
     end
 
     it "should add an emote event to the room" do

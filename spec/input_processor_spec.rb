@@ -8,7 +8,7 @@ describe InputProcessor do
       @the_right_command = mock(:the_right_command)
       @commands = [@a_command, @the_right_command, @another_command ]
       @command_manager = mock.as_null_object
-      @input_processor = InputProcessor.new(@commands, nil, @command_manager)
+      @input_processor = InputProcessor.new(@commands, @command_manager)
     end
 
     it "should match input against each command" do
@@ -16,10 +16,9 @@ describe InputProcessor do
       socket = StringIO.new("say Hello there!")
       session = TelnetSession.new(socket)
       character = Character.new("David", session)
-      @the_right_command.should_receive(:parse).with("say Hello there!",character, nil).
+      @the_right_command.should_receive(:parse).with("say Hello there!",character).
               and_return(expected_command)
       @a_command.should_receive(:parse).and_return(nil)
-
 
 
       cmd = @input_processor.parse_input_from_session(character)

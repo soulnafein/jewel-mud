@@ -3,14 +3,14 @@ require "spec/spec_helper"
 describe SayCommand do
   context "When parsing input a valid input" do
     it "should create a new say command" do
-      cmd = SayCommand.parse("say Hello there!", nil, nil)
+      cmd = SayCommand.parse("say Hello there!", nil)
 
       cmd.class.should == SayCommand
       cmd.message.should == "Hello there!"
     end
 
     it "should ignore case of command" do
-      cmd = SayCommand.parse("SaY Hello there!", nil, nil)
+      cmd = SayCommand.parse("SaY Hello there!", nil)
 
       cmd.class.should == SayCommand
       cmd.message.should == "Hello there!"
@@ -23,8 +23,7 @@ describe SayCommand do
       @location = mock.as_null_object
       @character.move_to(@location)
       @message = "Hello World!"
-      @event_handler = mock.as_null_object
-      @cmd = SayCommand.new(@character, @event_handler, @message)
+      @cmd = SayCommand.new(@character, @message)
     end
 
     it "should add a talk event for the room" do

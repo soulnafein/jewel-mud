@@ -1,23 +1,23 @@
 class GoCommand
   attr_reader :exit
   
-  def initialize(character, event_manager, *args)
-    @character, @event_manager = character, event_manager
+  def initialize(character, *args)
+    @character = character
     @exit = args.first
   end
 
   COMMON_EXITS = ["north", "south", "east", "west", "up", "down"]
 
-  def self.parse(input, character, event_manager)
+  def self.parse(input, character)
     if input =~ /^go ([^ ]+)$/i
-      return GoCommand.new(character, event_manager, $1.downcase)
+      return GoCommand.new(character, $1.downcase)
     end
 
     COMMON_EXITS.each do |direction|
       direction_first_letter = direction[0...1]
 
       if input.downcase == direction || input.downcase == direction_first_letter
-        return GoCommand.new(character, event_manager, direction.downcase)
+        return GoCommand.new(character, direction.downcase)
       end
     end
     nil

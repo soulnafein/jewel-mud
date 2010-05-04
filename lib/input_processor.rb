@@ -1,6 +1,6 @@
 class InputProcessor
-  def initialize(commands, event_manager, command_manager)
-    @commands, @event_manager, @command_manager = commands, event_manager, command_manager
+  def initialize(commands, command_manager)
+    @commands, @command_manager = commands, command_manager
   end
 
   def process_character_commands(character)
@@ -17,7 +17,7 @@ class InputProcessor
   def parse_input_from_session(character)
     input = character.session.read
     @commands.each do |command_class|
-      command = command_class.parse(input, character, @event_manager)
+      command = command_class.parse(input, character)
 
       return command if command 
     end

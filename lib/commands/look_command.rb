@@ -1,18 +1,18 @@
 class LookCommand
   attr_reader :target
   
-  def initialize(character, event_manager, target=nil)
-    @character, @event_manager = character, event_manager
+  def initialize(character, target=nil)
+    @character = character
     @target = target
   end
 
-  def self.parse(input, character, event_manager)
+  def self.parse(input, character)
     if input =~ /^look$/i
-      return LookCommand.new(character, event_manager)
+      return LookCommand.new(character)
     end
 
     if input =~ /^look (.*)$/i
-      return LookCommand.new(character, event_manager, $1)
+      return LookCommand.new(character, $1)
     end
   end
 

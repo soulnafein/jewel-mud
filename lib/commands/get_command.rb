@@ -1,14 +1,14 @@
 class GetCommand
   attr_reader :item
 
-  def initialize(character, event_manager,  *args)
-    @character, @event_manager = character, event_manager
+  def initialize(character, *args)
+    @character = character
     @item = args.first
   end
 
-  def self.parse(input, character, event_manager)
+  def self.parse(input, character)
     if input =~ /^get ([^ ]+)$/i
-      return GetCommand.new(character, event_manager, $1.downcase)
+      return GetCommand.new(character, $1.downcase)
     end
   end
 
