@@ -22,9 +22,9 @@ class Character
     ['@name', '@password', '@description']
   end
 
-  def look(target=nil)
+  def look(target="")
     location = @current_location
-    if target
+    if not target.empty?
       description = location.get_entity_description(target)
     else
       description = location.description_for(self)

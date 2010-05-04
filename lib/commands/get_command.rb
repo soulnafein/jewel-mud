@@ -6,12 +6,6 @@ class GetCommand
     @item = args.first
   end
 
-  def self.parse(input, character)
-    if input =~ /^get ([^ ]+)$/i
-      return GetCommand.new(character, $1.downcase)
-    end
-  end
-
   def execute
   end
 end

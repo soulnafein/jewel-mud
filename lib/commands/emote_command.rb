@@ -6,12 +6,6 @@ class EmoteCommand
     @message = args.first
   end
 
-  def self.parse(input, character)
-    if input =~ /emote (.*)/i
-      return EmoteCommand.new(character, $1)
-    end
-  end
-
   def execute
     @character.notification("You emote: #{@character.name} #{@message}")
     notification = "#{@character.name} #{@message}"

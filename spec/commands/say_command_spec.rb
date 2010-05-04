@@ -1,22 +1,6 @@
 require "spec/spec_helper"
 
 describe SayCommand do
-  context "When parsing input a valid input" do
-    it "should create a new say command" do
-      cmd = SayCommand.parse("say Hello there!", nil)
-
-      cmd.class.should == SayCommand
-      cmd.message.should == "Hello there!"
-    end
-
-    it "should ignore case of command" do
-      cmd = SayCommand.parse("SaY Hello there!", nil)
-
-      cmd.class.should == SayCommand
-      cmd.message.should == "Hello there!"
-    end
-  end
-
   context "When executing a command" do
     before :each do
       @character = Build.a_character

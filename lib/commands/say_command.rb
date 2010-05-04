@@ -6,12 +6,6 @@ class SayCommand
     @message = args.first
   end
 
-  def self.parse(input, character)
-    if input =~ /say (.*)/i
-      return SayCommand.new(character, $1)
-    end
-  end
-
   def execute
     @character.notification("You said: #{@message}")
     notification = "#{@character.name} said: #{@message}"

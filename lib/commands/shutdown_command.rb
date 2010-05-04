@@ -6,10 +6,6 @@ class ShutdownCommand
     @args = args
   end
 
-  def self.parse(input, character)
-    return ShutdownCommand.new(character) if input =~ /^shutdown$/i
-  end
-
   def execute
     Game.instance.shutdown
   end

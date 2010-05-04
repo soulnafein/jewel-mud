@@ -6,8 +6,12 @@ class Game
   def initialize
     @world = World.new
     @command_manager = CommandManager.new
-    commands = [SayCommand, ShutdownCommand, LookCommand, GoCommand, EmoteCommand]
-    @input_processor = InputProcessor.new(commands, @command_manager)
+    @command_factory = CommandFactory.new
+    @command_factory.aliases = {
+      "s" => "go south", "n" => "go north", "w" => "go west", "e" => "go east",
+      "u" => "go up", "d" => "go down", "l" => "look"
+    }
+    @input_processor = InputProcessor.new(@command_factory, @command_manager)
     @shutdown_requested = false
   end
 

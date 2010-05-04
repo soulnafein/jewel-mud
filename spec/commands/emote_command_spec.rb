@@ -1,22 +1,6 @@
 require "spec/spec_helper"
 
 describe EmoteCommand do
-  context "When parsing input a valid input" do
-    it "should create a new emote command" do
-      cmd = EmoteCommand.parse("emote licks her finger", nil)
-
-      cmd.class.should == EmoteCommand
-      cmd.message.should == "licks her finger"
-    end
-
-    it "should ignore case of command" do
-      cmd = EmoteCommand.parse("EMOTE licks her finger", nil)
-
-      cmd.class.should == EmoteCommand
-      cmd.message.should == "licks her finger"
-    end
-  end
-
   context "When executing a command" do
     before :each do
       @character = Build.a_character
