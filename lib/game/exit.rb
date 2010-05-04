@@ -9,5 +9,6 @@ class Exit
   def let_go(character)
     @destination.let_in(character, @location)
     character.move_to(@destination)
+    character.look
   end
 end

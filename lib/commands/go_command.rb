@@ -3,14 +3,10 @@ class GoCommand
   
   def initialize(character, *args)
     @character = character
-    @exit = args.first
+    @exit = args.first #TODO: Rename to direction
   end
 
   def execute
-    begin
-      @character.location.character_leaving(@character, @exit)
-    rescue ExitNotAvailable
-      @character.notification("You can't go in that direction.")
-    end
+    @character.go(@exit)
   end
 end
