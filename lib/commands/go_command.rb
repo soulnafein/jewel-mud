@@ -8,7 +8,7 @@ class GoCommand
 
   def execute
     begin
-      @character.current_location.character_leaving(@character, @exit)
+      @character.location.character_leaving(@character, @exit)
     rescue ExitNotAvailable
       @character.notification("You can't go in that direction.")
     end

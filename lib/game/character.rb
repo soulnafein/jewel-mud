@@ -1,5 +1,5 @@
 class Character
-  attr_reader :name, :password, :current_location, :session, :description
+  attr_reader :name, :password, :location, :session, :description
 
   def initialize(name, session=nil, password=nil, description=nil)
     @name, @session, @password, @description =
@@ -11,7 +11,7 @@ class Character
   end
 
   def move_to(location)
-    @current_location = location
+    @location = location
   end
 
   def bind_session(session)
@@ -23,7 +23,7 @@ class Character
   end
 
   def look(target="")
-    location = @current_location
+    location = @location
     if not target.empty?
       description = location.get_entity_description(target)
     else
@@ -31,5 +31,19 @@ class Character
     end
 
     notification(description)
+  end
+
+  def emote(emote_description)
+    emote_message = "#{@name} #{emote_description}"
+    @session.write "You emote: #{emote_message}"
+    @location.notify_all_characters_except(self, emote_message)
+  end
+
+  def go(direction)
+    begin
+      @location.let_go(self, direction)
+    rescue ExitNotAvailable
+      @session.write "You can't go in that direction."
+    end
   end
 end

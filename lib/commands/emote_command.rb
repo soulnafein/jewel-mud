@@ -7,8 +7,6 @@ class EmoteCommand
   end
 
   def execute
-    @character.notification("You emote: #{@character.name} #{@message}")
-    notification = "#{@character.name} #{@message}"
-    @character.current_location.notify_all_characters_except(@character, notification)
+    @character.emote(@message)
   end
 end

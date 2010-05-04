@@ -69,6 +69,25 @@ class Location
     @exits.find_by_destination(destination)
   end
 
+  def let_go(character, direction)
+    exit = @exits.find_by_name(direction)
+    raise ExitNotAvailable if exit.nil?
+    exit.let_go(character)
+    remove_character(character)
+    notify_all_characters_except(character, "#{character.name} leaves #{exit.name}")
+  end
+
+  def let_in(character, origin)
+    @characters.push(character)
+    exit_to_origin = exit_to(origin)
+    if exit_to_origin
+      notification = "#{character.name} arrives walking from #{exit_to_origin.name}"
+    else
+      notification = "#{character.name} appears out of thin air"
+    end
+    notify_all_characters_except(character, notification)
+  end
+
   private
   def entity_by_name(name)
     entity = @exits.find_by_name(name)

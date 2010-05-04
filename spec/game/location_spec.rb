@@ -3,40 +3,26 @@ require "spec/spec_helper"
 describe Location do
   before :each do
     @telnet_session = mock.as_null_object
+    @character = Character.new("David", @telnet_session)
+    @location = Location.new(1, "title", "description")
+    @destination = Location.new(2, "destination", "destination")
+    @exit = Exit.new("east", @destination)
+    @location.add_exit(@exit)
   end
 
-  context "When someone leaves the location" do
-    before :each do
-      @telnet_session = mock.as_null_object
-      @character = Character.new("David", @telnet_session)
-      @location = Location.new(1, "title", "description")
-      @destination = Location.new(2, "destination", "destination")
-      @exit = Exit.new("east", @destination)
-      @location.add_exit(@exit)
+  context "When a character ask to leave through a valid exit" do
+    it "should let the exit know" do
+      @exit.should_receive(:let_go).
+              with(@character)
+      @location.let_go(@character, "east")
     end
 
     it "should remove character from current location" do
       @location.add_character(@character)
 
-      @location.character_leaving(@character, "east")
+      @location.let_go(@character, "east")
 
       @location.characters.should be_empty
-    end
-
-    it "should send an enter event to the destination" do
-      @location.add_character(@character)
-      @destination.should_receive(:character_entering).
-              with(@character, @exit)
-      
-      @location.character_leaving(@character, "east")
-    end
-
-    it "should notify the actor if the destination does not exist" do
-      @location.add_character(@character)
-
-      invalid_call = lambda { @location.character_leaving(@character, "not_existing") }
-
-      invalid_call.should raise_error ExitNotAvailable
     end
 
     it "should notify other characters in the location" do
@@ -46,7 +32,44 @@ describe Location do
 
       other_character.should_receive(:notification, "David leaves east.")
 
-      @location.character_leaving(@character, "east")
+      @location.let_go(@character, "east")
+    end
+  end
+
+  context "When a character ask to leave through an invalid exit" do
+    it "should raise an error" do
+      call_with_error = lambda {@location.let_go(@character, "i don't exist")}
+      call_with_error.should raise_error ExitNotAvailable        
+    end
+  end
+
+  context "When a character ask to be let in the location" do
+    it "should add the character to the location" do
+      origin = Location.new(5, "origin", "origin description")
+      @location.characters.should_not include @character
+
+      @location.let_in(@character, origin)
+
+      @location.characters.should include @character
+    end
+
+    it "should notify other characters" do
+      origin = Location.new(5, "origin", "origin description")
+      @location.add_exit(Exit.new("south", origin))
+      other_character = mock(:other_character).as_null_object
+      @location.add_character(other_character)
+      other_character.should_receive(:notification).with("David arrives walking from south")
+
+      @location.let_in(@character, origin)
+    end
+
+    it "should notify other characters when origin is unknown" do
+      origin = Location.new(5, "origin", "origin description")
+      other_character = mock(:other_character).as_null_object
+      @location.add_character(other_character)
+      other_character.should_receive(:notification).with("David appears out of thin air")
+
+      @location.let_in(@character, origin)
     end
   end
 end

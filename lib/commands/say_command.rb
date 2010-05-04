@@ -9,6 +9,6 @@ class SayCommand
   def execute
     @character.notification("You said: #{@message}")
     notification = "#{@character.name} said: #{@message}"
-    @character.current_location.notify_all_characters_except(@character, notification)
+    @character.location.notify_all_characters_except(@character, notification)
   end
 end
