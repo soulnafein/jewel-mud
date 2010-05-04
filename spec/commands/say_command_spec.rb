@@ -20,14 +20,16 @@ describe SayCommand do
   context "When executing a command" do
     before :each do
       @character = Build.a_character
+      @location = mock.as_null_object
+      @character.move_to(@location)
       @message = "Hello World!"
       @event_handler = mock.as_null_object
       @cmd = SayCommand.new(@character, @event_handler, @message)
     end
 
     it "should add a talk event for the room" do
-      @event_handler.should_receive(:add_event).
-          with(Event.new(@character, @character.current_location, :talk, :message => @message))
+      @location.should_receive(:notify_all_characters_except).
+              with(@character, "David said: Hello World!" )
 
       @cmd.execute
     end

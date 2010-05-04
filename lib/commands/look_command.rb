@@ -17,6 +17,6 @@ class LookCommand
   end
 
   def execute
-    @event_manager.add_event(Event.new(@character,@character.current_location,:look, :target => @target))
+    @character.look(@target)
   end
 end

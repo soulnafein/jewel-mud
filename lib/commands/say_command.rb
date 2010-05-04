@@ -14,6 +14,7 @@ class SayCommand
 
   def execute
     @character.notification("You said: #{@message}")
-    @event_manager.add_event(Event.new(@character, @character.current_location, :talk, :message => @message))
+    notification = "#{@character.name} said: #{@message}"
+    @character.current_location.notify_all_characters_except(@character, notification)
   end
 end

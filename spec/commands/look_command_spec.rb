@@ -34,8 +34,8 @@ describe LookCommand do
       character = Character.new("David", nil)
       cmd = LookCommand.new(character, event_handler, "east")
 
-      event_handler.should_receive(:add_event).
-              with(Event.new(character, character.current_location, :look, :target => "east"))
+      character.should_receive(:look).
+              with("east")
 
       cmd.execute
     end

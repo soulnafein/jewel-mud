@@ -22,7 +22,14 @@ class Character
     ['@name', '@password', '@description']
   end
 
-  def look
-    
+  def look(target=nil)
+    location = @current_location
+    if target
+      description = location.get_entity_description(target)
+    else
+      description = location.description_for(self)
+    end
+
+    notification(description)
   end
 end
