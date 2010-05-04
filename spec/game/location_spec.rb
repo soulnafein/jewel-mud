@@ -11,7 +11,8 @@ describe Location do
       @character = Character.new("David", @telnet_session)
       @location = Location.new(1, "title", "description")
       @destination = Location.new(2, "destination", "destination")
-      @location.add_exit(Exit.new("east", @destination))
+      @exit = Exit.new("east", @destination)
+      @location.add_exit(@exit)
     end
 
     it "should remove character from current location" do
@@ -24,7 +25,8 @@ describe Location do
 
     it "should send an enter event to the destination" do
       @location.add_character(@character)
-      expect_event(@character, @destination, :enter, :origin => @location)
+      @destination.should_receive(:character_entering).
+              with(@character, @exit)
       
       @location.character_leaving(@character, "east")
     end
@@ -42,9 +44,8 @@ describe Location do
       @location.add_character(@character)
       @location.add_character(other_character)
 
-      expect_event(@character, @destination, :enter, :origin => @location)
       other_character.should_receive(:notification, "David leaves east.")
-      
+
       @location.character_leaving(@character, "east")
     end
   end

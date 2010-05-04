@@ -13,7 +13,5 @@ class GetCommand
   end
 
   def execute
-    get_event = Event.new(@character, @character.current_location, :get, :item => @item)
-    @event_manager.add_event(get_event)
   end
 end

@@ -24,6 +24,10 @@ class GoCommand
   end
 
   def execute
-    @event_manager.add_event(Event.new(@character, @character.current_location, :leave, :exit => @exit))
+    begin
+      @character.current_location.character_leaving(@character, @exit)
+    rescue ExitNotAvailable
+      @character.notification("You can't go in that direction.")
+    end
   end
 end

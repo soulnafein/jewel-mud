@@ -25,15 +25,6 @@ describe GetCommand do
 
   context "When executing" do
     it "should raise a get event in the current location" do
-      @event_handler = mock
-      character = Build.a_character
-      cmd = GetCommand.new(character, @event_handler, "shoes")
-
-      @event_handler.should_receive(:add_event).
-              with(Event.new(character, character.current_location, :get, :item => "shoes"))
-
-
-      cmd.execute
     end
   end
 end

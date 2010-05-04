@@ -32,7 +32,17 @@ class Location
 
     notify_all_characters_except(character, "#{character.name} leaves #{exit.name}.")
     remove_character(character)
-    add_event(character, exit.destination, :enter, :origin => self)
+    exit.destination.character_entering(character, exit)
+  end
+
+  def character_entering(character, exit)
+    add_character(character)
+
+    notification = "#{character.name} appears out of thin air"
+    notification = "#{character.name} arrives walking from #{exit.name}" if exit
+
+    notify_all_characters_except(character, notification)
+    character.look
   end
 
   def get_entity_description(target)

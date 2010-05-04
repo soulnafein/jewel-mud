@@ -21,4 +21,8 @@ class Character
   def to_yaml_properties
     ['@name', '@password', '@description']
   end
+
+  def look
+    
+  end
 end

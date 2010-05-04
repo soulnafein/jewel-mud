@@ -33,7 +33,10 @@ class Game
   def enter_game(session)
     authentication_process = AuthenticationProcess.new(session, @world)
     character = authentication_process.execute
-    add_event(character, @world.locations.first, :enter, :origin => :nowhere)
+
+    ############# NOT THREAD SAFE ###############################
+    @world.locations.first.character_entering(character, nil)
+    ##############################################################
     @input_processor.process_character_commands(character)
   end
 
