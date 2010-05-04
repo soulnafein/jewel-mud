@@ -24,10 +24,7 @@ class TelnetSession
   RESET_CODE = "\e[0m"
 
   def replace_color_tags(text)
-    text.
-            gsub(/\[color=([a-z]+)\]/im) do |m|
-      COLOR_CODES[$1]
-    end.
+    text.gsub(/\[color=([a-z]+)\]/im){ |m| COLOR_CODES[$1] }.
             gsub(/\[\/color\]/i, RESET_CODE)
   end
 
