@@ -36,7 +36,11 @@ class Game
     character = authentication_process.execute
 
     ############# NOT THREAD SAFE ###############################
-    @world.locations.first.character_entering(character, nil)
+
+    first_location = @world.locations.first
+    character.move_to(first_location)
+    first_location.let_in(character, nil)
+    character.go("up")
     ##############################################################
     @input_processor.process_character_commands(character)
   end
