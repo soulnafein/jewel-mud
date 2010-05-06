@@ -30,7 +30,7 @@ describe Location do
       @location.add_character(@character)
       @location.add_character(other_character)
 
-      other_character.should_receive(:notification, "David leaves east.")
+      other_character.should_receive(:send_to_player, "David leaves east.")
 
       @location.let_go(@character, "east")
     end
@@ -58,7 +58,7 @@ describe Location do
       @location.add_exit(Exit.new("south", origin))
       other_character = mock(:other_character).as_null_object
       @location.add_character(other_character)
-      other_character.should_receive(:notification).with("David arrives walking from south")
+      other_character.should_receive(:send_to_player).with("David arrives walking from south")
 
       @location.let_in(@character, origin)
     end
@@ -67,7 +67,7 @@ describe Location do
       origin = Location.new(5, "origin", "origin description")
       other_character = mock(:other_character).as_null_object
       @location.add_character(other_character)
-      other_character.should_receive(:notification).with("David appears out of thin air")
+      other_character.should_receive(:send_to_player).with("David appears out of thin air")
 
       @location.let_in(@character, origin)
     end

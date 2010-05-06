@@ -6,7 +6,7 @@ class Character
     name, session, password, description
   end
 
-  def notification(msg)
+  def send_to_player(msg)
     @session.write msg
   end
 
@@ -29,13 +29,13 @@ class Character
       description = @location.description_for(self)
     end
 
-    notification(description)
+    send_to_player(description)
   end
 
   def emote(emote_description)
     emote_message = "#{@name} #{emote_description}"
     @session.write "You emote: #{emote_message}"
-    @location.notify_all_characters_except(self, emote_message)
+    @location.send_to_all_except(self, emote_message)
   end
 
   def go(direction)
@@ -44,5 +44,11 @@ class Character
     rescue ExitNotAvailable
       @session.write "You can't go in that direction."
     end
+  end
+
+  def say(message)
+    send_to_player("You said: #{message}")
+    notification = "#{self.name} said: #{message}"
+    @location.send_to_all_except(self, notification)
   end
 end

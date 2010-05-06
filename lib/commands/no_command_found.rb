@@ -4,6 +4,6 @@ class NoCommandFound
   end
 
   def execute
-    @character.notification("I beg you pardon? What are you trying to say?")
+    @character.send_to_player("I beg you pardon? What are you trying to say?")
   end
 end

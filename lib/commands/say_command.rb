@@ -7,8 +7,7 @@ class SayCommand
   end
 
   def execute
-    @character.notification("You said: #{@message}")
-    notification = "#{@character.name} said: #{@message}"
-    @character.location.notify_all_characters_except(@character, notification)
+    @character.say(@message)
+    
   end
 end

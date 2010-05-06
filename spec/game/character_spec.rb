@@ -24,7 +24,7 @@ describe Character do
     end
 
     it "should send message to his location" do
-      @character.location.should_receive(:notify_all_characters_except).
+      @character.location.should_receive(:send_to_all_except).
               with(@character, "David licks his finger")
       @character.emote("licks his finger")
     end
@@ -66,6 +66,20 @@ describe Character do
       @session.should_receive(:write).with("You see a pub")
 
       @character.look("east")
+    end
+  end
+
+  context "When saying something" do
+    it "should add a talk event for the room" do
+      @location.should_receive(:send_to_all_except).
+              with(@character, "David said: Hello World!" )
+
+      @character.say("Hello World!")
+    end
+
+    it "should notify player of what he said" do
+      @character.should_receive(:send_to_player).with("You said: Hello World!")
+      @character.say("Hello World!")
     end
   end
 end

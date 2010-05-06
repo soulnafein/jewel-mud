@@ -20,9 +20,9 @@ class Location
     @characters.delete(character)
   end
 
-  def notify_all_characters_except(excluded_character, notification)
+  def send_to_all_except(excluded_character, notification)
     @characters.except(excluded_character).each do |character|
-      character.notification(notification)
+      character.send_to_player(notification)
     end
   end
 
@@ -55,7 +55,7 @@ class Location
     raise ExitNotAvailable if exit.nil?
     exit.let_go(character)
     remove_character(character)
-    notify_all_characters_except(character, "#{character.name} leaves #{exit.name}")
+    send_to_all_except(character, "#{character.name} leaves #{exit.name}")
   end
 
   def let_in(character, origin)
@@ -66,7 +66,7 @@ class Location
     else
       notification = "#{character.name} appears out of thin air"
     end
-    notify_all_characters_except(character, notification)
+    send_to_all_except(character, notification)
   end
 
   private
