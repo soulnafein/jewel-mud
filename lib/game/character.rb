@@ -23,11 +23,10 @@ class Character
   end
 
   def look(target="")
-    location = @location
     if not target.empty?
-      description = location.get_entity_description(target)
+      description = @location.get_entity_description(target)
     else
-      description = location.description_for(self)
+      description = @location.description_for(self)
     end
 
     notification(description)

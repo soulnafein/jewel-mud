@@ -46,4 +46,26 @@ describe Character do
       @character.go("west")
     end
   end
+
+  context "When looking at a location" do
+    it "should send location description to the session" do
+      description = "A description"
+      @location.should_receive(:description_for).with(@character).
+              and_return(description)
+      @session.should_receive(:write).with(description)
+      @character.move_to(@location)
+
+      @character.look
+    end
+  end
+
+  context "When looking at an entity" do
+    it "should send location description to the session" do
+      @location.should_receive(:get_entity_description).
+              with("east").and_return("You see a pub")
+      @session.should_receive(:write).with("You see a pub")
+
+      @character.look("east")
+    end
+  end
 end

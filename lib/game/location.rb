@@ -26,25 +26,6 @@ class Location
     end
   end
 
-  def character_leaving(character, direction)
-    exit = @exits.find_by_name(direction)
-    raise ExitNotAvailable.new if exit.nil?
-
-    notify_all_characters_except(character, "#{character.name} leaves #{exit.name}.")
-    remove_character(character)
-    exit.destination.character_entering(character, exit)
-  end
-
-  def character_entering(character, exit)
-    add_character(character)
-
-    notification = "#{character.name} appears out of thin air"
-    notification = "#{character.name} arrives walking from #{exit.name}" if exit
-
-    notify_all_characters_except(character, notification)
-    character.look
-  end
-
   def get_entity_description(target)
     entity = entity_by_name(target)
     message = "There isn't anything called '#{target}' here."
