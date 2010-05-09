@@ -1,9 +1,11 @@
 class Character
-  attr_reader :name, :password, :location, :session, :description
+  attr_reader :name, :password, :location, :session, :description,
+              :inventory
 
   def initialize(name, session=nil, password=nil, description=nil)
     @name, @session, @password, @description =
     name, session, password, description
+    @inventory = []
   end
 
   def send_to_player(msg)
@@ -50,5 +52,15 @@ class Character
     send_to_player("You said: #{message}")
     notification = "#{self.name} said: #{message}"
     @location.send_to_all_except(self, notification)
+  end
+
+  def get(item_name)
+    @inventory.push @location.pick_item(item_name)
+  end
+
+  def drop(item_name)
+    item = @inventory.find { |i| i.name == item_name}
+    @inventory.delete(item)
+    @location.add_item(item)
   end
 end

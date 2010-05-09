@@ -83,18 +83,38 @@ describe Location do
     end
   end
 
+  context "When getting an item" do
+    it "should return an item when it is present" do
+      a_pair_of_shoes = Item.new("shoes", "A pair of shoes")
+      @location.add_item(a_pair_of_shoes)
+
+      @location.pick_item("shOes").should == a_pair_of_shoes
+    end
+
+    it "should remove the item from the location" do
+      a_pair_of_shoes = Item.new("shoes", "A pair of shoes")
+      @location.add_item(a_pair_of_shoes)
+
+      @location.pick_item("shOes")
+      lambda { @location.pick_item("shOes") }.
+              should raise_error ItemNotAvailable
+    end
+
+  end
+  
   it "should provide a summary description of the location" do
     @location.add_exit(Exit.new("north", nil))
     @location.add_exit(Exit.new("south", nil))
     @location.add_character(@character)
+    @location.add_item(Item.new("table", "A wooden table"))
 
     observer = Character.new("Observer", nil)
 
     expected_description = "You see:\n" +
             "[color=red]A title[/color]\n" +
-            "A description\n"+
-            "People:\n" +
-            "David\n" +
+            "A description"+
+            "[color=yellow]David is here\n[/color]" +
+            "A wooden table is here\n" +
             "[color=green]You see exits leading east, north and south.[/color]\n"
 
     @location.description_for(observer).should == expected_description

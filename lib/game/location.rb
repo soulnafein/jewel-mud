@@ -5,6 +5,7 @@ class Location
     @uid, @title, @description = uid, title, description
     @characters = []
     @exits = Exits.new
+    @items = []
   end
 
   def add_exit(exit)
@@ -14,6 +15,10 @@ class Location
   def add_character(character)
     @characters << character
     character.move_to(self)
+  end
+
+  def add_item(item)
+    @items.push(item)
   end
 
   def remove_character(character)
@@ -36,11 +41,13 @@ class Location
   def description_for(observer)
     output = "You see:\n" +
             "[color=red]#{title}[/color]\n" +
-            "#{description}\n"+
-            "People:\n"
+            "#{description}"
     other_characters = @characters.except(observer)
     other_characters.each do |p|
-      output += "#{p.name}\n"
+      output += "[color=yellow]#{p.name} is here\n[/color]"
+    end
+    @items.each do |i|
+      output += "#{i.description} is here\n"
     end
     output += @exits.get_list_of_names
     output
@@ -48,6 +55,13 @@ class Location
 
   def exit_to(destination)
     @exits.find_by_destination(destination)
+  end
+
+  def pick_item(item_name)
+    item = @items.find { |i| i.name.downcase == item_name.downcase }
+    raise ItemNotAvailable if not item
+    @items.delete(item)
+    item
   end
 
   def let_go(character, direction)

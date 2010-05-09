@@ -82,4 +82,29 @@ describe Character do
       @character.say("Hello World!")
     end
   end
+
+  context "When getting an item" do
+    it "should add the item to the character inventory" do
+      a_pair_of_shoes = Item.new("shoes", "A pair of shoes")
+      @location.should_receive(:pick_item).with("shoes").
+              and_return(a_pair_of_shoes)
+
+      @character.get("shoes")
+
+      @character.inventory.should include a_pair_of_shoes
+    end
+  end
+
+  context "When dropping an item" do
+    it "should add the item to the location" do
+      pencil = Item.new("pencil", "A pencil")
+      @character.inventory.push(pencil)
+      @location.should_receive(:add_item).with(pencil).
+              and_return(pencil)
+
+      @character.drop("pencil")
+
+      @character.inventory.should_not include pencil
+    end
+  end
 end

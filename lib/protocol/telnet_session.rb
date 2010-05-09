@@ -18,7 +18,8 @@ class TelnetSession
   COLOR_CODES = {
           "red" => "\e[31m",
           "blue" => "\e[34m",
-          "green" => "\e[32m"
+          "green" => "\e[32m",
+          "yellow" => "\e[33m"
   }
 
   RESET_CODE = "\e[0m"

@@ -49,7 +49,17 @@ class World
   end
 
   def load_world
-    @locations = YAML.load_file('db/dikuworld.yaml')
+    entities = YAML.load_file('db/dikuworld.yaml')
+    exits = entities.find_all { |e| e.class == Exit}
+    @locations = entities.find_all { |e| e.class == Location}
+    @locations.each do |location|
+      location.instance_variable_set('@exits', Exits.new)
+      location.instance_variable_set('@characters', [])
+    end
+    exits.each do |exit|
+      exit.location.add_exit(exit)
+    end
+
     @characters = YAML.load_file('db/characters.yaml')
   end
 end
