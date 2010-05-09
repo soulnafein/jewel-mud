@@ -2,7 +2,7 @@ require 'gserver'
 require 'singleton'
 require 'yaml'
 
-Dir["lib/**/*.rb"].each {|file| require file }
+Dir["lib/**/*.rb"].sort.each {|file| require file }
 
 
 class JewelMud < GServer
