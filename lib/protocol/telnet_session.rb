@@ -11,7 +11,8 @@ class TelnetSession
   end
 
   def write(text)
-    @socket.print adjust_new_lines(replace_color_tags(text))
+    filtered_text = adjust_new_lines(replace_color_tags(text))
+    @socket.print filtered_text
   end
 
   private
@@ -19,7 +20,8 @@ class TelnetSession
           "red" => "\e[31m",
           "blue" => "\e[34m",
           "green" => "\e[32m",
-          "yellow" => "\e[33m"
+          "yellow" => "\e[33m",
+          "cyan" => "\e[36m"
   }
 
   RESET_CODE = "\e[0m"

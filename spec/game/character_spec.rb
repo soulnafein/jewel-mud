@@ -72,13 +72,14 @@ describe Character do
   context "When saying something" do
     it "should add a talk event for the room" do
       @location.should_receive(:send_to_all_except).
-              with(@character, "David said: Hello World!" )
+              with(@character, "[color=cyan]David says '[/color]Hello World![color=cyan]'[/color]" )
 
       @character.say("Hello World!")
     end
 
     it "should notify player of what he said" do
-      @character.should_receive(:send_to_player).with("You said: Hello World!")
+      @character.should_receive(:send_to_player).
+              with("[color=cyan]You says '[/color]Hello World![color=cyan]'[/color]")
       @character.say("Hello World!")
     end
   end
@@ -105,6 +106,22 @@ describe Character do
       @character.drop("pencil")
 
       @character.inventory.should_not include pencil
+    end
+  end
+
+  context "When printing inventory" do
+    it "should show all the items in the inventory" do
+      pencil = Item.new("pencil", "A pencil")
+      knife = Item.new("knife", "A skinning knife")
+      @character.inventory.push(pencil)
+      @character.inventory.push(knife)
+
+      @session.should_receive(:write).
+              with("[color=yellow]In your hands:[/color]\n"+
+                   "A pencil\n" +
+                   "A skinning knife\n")
+
+      @character.print_inventory
     end
   end
 end
