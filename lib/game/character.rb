@@ -49,8 +49,8 @@ class Character
   end
 
   def say(message)
-    send_to_player("You said: #{message}")
-    notification = "#{self.name} said: #{message}"
+    send_to_player("[color=cyan]You says '[/color]#{message}[color=cyan]'[/color]")
+    notification = "[color=cyan]#{self.name} says '[/color]#{message}[color=cyan]'[/color]"
     @location.send_to_all_except(self, notification)
   end
 
@@ -62,5 +62,11 @@ class Character
     item = @inventory.find { |i| i.name == item_name}
     @inventory.delete(item)
     @location.add_item(item)
+  end
+
+  def print_inventory()
+    output = "[color=yellow]In your hands:[/color]\n"
+    @inventory.each { |i| output += "#{i.description}\n" }
+    session.write(output)
   end
 end
