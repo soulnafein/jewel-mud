@@ -1,17 +1,22 @@
+require 'monitor.rb'
+
 class CommandManager
   def initialize()
     @commands = []
-    @mutex = Mutex.new
+    @commands.extend(MonitorMixin)
+    @empty_cond = @commands.new_cond
   end
 
   def add_command(command)
-    @mutex.synchronize do
+    @commands.synchronize do
       @commands.push(command)
+      @empty_cond.signal
     end
   end
 
   def get_command
-    @mutex.synchronize do
+    @commands.synchronize do
+      @empty_cond.wait_while { @commands.empty? }
       @commands.shift
     end
   end
