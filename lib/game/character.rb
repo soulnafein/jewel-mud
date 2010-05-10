@@ -5,7 +5,7 @@ class Character
   def initialize(name, session=nil, password=nil, description=nil)
     @name, @session, @password, @description =
     name, session, password, description
-    @inventory = []
+    @inventory = Inventory.new
   end
 
   def send_to_player(msg)
@@ -55,18 +55,26 @@ class Character
   end
 
   def get(item_name)
-    @inventory.push @location.pick_item(item_name)
+    begin
+      item = @location.pick_item(item_name)
+      @inventory.add item
+      @session.write("You get #{item.description.downcase}")
+    rescue ItemNotAvailable
+      @session.write("There is no '#{item_name}' here")
+    end
   end
 
   def drop(item_name)
-    item = @inventory.find { |i| i.name == item_name}
-    @inventory.delete(item)
-    @location.add_item(item)
+    begin
+      item = @inventory.pick(item_name)
+      @location.add_item(item)
+      @session.write("You put #{item.description.downcase} on the floor")
+    rescue ItemNotAvailable
+      @session.write("You don't have that item")
+    end
   end
 
   def print_inventory()
-    output = "[color=yellow]In your hands:[/color]\n"
-    @inventory.each { |i| output += "#{i.description}\n" }
-    session.write(output)
+    @session.write(@inventory.display)
   end
 end

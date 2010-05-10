@@ -94,12 +94,28 @@ describe Character do
 
       @character.inventory.should include a_pair_of_shoes
     end
+
+    it "should notify the player" do
+      a_pair_of_shoes = Item.new("shoes", "A pair of shoes")
+      @location.should_receive(:pick_item).with("shoes").
+              and_return(a_pair_of_shoes)
+      @session.should_receive(:write).with("You get a pair of shoes")
+
+      @character.get("shoes")
+    end
+
+    it "should let the player know when the item required is not present" do
+      @location.should_receive(:pick_item).with("something").
+              and_raise ItemNotAvailable
+      @session.should_receive(:write).with("There is no 'something' here")
+      @character.get("something")
+    end
   end
 
   context "When dropping an item" do
     it "should add the item to the location" do
       pencil = Item.new("pencil", "A pencil")
-      @character.inventory.push(pencil)
+      @character.inventory.add(pencil)
       @location.should_receive(:add_item).with(pencil).
               and_return(pencil)
 
@@ -107,14 +123,30 @@ describe Character do
 
       @character.inventory.should_not include pencil
     end
+
+    it "should notify the player" do
+      pencil = Item.new("pencil", "A pencil")
+      @character.inventory.add(pencil)
+      @location.should_receive(:add_item).with(pencil).
+              and_return(pencil)
+      @session.should_receive(:write).with("You put a pencil on the floor")
+
+      @character.drop("pencil")
+    end
+
+    it "should let the player know when item not present in inventory" do
+      @session.should_receive(:write).with("You don't have that item")
+
+      @character.drop("shoes")
+    end
   end
 
   context "When printing inventory" do
     it "should show all the items in the inventory" do
       pencil = Item.new("pencil", "A pencil")
       knife = Item.new("knife", "A skinning knife")
-      @character.inventory.push(pencil)
-      @character.inventory.push(knife)
+      @character.inventory.add(pencil)
+      @character.inventory.add(knife)
 
       @session.should_receive(:write).
               with("[color=yellow]In your hands:[/color]\n"+

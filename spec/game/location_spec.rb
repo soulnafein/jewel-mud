@@ -30,7 +30,7 @@ describe Location do
       @location.add_character(@character)
       @location.add_character(other_character)
 
-      other_character.should_receive(:send_to_player, "David leaves east.")
+      other_character.should_receive(:send_to_player).with("David leaves east")
 
       @location.let_go(@character, "east")
     end
