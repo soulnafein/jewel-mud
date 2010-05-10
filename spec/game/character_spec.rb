@@ -155,5 +155,12 @@ describe Character do
 
       @character.print_inventory
     end
+
+    it "should notify if there is nothing in the inventory" do
+      @session.should_receive(:write).
+              with("[color=yellow]In your hands:[/color]\n"+
+                   "Nothing...\n")
+      @character.print_inventory
+    end
   end
 end

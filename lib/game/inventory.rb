@@ -20,6 +20,7 @@ class Inventory
   def display
     output = "[color=yellow]In your hands:[/color]\n"
     @items.each { |i| output += "#{i.description}\n" }
+    output += "Nothing...\n" if @items.empty?
     output
   end
 end
