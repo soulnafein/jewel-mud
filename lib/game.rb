@@ -9,7 +9,7 @@ class Game
     @command_factory = CommandFactory.new
     @command_factory.aliases = {
       "s" => "go south", "n" => "go north", "w" => "go west", "e" => "go east",
-      "u" => "go up", "d" => "go down", "l" => "look"
+      "u" => "go up", "d" => "go down", "l" => "look", "i" => "inventory", "inv" => "inventory"
     }
     @input_processor = InputProcessor.new(@command_factory, @command_manager)
     @shutdown_requested = false
