@@ -58,7 +58,7 @@ class Character
     begin
       item = @location.pick_item(item_name)
       @location.send_to_all_except(self, "#{self.name} gets #{item.description.downcase} from the floor") #TODO: some responsibilty issue. Location should do this.
-      @inventory.add item
+      @inventory.add_item item
       @session.write("You get #{item.description.downcase}")
     rescue ItemNotAvailable
       @session.write("There is no '#{item_name}' here")
@@ -67,7 +67,7 @@ class Character
 
   def drop(item_name)
     begin
-      item = @inventory.pick(item_name)
+      item = @inventory.pick_item(item_name)
       @location.add_item(item)
       @location.send_to_all_except(self, "#{self.name} puts #{item.description.downcase} on the floor") #TODO: some responsibilty issue. Location should do this.
       @session.write("You put #{item.description.downcase} on the floor")

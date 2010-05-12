@@ -126,7 +126,7 @@ describe Character do
   context "When dropping an item" do
     it "should add the item to the location" do
       pencil = Item.new("pencil", "A pencil")
-      @character.inventory.add(pencil)
+      @character.inventory.add_item(pencil)
       @location.should_receive(:add_item).with(pencil).
               and_return(pencil)
 
@@ -137,7 +137,7 @@ describe Character do
 
     it "should notify the player" do
       pencil = Item.new("pencil", "A pencil")
-      @character.inventory.add(pencil)
+      @character.inventory.add_item(pencil)
       @location.should_receive(:add_item).with(pencil)
       @session.should_receive(:write).with("You put a pencil on the floor")
 
@@ -146,7 +146,7 @@ describe Character do
 
     it "should notify other characters" do
       pencil = Item.new("pencil", "A pencil")
-      @character.inventory.add(pencil)
+      @character.inventory.add_item(pencil)
       @location.should_receive(:add_item).with(pencil)
       @location.should_receive(:send_to_all_except).
               with(@character, "#{@character.name} puts a pencil on the floor")
@@ -165,8 +165,8 @@ describe Character do
     it "should show all the items in the inventory" do
       pencil = Item.new("pencil", "A pencil")
       knife = Item.new("knife", "A skinning knife")
-      @character.inventory.add(pencil)
-      @character.inventory.add(knife)
+      @character.inventory.add_item(pencil)
+      @character.inventory.add_item(knife)
 
       @session.should_receive(:write).
               with("[color=yellow]In your hands:[/color]\n"+

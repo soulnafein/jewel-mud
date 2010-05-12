@@ -1,20 +1,9 @@
+require 'lib/game/items_container'
 class Inventory
+  include ItemsContainer
+
   def initialize
-    @items = []
-  end
-
-  def add(item)
-    @items.push item
-  end
-
-  def pick(item_name)
-    item = @items.find {|i| i.name == item_name}
-    raise ItemNotAvailable if not item
-    @items.delete(item)
-  end
-
-  def include?(item)
-    @items.include?(item)
+    initialize_items_container
   end
 
   def display

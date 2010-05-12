@@ -1,11 +1,13 @@
 class Location
   attr_reader :title, :description, :characters, :uid
 
+  include ItemsContainer
+
   def initialize(uid, title, description)
     @uid, @title, @description = uid, title, description
     @characters = []
     @exits = Exits.new
-    @items = []
+    initialize_items_container
   end
 
   def add_exit(exit)
@@ -15,10 +17,6 @@ class Location
   def add_character(character)
     @characters << character
     character.move_to(self)
-  end
-
-  def add_item(item)
-    @items.push(item)
   end
 
   def remove_character(character)
@@ -55,13 +53,6 @@ class Location
 
   def exit_to(destination)
     @exits.find_by_destination(destination)
-  end
-
-  def pick_item(item_name)
-    item = @items.find { |i| i.name.downcase == item_name.downcase }
-    raise ItemNotAvailable if not item
-    @items.delete(item)
-    item
   end
 
   def let_go(character, direction)
