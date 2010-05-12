@@ -11,6 +11,7 @@ class TelnetSession
   end
 
   def write(text)
+    return if @socket.closed?
     filtered_text = adjust_new_lines(replace_color_tags(text))
     @socket.print filtered_text
   end

@@ -3,7 +3,8 @@ require "spec/spec_helper"
 describe TelnetSession do
 
   before :each do
-    @socket = mock
+    @socket = mock.as_null_object
+    @socket.stub(:closed?).and_return(false)
     @telnet_session = TelnetSession.new(@socket)
     @a_option = 42.chr
     @iac = TelnetCodes::IAC
@@ -84,6 +85,13 @@ describe TelnetSession do
   end
 
   context "When writing to the socket" do
+    it "should not receive print when socket is closed" do
+      @socket.stub(:closed?).and_return(true)
+      @socket.should_not_receive(:print)
+
+      @telnet_session.write("Something to write")
+    end
+
     it "should add correct new line at the end" do
       @socket.should_receive(:print).with("Something to write\r\n")
 

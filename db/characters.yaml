@@ -3,33 +3,150 @@
   name: David
   password: pass
   description: ""
-  inventory: !ruby/object:Inventory
-             items: []
+  inventory: !ruby/object:Inventory 
+    items: []
 
 - !ruby/object:Character 
   name: Gabriele
   password: "24783"
   description: ""
-  inventory: !ruby/object:Inventory
-             items: []
-- !ruby/object:Character
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
   name: Damian
   password: pass
   description: ""
-  inventory: !ruby/object:Inventory
-             items: []
-- !ruby/object:Character
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
   name: David
   password: xeno
   description: ""
-  inventory: !ruby/object:Inventory
-             items: []
-- !ruby/object:Character
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
   name: David
   password: pass
   description: |
     Not a real.
     Description...
-  inventory: !ruby/object:Inventory
-             items: []
+
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Shapu
+  password: shapu
+  description: |
+    a wild shapu appears!!
+
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Shapu
+  password: shapu
+  description: |
+    A wild Shapu appears!!
+
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Alphy
+  password: alphy
+  description: |
+    lalalla end
+
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Alphy
+  password: alphy
+  description: |
+    A wild Alphy appears!!
+
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Chan santoro
+  password: santoro
+  description: |
+    ruby geek
+    ruby geek END
+
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: "Phi\e[c\e[c\e[c\e[c"
+  password: "\e[?1;0c\e[?1;0c\e[?1;0c\e[?1;0cI love you"
+  description: "Slim brunette\e[C\e[C\e[C\e[C    \e[D\e[Dwith cheeky grin\n"
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Alphy
+  password: alphy
+  description: |
+    A wild Alphy appears!!!
+    
+    
+    
+    
+    Roarrr!!!
+
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Lars
+  password: lars
+  description: |
+    lalalalala
+
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Alphy
+  password: Alphy
+  description: |
+    >:3
+
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Ddd
+  password: ddd
+  description: ""
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Hhh
+  password: hhh
+  description: ""
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Ddd
+  password: ddd
+  description: ""
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Ddd
+  password: ddd
+  description: ""
+  inventory: !ruby/object:Inventory 
+    items: []
 

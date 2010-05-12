@@ -79,27 +79,38 @@ describe Character do
 
     it "should notify player of what he said" do
       @character.should_receive(:send_to_player).
-              with("[color=cyan]You says '[/color]Hello World![color=cyan]'[/color]")
+              with("[color=cyan]You say '[/color]Hello World![color=cyan]'[/color]")
       @character.say("Hello World!")
     end
   end
 
   context "When getting an item" do
+    before :each do
+      @a_pair_of_shoes = Item.new("shoes", "A pair of shoes")
+    end
+
     it "should add the item to the character inventory" do
-      a_pair_of_shoes = Item.new("shoes", "A pair of shoes")
       @location.should_receive(:pick_item).with("shoes").
-              and_return(a_pair_of_shoes)
+              and_return(@a_pair_of_shoes)
 
       @character.get("shoes")
 
-      @character.inventory.should include a_pair_of_shoes
+      @character.inventory.should include @a_pair_of_shoes
     end
 
     it "should notify the player" do
-      a_pair_of_shoes = Item.new("shoes", "A pair of shoes")
       @location.should_receive(:pick_item).with("shoes").
-              and_return(a_pair_of_shoes)
+              and_return(@a_pair_of_shoes)
       @session.should_receive(:write).with("You get a pair of shoes")
+
+      @character.get("shoes")
+    end
+
+    it "should notify other characters" do
+      @location.should_receive(:pick_item).with("shoes").
+              and_return(@a_pair_of_shoes)
+      @location.should_receive(:send_to_all_except).
+              with(@character, "#{@character.name} gets a pair of shoes from the floor")
 
       @character.get("shoes")
     end
@@ -127,9 +138,18 @@ describe Character do
     it "should notify the player" do
       pencil = Item.new("pencil", "A pencil")
       @character.inventory.add(pencil)
-      @location.should_receive(:add_item).with(pencil).
-              and_return(pencil)
+      @location.should_receive(:add_item).with(pencil)
       @session.should_receive(:write).with("You put a pencil on the floor")
+
+      @character.drop("pencil")
+    end
+
+    it "should notify other characters" do
+      pencil = Item.new("pencil", "A pencil")
+      @character.inventory.add(pencil)
+      @location.should_receive(:add_item).with(pencil)
+      @location.should_receive(:send_to_all_except).
+              with(@character, "#{@character.name} puts a pencil on the floor")
 
       @character.drop("pencil")
     end

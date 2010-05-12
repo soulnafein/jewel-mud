@@ -21,7 +21,7 @@ class Character
   end
 
   def to_yaml_properties
-    ['@name', '@password', '@description']
+    ['@name', '@password', '@description','@inventory']
   end
 
   def look(target="")
@@ -49,7 +49,7 @@ class Character
   end
 
   def say(message)
-    send_to_player("[color=cyan]You says '[/color]#{message}[color=cyan]'[/color]")
+    send_to_player("[color=cyan]You say '[/color]#{message}[color=cyan]'[/color]")
     notification = "[color=cyan]#{self.name} says '[/color]#{message}[color=cyan]'[/color]"
     @location.send_to_all_except(self, notification)
   end
@@ -57,6 +57,7 @@ class Character
   def get(item_name)
     begin
       item = @location.pick_item(item_name)
+      @location.send_to_all_except(self, "#{self.name} gets #{item.description.downcase} from the floor") #TODO: some responsibilty issue. Location should do this.
       @inventory.add item
       @session.write("You get #{item.description.downcase}")
     rescue ItemNotAvailable
@@ -68,6 +69,7 @@ class Character
     begin
       item = @inventory.pick(item_name)
       @location.add_item(item)
+      @location.send_to_all_except(self, "#{self.name} puts #{item.description.downcase} on the floor") #TODO: some responsibilty issue. Location should do this.
       @session.write("You put #{item.description.downcase} on the floor")
     rescue ItemNotAvailable
       @session.write("You don't have that item")
