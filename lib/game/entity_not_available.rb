@@ -1,0 +1,2 @@
+class EntityNotAvailable < Exception
+end

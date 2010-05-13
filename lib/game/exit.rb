@@ -1,5 +1,5 @@
 class Exit
-  attr_reader :name, :destination, :description, :location
+  attr_reader :name, :destination, :location
 
   def initialize(name, destination, description="", location=nil)
     @name, @destination, @description, @location =
@@ -9,6 +9,10 @@ class Exit
   def let_go(character)
     @destination.let_in(character, @location)
     character.move_to(@destination)
-    character.look
+    character.look(@destination)
+  end
+
+  def description_for(character)
+    @description
   end
 end

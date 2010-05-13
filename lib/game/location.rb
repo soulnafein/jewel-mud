@@ -29,13 +29,6 @@ class Location
     end
   end
 
-  def get_entity_description(target)
-    entity = entity_by_name(target)
-    message = "There isn't anything called '#{target}' here."
-    message = entity.description if entity
-    message
-  end
-
   def description_for(observer)
     output = "You see:\n" +
             "[color=red]#{title}[/color]\n" +
@@ -74,10 +67,10 @@ class Location
     send_to_all_except(character, notification)
   end
 
-  private
-  def entity_by_name(name)
+  def find_entity_by_name(name)
     entity = @exits.find_by_name(name)
     entity = @characters.find { |c| c.name.downcase == name.downcase } if not entity
+    entity = @items.find { |c| c.name.downcase == name.downcase } if not entity
     entity
   end
 

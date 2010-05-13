@@ -1,6 +1,6 @@
 class Character
-  attr_reader :name, :password, :location, :session, :description,
-              :inventory
+  attr_reader :name, :password, :location, :session,
+              :description, :inventory
 
   def initialize(name, session=nil, password=nil, description=nil)
     @name, @session, @password, @description =
@@ -24,14 +24,12 @@ class Character
     ['@name', '@password', '@description','@inventory']
   end
 
-  def look(target="")
-    if not target.empty?
-      description = @location.get_entity_description(target)
-    else
-      description = @location.description_for(self)
-    end
+  def description_for(character)
+    @description
+  end
 
-    send_to_player(description)
+  def look(target)
+    send_to_player(target.description_for(self))
   end
 
   def emote(emote_description)

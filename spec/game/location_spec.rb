@@ -73,16 +73,6 @@ describe Location do
     end
   end
 
-  context "When asking for the description of an entity" do
-    it "should get the description when it exists" do
-      @location.add_character(@character)
-
-      description = @location.get_entity_description(@character.name)
-
-      description.should == @character.description
-    end
-  end
-
   context "When getting an item" do
     it "should return an item when it is present" do
       a_pair_of_shoes = Item.new("shoes", "A pair of shoes")
