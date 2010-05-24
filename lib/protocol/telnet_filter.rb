@@ -9,10 +9,25 @@ class TelnetFilter
     input = remove_bare_line_feeds input
     input = remove_bare_carriage_returns input
     input = remove_bare_nuls input
+    input = adjust_backspace(input)
     handle_options input
   end
 
+  def filter_output(output)
+    adjust_new_lines(output)  
+  end
+
   private
+  def adjust_new_lines(text)
+    text.gsub(/\n/,"\r\n") + "\r\n"
+  end
+
+  def adjust_backspace(text)
+    return text if not text.include?("\b")
+    a_character_followed_by_backspace = Regexp.new("(^|[^\b])\b")
+    adjust_backspace text.sub(a_character_followed_by_backspace, "")
+  end
+
   LF_NOT_PRECEDED_BY_CR = Regexp.new("(^|[^#{CR}])#{LF}")
   def remove_bare_line_feeds(input)
     input.gsub(LF_NOT_PRECEDED_BY_CR, '\1')

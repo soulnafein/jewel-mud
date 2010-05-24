@@ -4,8 +4,8 @@ describe Location do
   before :each do
     @telnet_session = mock.as_null_object
     @character = Character.new("David", @telnet_session)
-    @location = Location.new(1, "A title", "A description")
-    @destination = Location.new(2, "destination", "destination")
+    @location = Location.new("A title", "A description")
+    @destination = Location.new("destination", "destination")
     @exit = Exit.new("east", @destination)
     @location.add_exit(@exit)
   end
@@ -45,7 +45,7 @@ describe Location do
 
   context "When a character ask to be let in the location" do
     it "should add the character to the location" do
-      origin = Location.new(5, "origin", "origin description")
+      origin = Location.new("origin", "origin description")
       @location.characters.should_not include @character
 
       @location.let_in(@character, origin)
@@ -54,7 +54,7 @@ describe Location do
     end
 
     it "should notify other characters" do
-      origin = Location.new(5, "origin", "origin description")
+      origin = Location.new("origin", "origin description")
       @location.add_exit(Exit.new("south", origin))
       other_character = mock(:other_character).as_null_object
       @location.add_character(other_character)
@@ -64,7 +64,7 @@ describe Location do
     end
 
     it "should notify other characters when origin is unknown" do
-      origin = Location.new(5, "origin", "origin description")
+      origin = Location.new("origin", "origin description")
       other_character = mock(:other_character).as_null_object
       @location.add_character(other_character)
       other_character.should_receive(:send_to_player).with("David appears out of thin air")
@@ -108,5 +108,29 @@ describe Location do
             "[color=green]You see exits leading east, north and south.[/color]\n"
 
     @location.description_for(observer).should == expected_description
+  end
+
+  context "when asking for an entity by name" do
+    it "should return items" do
+      expected_item = Item.new("table", "a wooden table")
+      @location.add_item(expected_item)
+      @location.get_entity_by_name("table").should == expected_item
+    end
+
+    it "should return exits" do
+      expected_exit = Exit.new("south", "you see this")
+      @location.add_exit(expected_exit)
+      @location.get_entity_by_name("south").should == expected_exit
+    end
+
+    it "should return characters" do
+      expected_character = Character.new("David", "description")
+      @location.add_item(expected_character)
+      @location.get_entity_by_name("David").should == expected_character
+    end
+
+    it "should raise error when entity not found" do
+      lambda {@location.get_entity_by_name("xxx")}.should raise_error EntityNotAvailable
+    end
   end
 end

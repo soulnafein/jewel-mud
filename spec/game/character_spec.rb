@@ -9,7 +9,7 @@ describe Character do
   end
 
   it "should change current location" do
-    location = Location.new(1, "Example", "Description")
+    location = Location.new("Example", "Description")
 
     @character.move_to(location)
 

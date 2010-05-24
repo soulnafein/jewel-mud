@@ -9,12 +9,13 @@ class World
   end
 
   def print_memstat
-    locations = exits = characters = 0
+    locations = exits = characters = items = 0
 
     ObjectSpace.each_object do |obj|
       locations += 1 if obj.class == Location
       exits += 1 if obj.class == Exit
       characters += 1 if obj.class == Character
+      items += 1 if obj.class == Item
     end
 
     statistics = """
@@ -25,6 +26,7 @@ class World
         Locations: #{locations}
         Exits: #{exits}
         Characters: #{characters}
+        Items: #{items}
 
       --------------------------
     """

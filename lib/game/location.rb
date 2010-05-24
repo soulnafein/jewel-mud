@@ -1,10 +1,10 @@
 class Location
-  attr_reader :title, :description, :characters, :uid
+  attr_reader :title, :description, :characters
 
   include ItemsContainer
 
-  def initialize(uid, title, description)
-    @uid, @title, @description = uid, title, description
+  def initialize(title, description)
+    @title, @description = title, description
     @characters = []
     @exits = Exits.new
     initialize_items_container
@@ -30,18 +30,7 @@ class Location
   end
 
   def description_for(observer)
-    output = "You see:\n" +
-            "[color=red]#{title}[/color]\n" +
-            "#{description}"
-    other_characters = @characters.except(observer)
-    other_characters.each do |p|
-      output += "[color=yellow]#{p.name} is here\n[/color]"
-    end
-    @items.each do |i|
-      output += "#{i.description} is here\n"
-    end
-    output += @exits.get_list_of_names
-    output
+    LocationView.new(observer, @characters, @items, @exits, self).display
   end
 
   def exit_to(destination)
@@ -67,10 +56,11 @@ class Location
     send_to_all_except(character, notification)
   end
 
-  def find_entity_by_name(name)
+  def get_entity_by_name(name)
     entity = @exits.find_by_name(name)
     entity = @characters.find { |c| c.name.downcase == name.downcase } if not entity
     entity = @items.find { |c| c.name.downcase == name.downcase } if not entity
+    raise EntityNotAvailable if not entity
     entity
   end
 

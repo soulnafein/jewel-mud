@@ -109,6 +109,10 @@ describe TelnetSession do
 
       @telnet_session.write("New lines here \n here \n and here")
     end
+
+    it "should work" do
+      Regexp.new("#{TelnetCodes::DO}")
+    end
   end
 
   def when_input_is(text)

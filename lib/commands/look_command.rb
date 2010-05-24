@@ -17,9 +17,7 @@ class LookCommand
 
   private
   def get_target(target_name)
-    puts target_name
-    target = @location.find_entity_by_name(target_name)
-    raise EntityNotAvailable if target.nil?
-    target || @location
+    return @location if target_name.empty?
+    @location.get_entity_by_name(target_name)
   end
 end

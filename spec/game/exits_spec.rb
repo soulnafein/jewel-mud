@@ -24,7 +24,7 @@ describe Exits do
   context "When looking for an exit by destination" do
     it "should return the exit if exists" do
       exits = Exits.new
-      destination = Location.new(1, "Name", "Description")
+      destination = Location.new("Name", "Description")
       expected_exit = Exit.new("west", destination)
       exits.add(expected_exit)
 
@@ -37,7 +37,7 @@ describe Exits do
     it "should return nil otherwise" do
       exits = Exits.new
 
-      exit = exits.find_by_destination(Location.new(1, "Another", "Location"))
+      exit = exits.find_by_destination(Location.new("Another", "Location"))
 
       exit.should be_nil
     end

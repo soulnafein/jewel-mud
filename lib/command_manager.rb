@@ -23,7 +23,6 @@ class CommandManager
 
   def process_commands
     command = get_command
-    return if command.nil?
     command.execute
   end
 
