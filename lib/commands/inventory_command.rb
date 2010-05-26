@@ -1,9 +1,6 @@
 class InventoryCommand
-  attr_reader :item
-
-  def initialize(character, *args)
+  def initialize(character)
     @character = character
-    @item = args.first
   end
 
   def execute

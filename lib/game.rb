@@ -35,8 +35,7 @@ class Game
     authentication_process = AuthenticationProcess.new(session, @world)
     character = authentication_process.execute
 
-    ############# NOT THREAD SAFE ###############################
-
+    ############# TODO: NOT THREAD SAFE ###########################
     first_location = @world.locations.first
     character.move_to(first_location)
     first_location.let_in(character, nil)
