@@ -28,7 +28,7 @@ class CommandFactory
 
   def parse_through_alias_matcher(input)
     input =~ /^(\w+)(.*)/i
-    if @aliases.has_key?($1.downcase)
+    if @aliases.has_key?($1.to_s.downcase)
       return input.gsub(/^(\w+)/, @aliases[$1.downcase])
     end
     input

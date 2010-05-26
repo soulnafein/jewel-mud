@@ -150,3 +150,31 @@
   inventory: !ruby/object:Inventory 
     items: []
 
+- !ruby/object:Character 
+  name: Ugo
+  password: "22"
+  description: ""
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Alfa
+  password: alfa
+  description: ""
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: ""
+  password: beta
+  description: ""
+  inventory: !ruby/object:Inventory 
+    items: []
+
+- !ruby/object:Character 
+  name: Beta
+  password: beta
+  description: ""
+  inventory: !ruby/object:Inventory 
+    items: []
+

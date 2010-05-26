@@ -1,5 +1,5 @@
 class InventoryCommand
-  def initialize(character)
+  def initialize(character, *args)
     @character = character
   end
 

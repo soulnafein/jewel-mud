@@ -1,11 +1,12 @@
 class Character
   attr_reader :name, :password, :location, :session,
-              :description, :inventory
+              :description, :inventory, :head
 
   def initialize(name, session=nil, password=nil, description=nil)
     @name, @session, @password, @description =
-    name, session, password, description
+            name, session, password, description
     @inventory = Inventory.new
+    @head = BodyPart.new(:head)
   end
 
   def send_to_player(msg)
@@ -21,7 +22,7 @@ class Character
   end
 
   def to_yaml_properties
-    ['@name', '@password', '@description','@inventory']
+    ['@name', '@password', '@description', '@inventory']
   end
 
   def description_for(character)
@@ -55,9 +56,9 @@ class Character
   def get(item_name)
     begin
       item = @location.pick_item(item_name)
-      @location.send_to_all_except(self, "#{self.name} gets #{item.description.downcase} from the floor") #TODO: some responsibilty issue. Location should do this.
       @inventory.add_item item
-      @session.write("You get #{item.description.downcase}")
+      notify_player_and_location("You get #{item.description.downcase}",
+                                 "#{self.name} gets #{item.description.downcase} from the floor")
     rescue ItemNotAvailable
       @session.write("There is no '#{item_name}' here")
     end
@@ -67,14 +68,36 @@ class Character
     begin
       item = @inventory.pick_item(item_name)
       @location.add_item(item)
-      @location.send_to_all_except(self, "#{self.name} puts #{item.description.downcase} on the floor") #TODO: some responsibilty issue. Location should do this.
-      @session.write("You put #{item.description.downcase} on the floor")
+      notify_player_and_location("You put #{item.description.downcase} on the floor",
+                                 "#{self.name} puts #{item.description.downcase} on the floor")
     rescue ItemNotAvailable
-      @session.write("You don't have that item")
+      @session.write("You don't have it")
     end
   end
 
   def print_inventory()
     @session.write(@inventory.display)
   end
+
+  def wear(item_name)
+    begin
+      item = @inventory.pick_item(item_name)
+      @head.garment = item
+      item_description = item.description_for(self)
+      notify_player_and_location("You wear #{item_description}",
+                                 "#{self.name} wears #{item_description}")
+    rescue ItemNotAvailable
+      @session.write("You don't have it")
+    rescue BodyPartOccupied => e
+      @session.write(e.message)
+    end
+  end
+
+  private
+
+  def notify_player_and_location(message_for_player, message_for_location)
+    send_to_player(message_for_player)
+    @location.send_to_all_except(self, message_for_location)
+  end
+
 end

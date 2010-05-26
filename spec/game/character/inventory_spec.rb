@@ -79,7 +79,7 @@ describe Character do
     end
 
     it "should let the player know when item not present in inventory" do
-      @session.should_receive(:write).with("You don't have that item")
+      @session.should_receive(:write).with("You don't have it")
 
       @character.drop("shoes")
     end
