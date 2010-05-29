@@ -1,12 +1,13 @@
 class Character
   attr_reader :name, :password, :location, :session,
-              :description, :inventory, :head
+              :description, :inventory, :body
+  attr_writer :body
 
   def initialize(name, session=nil, password=nil, description=nil)
     @name, @session, @password, @description =
             name, session, password, description
     @inventory = Inventory.new
-    @head = BodyPart.new(:head)
+    @body = HumanBody.new
   end
 
   def send_to_player(msg)
@@ -75,14 +76,18 @@ class Character
     end
   end
 
-  def print_inventory()
+  def print_inventory
     @session.write(@inventory.display)
+  end
+
+  def print_equipment
+    @session.write(@body.print_equipment) 
   end
 
   def wear(item_name)
     begin
       item = @inventory.pick_item(item_name)
-      @head.garment = item
+      @body.wear_garment(item)
       item_description = item.description_for(self)
       notify_player_and_location("You wear #{item_description}",
                                  "#{self.name} wears #{item_description}")
@@ -93,11 +98,21 @@ class Character
     end
   end
 
-  private
+  def take_off(item_name)
+    begin
+      item = @body.pick_garment(item_name)
+      @inventory.add_item(item)
+      item_description = item.description_for(self)
+      notify_player_and_location("You take off #{item_description}",
+                               "#{self.name} takes #{item_description} off")
+    rescue ItemNotAvailable
+      @session.write("You don't have it")      
+    end
+  end
 
+  private
   def notify_player_and_location(message_for_player, message_for_location)
     send_to_player(message_for_player)
     @location.send_to_all_except(self, message_for_location)
   end
-
 end

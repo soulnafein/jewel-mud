@@ -62,6 +62,7 @@ class World
       exit.location.add_exit(exit)
     end
 
-    @characters = YAML.load_file('db/characters.yaml')
+    characters = YAML.load_file('db/characters.yaml')
+    @characters = characters.map { |c| c.body = HumanBody.new; c  }
   end
 end

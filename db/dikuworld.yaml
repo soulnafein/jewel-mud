@@ -105,6 +105,11 @@
     - !ruby/object:Item
       name: shoes
       description: a pair of shoes
+      wearable_on: :head
+    - !ruby/object:Item
+      name: gloves
+      description: a pair of leather gloves
+      wearable_on: :hands
 
 - &id009 !ruby/object:Location 
   title: Entrance to the Grunting Boar Inn
