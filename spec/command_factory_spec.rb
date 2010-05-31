@@ -2,7 +2,8 @@ require "spec/spec_helper"
 
 describe CommandFactory do
   before :each do
-    @command_factory = CommandFactory.new
+    @game = mock.as_null_object
+    @command_factory = CommandFactory.new(@game)
     @character = stub.as_null_object
   end
 

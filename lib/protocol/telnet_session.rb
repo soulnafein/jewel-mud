@@ -2,10 +2,12 @@ class TelnetSession
   def initialize(socket)
     @socket = socket
     @telnet_filter = TelnetFilter.new(@socket)
+    @open = true
   end
 
   def read
-    input = @socket.readline
+    input = @socket.gets
+    return "" if not input
     input = @telnet_filter.filter_input(input)
     input.chomp.strip
   end
@@ -15,6 +17,16 @@ class TelnetSession
     output = @telnet_filter.filter_output(text)
     output = replace_color_tags(output)
     @socket.print output
+  end
+
+  def open?
+    @open
+  end
+
+  def quit
+    @socket.write("Bye bye!\n")
+    @open = false
+    @socket.close_read
   end
 
   private

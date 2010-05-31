@@ -115,8 +115,21 @@ describe TelnetSession do
     end
   end
 
+  context "When quitting session" do
+    it "should close the session" do
+      @telnet_session.open?.should == true
+      @telnet_session.quit
+      @telnet_session.open?.should == false
+    end
+
+    it "should close socket" do
+      @socket.should_receive(:close_read)
+      @telnet_session.quit
+    end
+  end
+
   def when_input_is(text)
-    @socket.should_receive(:readline).and_return(text)
+    @socket.should_receive(:gets).and_return(text)
   end
 
   def result

@@ -1,21 +1,41 @@
-class Game
-  include Singleton
-
+class Game < GServer
   attr_reader :world
 
-  def initialize
+  def initialize()
+    super(1234)
     @world = World.new
     @command_manager = CommandManager.new
-    @command_factory = CommandFactory.new
+    @command_factory = CommandFactory.new(self)
     @command_factory.aliases = {
       "s" => "go south", "n" => "go north", "w" => "go west", "e" => "go east",
       "u" => "go up", "d" => "go down", "l" => "look", "i" => "inventory", "inv" => "inventory",
       "equip" => "equipment", "eq" => "equipment"
     }
-    @input_processor = InputProcessor.new(@command_factory, @command_manager)
+    @input_processor = InputProcessor.new(@command_factory, @command_manager, self)
     @shutdown_requested = false
+    self.audit = true
+    self.debug = true
+    self.start
   end
 
+  def start_game
+    self.join
+  end
+
+  def starting
+    run
+  end
+
+  def serve(socket)
+    telnet_session = TelnetSession.new(socket)
+    enter_game(telnet_session)
+  end
+
+  def shutdown_game
+    @shutdown_requested = true
+  end
+
+  private
   def run
     Thread.abort_on_exception = true
     Thread.new do
@@ -27,7 +47,8 @@ class Game
         puts e.message
         puts e.backtrace.inspect
       ensure
-        exit
+        puts "Shutting down..."
+        self.shutdown
       end
     end
   end
@@ -43,9 +64,5 @@ class Game
     character.go("up")
     ##############################################################
     @input_processor.process_character_commands(character)
-  end
-
-  def shutdown
-    @shutdown_requested = true
   end
 end

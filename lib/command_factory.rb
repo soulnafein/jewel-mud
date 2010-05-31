@@ -1,7 +1,8 @@
 class CommandFactory
   attr_accessor :aliases
 
-  def initialize
+  def initialize(game)
+    @game = game
     @aliases = {}
   end
 
@@ -9,7 +10,7 @@ class CommandFactory
     return DoNothing.new if input.empty?
     command_name, arguments = split_input(input)
     command_class = get_command_by_name(command_name)
-    command_class.new(character, arguments)
+    command_class.new(character, arguments, @game)
   end
 
   private

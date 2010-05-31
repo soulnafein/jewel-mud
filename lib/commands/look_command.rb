@@ -1,10 +1,10 @@
 class LookCommand
   attr_reader :target
   
-  def initialize(character, target_name=nil)
+  def initialize(character, *args)
     @character = character
     @location = character.location
-    @target_name = target_name
+    @target_name = args[0]
   end
 
   def execute

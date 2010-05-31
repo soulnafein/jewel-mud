@@ -1,12 +1,11 @@
-class ShutdownCommand
+class QuitCommand
   attr_reader :args
   
   def initialize(character, *args)
     @character = character
-    @game = args[1]
   end
 
   def execute
-    @game.shutdown_game
+    @character.session.quit
   end
 end

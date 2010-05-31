@@ -1,5 +1,5 @@
 class NoCommandFound
-  def initialize(character, args)
+  def initialize(character, *args)
     @character = character
   end
 
