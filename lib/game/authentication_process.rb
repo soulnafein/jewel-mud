@@ -13,7 +13,12 @@ class AuthenticationProcess
             "1) Login with existing character\n" +
             "2) Create a new character\n")
     choice = @session.read
-    @choices[choice].call
+    action  = @choices[choice]
+    if not action
+      @session.write("Invalid choice, try again\n")
+      return execute
+    end
+    action.call
   end
 
   private

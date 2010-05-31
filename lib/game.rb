@@ -3,6 +3,8 @@ class Game < GServer
 
   def initialize()
     super(1234)
+    @sessions = []
+    @characters_logged_in = []
     @world = World.new
     @command_manager = CommandManager.new
     @command_factory = CommandFactory.new(self)
@@ -15,10 +17,10 @@ class Game < GServer
     @shutdown_requested = false
     self.audit = true
     self.debug = true
-    self.start
   end
 
   def start_game
+    self.start
     self.join
   end
 
@@ -48,14 +50,19 @@ class Game < GServer
         puts e.backtrace.inspect
       ensure
         puts "Shutting down..."
+        @sessions.each { |s| s.quit }
         self.shutdown
+        self.stop
+        puts "Shutdown complete"
       end
     end
   end
 
   def enter_game(session)
+    @sessions << session
     authentication_process = AuthenticationProcess.new(session, @world)
     character = authentication_process.execute
+    @characters_logged_in << character
 
     ############# TODO: NOT THREAD SAFE ###########################
     first_location = @world.locations.first
@@ -64,5 +71,13 @@ class Game < GServer
     character.go("up")
     ##############################################################
     @input_processor.process_character_commands(character)
+  end
+
+  def disconnecting(port)
+    session = @sessions.find {|s| s.port == port}
+    @sessions.delete(session)
+    character = @characters_logged_in.find {|c| c.session.equal?(session) }
+    character.location.remove_character(character)
+    @characters_logged_in.delete(character)
   end
 end

@@ -1,6 +1,8 @@
 class TelnetSession
+  attr_reader :port
   def initialize(socket)
     @socket = socket
+    @port = @socket.peeraddr[1]
     @telnet_filter = TelnetFilter.new(@socket)
     @open = true
   end

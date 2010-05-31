@@ -3,7 +3,7 @@ require "spec/spec_helper"
 describe SayCommand do
   context "When executing a command" do
     before :each do
-      @character = Build.a_character
+      @character = Character.new("David",nil)
       @message = "Hello World!"
       @cmd = SayCommand.new(@character, @message)
     end
