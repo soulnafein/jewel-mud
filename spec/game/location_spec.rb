@@ -96,16 +96,16 @@ describe Location do
     @location.add_exit(Exit.new("north", nil))
     @location.add_exit(Exit.new("south", nil))
     @location.add_character(@character)
-    @location.add_item(Item.new("table", "A wooden table"))
+    @location.add_item(Item.new("table", "a wooden table"))
 
     observer = Character.new("Observer", nil)
 
     expected_description = "You see:\n" +
             "[color=red]A title[/color]\n" +
             "A description"+
+            "[color=green]You see exits leading east, north and south.[/color]\n" +
             "[color=yellow]David is here\n[/color]" +
-            "A wooden table is here\n" +
-            "[color=green]You see exits leading east, north and south.[/color]\n"
+            "[color=yellow]A wooden table is here[/color]\n"
 
     @location.description_for(observer).should == expected_description
   end

@@ -1,10 +1,16 @@
 class HumanBody
-  attr_reader :head, :hands
+  attr_reader :head, :shoulders, :arms, :hands, :waist, :legs, :feet
 
   def initialize
     @head = BodyPart.new(:head)
+    @neck = BodyPart.new(:neck)
+    @shoulders = BodyPart.new(:shoulders)
+    @arms = BodyPart.new(:arms)
     @hands = BodyPart.new(:hands)
-    @body_parts = [@head, @hands]
+    @waist = BodyPart.new(:waist)
+    @legs = BodyPart.new(:legs)
+    @feet = BodyPart.new(:feet)
+    @body_parts = [@head, @shoulders, @arms, @hands, @waist, @legs, @feet]
   end
 
   def pick_garment(item_name)
@@ -27,9 +33,18 @@ class HumanBody
   def print_equipment
     output = "[color=yellow]You are wearing:[/color]\n"
     garments.each do |garment|
-      output << "#{garment.description.capitalize} on the #{garment.wearable_on}\n"
+      output << "#{garment.description.capitalize} on your #{garment.wearable_on}\n"
     end
     output << "Nothing...\n" if garments.empty?
     output
+  end
+
+  def description
+    output = "[color=cyan]"
+    garments.each do |garment|
+      output << "He's wearing #{garment.description} on his #{garment.wearable_on}. "
+    end
+    output << "He is completely naked!\n" if garments.empty?
+    output << "[/color]"
   end
 end

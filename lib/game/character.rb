@@ -27,7 +27,9 @@ class Character
   end
 
   def description_for(character)
-    @description
+    output = "Looking at #{self.name}\n"
+    output << @description.to_s
+    output << body.description
   end
 
   def look(target)
@@ -89,8 +91,8 @@ class Character
       item = @inventory.pick_item(item_name)
       @body.wear_garment(item)
       item_description = item.description_for(self)
-      notify_player_and_location("You wear #{item_description}",
-                                 "#{self.name} wears #{item_description}")
+      notify_player_and_location("You wear #{item_description} on your #{item.wearable_on}",
+                                 "#{self.name} wears #{item_description} on the #{item.wearable_on}")
     rescue ItemNotAvailable
       @session.write("You don't have it")
     rescue BodyPartOccupied => e

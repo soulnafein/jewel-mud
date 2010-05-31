@@ -3,7 +3,7 @@ class BodyPart
   def initialize(name)
     @name = name
     @garment = nil
-    @part_occupied_message = "You have something on the #{name} already"
+    @part_occupied_message = "You have something on your #{name} already"
   end
 
   attr_reader :garment

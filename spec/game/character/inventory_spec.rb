@@ -87,7 +87,7 @@ describe Character do
 
   context "When printing inventory" do
     it "should show all the items in the inventory" do
-      pencil = Item.new("pencil", "A pencil")
+      pencil = Item.new("pencil", "a pencil")
       knife = Item.new("knife", "A skinning knife")
       @character.inventory.add_item(pencil)
       @character.inventory.add_item(knife)

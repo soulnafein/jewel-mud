@@ -22,13 +22,13 @@ describe Character do
     end
 
     it "should let the player know" do
-      @session.should_receive(:write).with("You wear a woolly hat")
+      @session.should_receive(:write).with("You wear a woolly hat on your head")
       @character.wear("Hat")
     end
 
     it "should let the other characters in the location know" do
       @location.should_receive(:send_to_all_except).
-              with(@character, "David wears a woolly hat")
+              with(@character, "David wears a woolly hat on the head")
       @character.wear("Hat")
     end
   end
@@ -40,7 +40,7 @@ describe Character do
       @character.inventory.add_item(@helmet)
 
       @session.should_receive(:write).
-              with("You have something on the head already")
+              with("You have something on your head already")
       @character.wear("helmet")
     end
   end
@@ -96,8 +96,8 @@ describe Character do
 
       @session.should_receive(:write).
               with("[color=yellow]You are wearing:[/color]\n"+
-              "A woolly hat on the head\n" +
-              "A pair of leather gloves on the hands\n")
+              "A woolly hat on your head\n" +
+              "A pair of leather gloves on your hands\n")
       @character.print_equipment
     end
 
@@ -106,6 +106,28 @@ describe Character do
               with("[color=yellow]You are wearing:[/color]\n"+
               "Nothing...\n")
       @character.print_equipment
+    end
+  end
+
+  context "When looking a character" do
+    it "should describe the equipment wore" do
+      @character.inventory.add_item(@gloves)
+      @character.inventory.add_item(@hat)
+      @character.wear("gloves")
+      @character.wear("hat")
+
+      @session.should_receive(:write).
+              with("Looking at David\n"+
+              "[color=cyan]He's wearing a woolly hat on his head. " +
+              "He's wearing a pair of leather gloves on his hands. [/color]")
+      @character.look(@character)
+    end
+
+    it "should let observer know if character is naked" do
+      @session.should_receive(:write).
+              with("Looking at David\n"+
+              "[color=cyan]He is completely naked!\n[/color]")
+      @character.look(@character)
     end
   end
 end

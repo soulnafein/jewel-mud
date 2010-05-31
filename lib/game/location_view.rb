@@ -8,14 +8,14 @@ class LocationView
     output = "You see:\n" +
             "[color=red]#{@location.title}[/color]\n" +
             "#{@location.description}"
+    output += @exits.get_list_of_names
     other_characters = @characters.except(@observer)
     other_characters.each do |p|
       output += "[color=yellow]#{p.name} is here\n[/color]"
     end
     @items.each do |i|
-      output += "#{i.description} is here\n"
+      output += "[color=yellow]#{i.description.capitalize} is here[/color]\n"
     end
-    output += @exits.get_list_of_names
     output
   end
 end

@@ -105,6 +105,10 @@
     - !ruby/object:Item
       name: shoes
       description: a pair of shoes
+      wearable_on: :feet
+    - !ruby/object:Item
+      name: helmet
+      description: an iron helmet
       wearable_on: :head
     - !ruby/object:Item
       name: gloves
