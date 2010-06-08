@@ -1,9 +1,0 @@
-     2.8: flog total
-     2.8: flog/method average
-
-     2.8: Enumerable#except                lib/helpers/enumerable.rb:2
-     1.2:   assignment
-     1.2:   ==
-     1.1:   reject
-     1.1:   branch
-

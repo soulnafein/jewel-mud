@@ -1,9 +1,0 @@
-     4.7: flog total
-     2.4: flog/method average
-
-     3.6: Item#initialize                  lib/game/item.rb:3
-     3.6:   assignment
-
-     1.1: Item#none
-     1.1:   attr_reader
-

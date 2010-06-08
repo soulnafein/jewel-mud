@@ -1,9 +1,0 @@
-     2.4: flog total
-     1.2: flog/method average
-
-     1.2: NoCommandFound#initialize        lib/commands/no_command_found.rb:2
-     1.2:   assignment
-
-     1.2: NoCommandFound#execute           lib/commands/no_command_found.rb:6
-     1.2:   send_to_player
-
