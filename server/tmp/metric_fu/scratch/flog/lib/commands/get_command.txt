@@ -1,0 +1,13 @@
+     5.0: flog total
+     1.7: flog/method average
+
+     2.7: GetCommand#initialize            lib/commands/get_command.rb:4
+     2.4:   assignment
+     1.2:   first
+
+     1.2: GetCommand#execute               lib/commands/get_command.rb:9
+     1.2:   get
+
+     1.1: GetCommand#none
+     1.1:   attr_reader
+

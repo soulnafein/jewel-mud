@@ -1,0 +1,35 @@
+    28.4: flog total
+     5.7: flog/method average
+
+    14.9: EventManager#process_events      lib/event_manager.rb:20
+     4.2:   send
+     3.8:   assignment
+     3.7:   branch
+     3.2:   kind
+     1.6:   to_s
+     1.3:   each
+     1.2:   []
+     1.2:   get_event
+     1.2:   nil?
+
+     4.2: EventManager#subscribe           lib/event_manager.rb:33
+     1.4:   []
+     1.3:   assignment
+     1.2:   has_key?
+     1.2:   branch
+     1.2:   push
+
+     3.8: EventManager#initialize          lib/event_manager.rb:2
+     3.6:   assignment
+     1.2:   new
+
+     2.8: EventManager#add_event           lib/event_manager.rb:8
+     1.3:   push
+     1.2:   synchronize
+     1.2:   branch
+
+     2.8: EventManager#get_event           lib/event_manager.rb:14
+     1.3:   shift
+     1.2:   synchronize
+     1.2:   branch
+

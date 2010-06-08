@@ -1,0 +1,39 @@
+    44.7: flog total
+     5.6: flog/method average
+
+    26.1: TelnetFilter#handle_options      lib/protocol/telnet_filter.rb:31
+     8.5:   new
+     7.5:   sub!
+     7.0:   branch
+     3.3:   +
+     2.9:   print
+     1.6:   puts
+     1.3:   there_is_a_iac_in
+
+     6.6: TelnetFilter#none
+     3.3:   new
+     2.2:   include
+     1.1:   private
+
+     6.0: TelnetFilter#filter_input        lib/protocol/telnet_filter.rb:8
+     3.6:   assignment
+     1.2:   remove_bare_line_feeds
+     1.2:   remove_bare_carriage_returns
+     1.2:   handle_options
+     1.2:   remove_bare_nuls
+
+     1.2: TelnetFilter#initialize          lib/protocol/telnet_filter.rb:4
+     1.2:   assignment
+
+     1.2: TelnetFilter#there_is_a_iac_in   lib/protocol/telnet_filter.rb:47
+     1.2:   index
+
+     1.2: TelnetFilter#remove_bare_nuls    lib/protocol/telnet_filter.rb:27
+     1.2:   gsub
+
+     1.2: TelnetFilter#remove_bare_line_feeds lib/protocol/telnet_filter.rb:17
+     1.2:   gsub
+
+     1.2: TelnetFilter#remove_bare_carriage_returns lib/protocol/telnet_filter.rb:22
+     1.2:   gsub
+

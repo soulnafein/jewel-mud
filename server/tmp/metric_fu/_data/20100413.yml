@@ -1,0 +1,1955 @@
+--- 
+:reek: 
+  :matches: 
+  - :file_path: lib/authentication_process.rb
+    :code_smells: []
+
+:roodi: 
+  :problems: []
+
+  :total: 
+  - Found 0 errors.
+:rcov: 
+  lib/commands/shutdown_command.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class ShutdownCommand"
+    - :was_run: true
+      :content: "     attr_reader :args"
+    - :was_run: true
+      :content: "     "
+    - :was_run: true
+      :content: "     def initialize(*args)"
+    - :was_run: true
+      :content: "       @args = args"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def self.parse(input)"
+    - :was_run: true
+      :content: "       return ShutdownCommand.new if input =~ /^shutdown$/i"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def execute_as(character)"
+    - :was_run: true
+      :content: "       puts \"shutting down\""
+    - :was_run: true
+      :content: "       Game.instance.shutdown"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/player.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class Character"
+    - :was_run: true
+      :content: "     attr_reader :name, :current_location, :session"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def initialize(name, session=nil)"
+    - :was_run: true
+      :content: "       @name, @session = name, session"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def notification(msg)"
+    - :was_run: true
+      :content: "       @session.write msg"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def move_to(location)"
+    - :was_run: true
+      :content: "       @current_location = location"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def on_show(e)"
+    - :was_run: true
+      :content: "       notification(e.args[:message])"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/exits.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class Exits"
+    - :was_run: true
+      :content: "     def initialize(exits = [])"
+    - :was_run: true
+      :content: "       @exits = exits"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def find_by_name(name)"
+    - :was_run: true
+      :content: "       @exits.find { |exit| exit.name == name}"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def find_by_destination(destination)"
+    - :was_run: true
+      :content: "       @exits.find { |exit| exit.destination == destination}"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def add(exit)"
+    - :was_run: true
+      :content: "       @exits << exit"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def get_list_of_names"
+    - :was_run: true
+      :content: "       exit_names = @exits.map {|exit| exit.name }"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       return \"\" if exit_names.empty?"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       if exit_names.size == 1"
+    - :was_run: true
+      :content: "         return description_for_single_exit(exit_names)"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       description_for_multiple_exits(exit_names)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def description_for_single_exit(exit_names)"
+    - :was_run: true
+      :content: "       \"[color=green]You see only one exit leading #{exit_names.first}[/color]\\n\\r\""
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def description_for_multiple_exits(exit_names)"
+    - :was_run: true
+      :content: "       names_separated = exit_names[0..-2].join(\", \") + \" and \" + exit_names[-1]"
+    - :was_run: true
+      :content: "       \"[color=green]You see exits leading #{names_separated}.[/color]\\n\\r\""
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  :global_percent_run: 88.5
+  lib/input_processor.rb: 
+    :percent_run: 64
+    :lines: 
+    - :was_run: true
+      :content: "   class InputProcessor"
+    - :was_run: true
+      :content: "     def initialize(commands, event_manager)"
+    - :was_run: true
+      :content: "       @commands, @event_manager = commands, event_manager"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def process_character_commands(character)"
+    - :was_run: false
+      :content: "      loop do"
+    - :was_run: false
+      :content: "        begin"
+    - :was_run: false
+      :content: "         cmd = parse_input_from_session(character.session)"
+    - :was_run: false
+      :content: "         cmd.execute_as(character) if cmd"
+    - :was_run: false
+      :content: "        rescue NoCommandFound"
+    - :was_run: false
+      :content: "         character.session.write(\"I beg you pardon? What are you trying to say?\")  "
+    - :was_run: false
+      :content: "        end"
+    - :was_run: false
+      :content: "       end"
+    - :was_run: false
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def parse_input_from_session(session)"
+    - :was_run: true
+      :content: "       input = session.read"
+    - :was_run: true
+      :content: "       @commands.each do |command_class|"
+    - :was_run: true
+      :content: "         command = command_class.parse(input)"
+    - :was_run: true
+      :content: "         return command if command "
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "       raise NoCommandFound.new"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/world.rb: 
+    :percent_run: 69
+    :lines: 
+    - :was_run: true
+      :content: "   class World"
+    - :was_run: true
+      :content: "     attr_reader :locations"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def initialize"
+    - :was_run: true
+      :content: "       @locations = YAML.load_file('db/dikuworld.yaml')"
+    - :was_run: true
+      :content: "       print_memstat"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def print_memstat"
+    - :was_run: true
+      :content: "       locations = exits = 0"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       ObjectSpace.each_object do |obj|"
+    - :was_run: true
+      :content: "         locations += 1 if obj.class == Location"
+    - :was_run: true
+      :content: "         exits += 1 if obj.class == Exit"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       statistics = \"\"\""
+    - :was_run: false
+      :content: "         --------------------------"
+    - :was_run: false
+      :content: "                 STATISTICS"
+    - :was_run: false
+      :content: "         --------------------------"
+    - :was_run: false
+      :content: "   "
+    - :was_run: false
+      :content: "           Locations: #{locations}"
+    - :was_run: false
+      :content: "           Exits: #{exits}"
+    - :was_run: false
+      :content: "   "
+    - :was_run: false
+      :content: "         --------------------------"
+    - :was_run: false
+      :content: "       \"\"\""
+    - :was_run: true
+      :content: "       puts statistics"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/commands/look_command.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class LookCommand"
+    - :was_run: true
+      :content: "     attr_reader :target"
+    - :was_run: true
+      :content: "     "
+    - :was_run: true
+      :content: "     def initialize(target=nil)"
+    - :was_run: true
+      :content: "       @target = target"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def self.parse(input)"
+    - :was_run: true
+      :content: "       if input =~ /^look$/i"
+    - :was_run: true
+      :content: "         return LookCommand.new"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       if input =~ /^look (.*)$/i"
+    - :was_run: true
+      :content: "         return LookCommand.new($1)"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def execute_as(character)"
+    - :was_run: true
+      :content: "       Game.instance.add_event(character,character.current_location,:look, :target => @target)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/event_manager.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class EventManager"
+    - :was_run: true
+      :content: "     def initialize()"
+    - :was_run: true
+      :content: "       @events = []"
+    - :was_run: true
+      :content: "       @mutex = Mutex.new"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def add_event(event)"
+    - :was_run: true
+      :content: "       @mutex.synchronize do"
+    - :was_run: true
+      :content: "         @events.push(event)"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def get_event"
+    - :was_run: true
+      :content: "       @mutex.synchronize do"
+    - :was_run: true
+      :content: "         @events.shift"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def process_events"
+    - :was_run: true
+      :content: "       e = get_event"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       return if e.nil?"
+    - :was_run: true
+      :content: "       "
+    - :was_run: true
+      :content: "       destination = e.to"
+    - :was_run: true
+      :content: "       method = \"on_\" + e.kind.to_s"
+    - :was_run: true
+      :content: "       destination.send(method, e)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/exit.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class Exit"
+    - :was_run: true
+      :content: "     attr_reader :name, :destination, :description"
+    - :was_run: true
+      :content: "     "
+    - :was_run: true
+      :content: "     def initialize(name, destination, description=\"\")"
+    - :was_run: true
+      :content: "       @name, @destination, @description = name, destination, description"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/authentication_process.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class AuthenticationProcess"
+    - :was_run: true
+      :content: "     def initialize(session)"
+    - :was_run: true
+      :content: "       @session, @world = session"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def execute"
+    - :was_run: true
+      :content: "       @session.write(\"What's your character name?\")"
+    - :was_run: true
+      :content: "       name = @session.read.capitalize"
+    - :was_run: true
+      :content: "       @session.write(\"Welcome to Britannia #{name}!\")"
+    - :was_run: true
+      :content: "       Character.new(name, @session)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/game.rb: 
+    :percent_run: 54
+    :lines: 
+    - :was_run: true
+      :content: "   class Game"
+    - :was_run: true
+      :content: "     include Singleton"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     attr_reader :world"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def initialize"
+    - :was_run: true
+      :content: "       @world = World.new"
+    - :was_run: true
+      :content: "       @event_manager = EventManager.new()"
+    - :was_run: true
+      :content: "       commands = [SayCommand, ShutdownCommand, LookCommand, GoCommand]"
+    - :was_run: true
+      :content: "       @input_processor = InputProcessor.new(commands, @event_manager)"
+    - :was_run: true
+      :content: "       @shutdown_requested = false"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def run"
+    - :was_run: false
+      :content: "       Thread.abort_on_exception = true"
+    - :was_run: false
+      :content: "       Thread.new do"
+    - :was_run: false
+      :content: "         begin"
+    - :was_run: false
+      :content: "           until @shutdown_requested"
+    - :was_run: false
+      :content: "             @event_manager.process_events"
+    - :was_run: false
+      :content: "           end"
+    - :was_run: false
+      :content: "         rescue Exception => e"
+    - :was_run: false
+      :content: "           puts e.message"
+    - :was_run: false
+      :content: "           puts e.backtrace.inspect"
+    - :was_run: false
+      :content: "         ensure"
+    - :was_run: false
+      :content: "           exit"
+    - :was_run: false
+      :content: "         end"
+    - :was_run: false
+      :content: "       end"
+    - :was_run: false
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def enter_game(session)"
+    - :was_run: false
+      :content: "       authentication_process = AuthenticationProcess.new(session)"
+    - :was_run: false
+      :content: "       character = authentication_process.execute"
+    - :was_run: false
+      :content: "       add_event(character, @world.locations.first, :enter, :origin => :nowhere)"
+    - :was_run: false
+      :content: "       @input_processor.process_character_commands(character)"
+    - :was_run: false
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def add_event(from, to, kind, args={})"
+    - :was_run: true
+      :content: "       @event_manager.add_event(Event.new(from,to,kind,args))"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def shutdown"
+    - :was_run: false
+      :content: "       @shutdown_requested = true"
+    - :was_run: false
+      :content: "     end"
+    - :was_run: false
+      :content: "   end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "   def add_event(from, to, kind, args={})"
+    - :was_run: true
+      :content: "     Game.instance.add_event(from, to, kind, args)"
+    - :was_run: true
+      :content: "   end"
+  lib/helpers/enumerable.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   module Enumerable"
+    - :was_run: true
+      :content: "     def except(item)"
+    - :was_run: true
+      :content: "       reject {|x| x == item }"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/commands/go_command.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class GoCommand"
+    - :was_run: true
+      :content: "     attr_reader :args"
+    - :was_run: true
+      :content: "     "
+    - :was_run: true
+      :content: "     def initialize(*args)"
+    - :was_run: true
+      :content: "       @args = args"
+    - :was_run: true
+      :content: "       @exit = @args.first"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     COMMON_EXITS = [\"north\", \"south\", \"east\", \"west\", \"up\", \"down\"]"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def self.parse(input)"
+    - :was_run: true
+      :content: "       if input =~ /^go ([^ ]+)$/i"
+    - :was_run: true
+      :content: "         return GoCommand.new($1.downcase)"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       COMMON_EXITS.each do |direction|"
+    - :was_run: true
+      :content: "         direction_first_letter = direction[0...1]"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "         if input.downcase == direction || input.downcase == direction_first_letter"
+    - :was_run: true
+      :content: "           return GoCommand.new(direction.downcase)"
+    - :was_run: true
+      :content: "         end"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "       nil"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def execute_as(character)"
+    - :was_run: true
+      :content: "       Game.instance.add_event(character, character.current_location, :leave, :exit => @exit)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/event.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class Event"
+    - :was_run: true
+      :content: "     attr_accessor :from, :to, :kind, :args"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def initialize(from, to, kind, args={})"
+    - :was_run: true
+      :content: "       @from, @to, @kind, @args = from, to, kind, args"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/commands/say_command.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class SayCommand"
+    - :was_run: true
+      :content: "     attr_reader :args"
+    - :was_run: true
+      :content: "     "
+    - :was_run: true
+      :content: "     def initialize(*args)"
+    - :was_run: true
+      :content: "       @args = args"
+    - :was_run: true
+      :content: "       @message = args.first"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def self.parse(input)"
+    - :was_run: true
+      :content: "       if input =~ /say (.*)/i"
+    - :was_run: true
+      :content: "         return SayCommand.new($1)"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def execute_as(character)"
+    - :was_run: true
+      :content: "       character.notification(\"You said: #{@message}\")"
+    - :was_run: true
+      :content: "       Game.instance.add_event(character, character.current_location, :talk, :message => @message)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  lib/telnet_session.rb: 
+    :percent_run: 87
+    :lines: 
+    - :was_run: true
+      :content: "   class TelnetSession"
+    - :was_run: true
+      :content: "     def initialize(socket)"
+    - :was_run: true
+      :content: "       @socket = socket"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def read"
+    - :was_run: true
+      :content: "       @socket.readline.chomp.strip"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def write(text)"
+    - :was_run: true
+      :content: "       @socket.puts replace_color_tags(text)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     private"
+    - :was_run: true
+      :content: "     COLOR_CODES = {"
+    - :was_run: true
+      :content: "             \"red\" => \"\\e[31m\","
+    - :was_run: true
+      :content: "             \"blue\" => \"\\e[34m\","
+    - :was_run: true
+      :content: "             \"green\" => \"\\e[32m\""
+    - :was_run: true
+      :content: "     }"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     RESET_CODE = \"\\e[0m\""
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def replace_color_tags(text)"
+    - :was_run: true
+      :content: "       text."
+    - :was_run: true
+      :content: "         gsub(/\\[color=([a-z]+)\\]/im) do |m|"
+    - :was_run: true
+      :content: "           COLOR_CODES[$1]"
+    - :was_run: false
+      :content: "         end."
+    - :was_run: false
+      :content: "         gsub(/\\[\\/color\\]/i, RESET_CODE)"
+    - :was_run: false
+      :content: "     end"
+    - :was_run: false
+      :content: "   end"
+  lib/commands/no_command_found.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class NoCommandFound < Exception"
+    - :was_run: true
+      :content: "   end"
+  lib/location.rb: 
+    :percent_run: 100
+    :lines: 
+    - :was_run: true
+      :content: "   class Location"
+    - :was_run: true
+      :content: "     attr_reader :title, :description, :characters, :uid"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def initialize(uid, title, description)"
+    - :was_run: true
+      :content: "       @uid, @title, @description = uid, title, description"
+    - :was_run: true
+      :content: "       @characters = []"
+    - :was_run: true
+      :content: "       @exits = Exits.new"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def add_exit(exit)"
+    - :was_run: true
+      :content: "       @exits.add(exit)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def add_character(character)"
+    - :was_run: true
+      :content: "       @characters << character"
+    - :was_run: true
+      :content: "       character.move_to(self)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def remove_character(character)"
+    - :was_run: true
+      :content: "       @characters.delete(character)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def on_look(e)"
+    - :was_run: true
+      :content: "       observer = e.from"
+    - :was_run: true
+      :content: "       target = e.args[:target]"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       if target"
+    - :was_run: true
+      :content: "         send_target_description(observer, target)"
+    - :was_run: true
+      :content: "       else"
+    - :was_run: true
+      :content: "         send_room_description(observer)"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def on_talk(event)"
+    - :was_run: true
+      :content: "       @characters.except(event.from).each do |character|"
+    - :was_run: true
+      :content: "         notification = \"#{event.from.name} said: #{event.args[:message]}\""
+    - :was_run: true
+      :content: "         add_event(self, character, :show, :message => notification)"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def on_leave(event)"
+    - :was_run: true
+      :content: "       exit = @exits.find_by_name(event.args[:exit])"
+    - :was_run: true
+      :content: "       if exit.nil?"
+    - :was_run: true
+      :content: "         add_event(self, event.from, :show, :message => \"You can't go in that direction.\") "
+    - :was_run: true
+      :content: "       else"
+    - :was_run: true
+      :content: "         remove_character(event.from)"
+    - :was_run: true
+      :content: "         add_event(event.from, exit.destination, :enter, :origin => self) if exit"
+    - :was_run: true
+      :content: "         @characters.each do |character|"
+    - :was_run: true
+      :content: "           add_event(self, character, :show, :message => \"#{event.from.name} leaves #{exit.name}\")"
+    - :was_run: true
+      :content: "         end"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def on_enter(event)"
+    - :was_run: true
+      :content: "       add_character(event.from)"
+    - :was_run: true
+      :content: "       origin = event.args[:origin]"
+    - :was_run: true
+      :content: "       exit = @exits.find_by_destination(origin)"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       @characters.except(event.from).each do |character|"
+    - :was_run: true
+      :content: "         notification = \"#{event.from.name} appears out of thin air\""
+    - :was_run: true
+      :content: "         notification = \"#{event.from.name} arrives walking from #{exit.name}\" if exit"
+    - :was_run: true
+      :content: "         add_event(self, character, :show, :message => notification)"
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "       add_event(event.from, self, :look)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     private"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def send_room_description(observer)"
+    - :was_run: true
+      :content: "       output = \"You see:\\n\\r\" +"
+    - :was_run: true
+      :content: "               \"[color=red]#{title}[/color]\\n\\r\" +"
+    - :was_run: true
+      :content: "               \"#{description}\\n\\r\"+"
+    - :was_run: true
+      :content: "               \"People:\\n\\r\""
+    - :was_run: true
+      :content: "       other_characters = @characters.except(observer)"
+    - :was_run: true
+      :content: "       other_characters.each do |p|"
+    - :was_run: true
+      :content: "         output += \"#{p.name}\\n\\r\""
+    - :was_run: true
+      :content: "       end"
+    - :was_run: true
+      :content: "       output += @exits.get_list_of_names"
+    - :was_run: true
+      :content: "       add_event(self, observer, :show, :message => output)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def send_target_description(observer, target)"
+    - :was_run: true
+      :content: "       exit = @exits.find_by_name(target)"
+    - :was_run: true
+      :content: "       message = \"There isn't anything called '#{target}' here.\""
+    - :was_run: true
+      :content: "       message = exit.description if exit"
+    - :was_run: true
+      :content: "       add_event(self, observer, :show, :message => message)"
+    - :was_run: true
+      :content: "     end"
+    - :was_run: true
+      :content: "   end"
+  jewel_mud.rb: 
+    :percent_run: 61
+    :lines: 
+    - :was_run: true
+      :content: "   require 'gserver'"
+    - :was_run: true
+      :content: "   require 'singleton'"
+    - :was_run: true
+      :content: "   require 'yaml'"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "   Dir[\"lib/**/*.rb\"].each {|file| require file }"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "   class JewelMud < GServer"
+    - :was_run: true
+      :content: "     def initialize(*args)"
+    - :was_run: false
+      :content: "       super(*args)"
+    - :was_run: false
+      :content: "       Game.instance.run"
+    - :was_run: false
+      :content: "     end"
+    - :was_run: true
+      :content: "   "
+    - :was_run: true
+      :content: "     def serve(socket)"
+    - :was_run: false
+      :content: "       telnet_session = TelnetSession.new(socket)"
+    - :was_run: false
+      :content: "       Game.instance.enter_game(telnet_session)"
+    - :was_run: false
+      :content: "     end"
+    - :was_run: false
+      :content: "   end"
+:saikuro: 
+  :methods: 
+  - :lines: 10
+    :name: World#print_memstat
+    :complexity: 4
+  - :lines: 13
+    :name: GoCommand#self.parse
+    :complexity: 4
+  - :lines: 14
+    :name: Game#run
+    :complexity: 4
+  - :lines: 11
+    :name: Location#on_leave
+    :complexity: 4
+  - :lines: 9
+    :name: InputProcessor#process_character_commands
+    :complexity: 4
+  - :lines: 10
+    :name: Exits#get_list_of_names
+    :complexity: 4
+  - :lines: 13
+    :name: Location#on_enter
+    :complexity: 3
+  - :lines: 8
+    :name: LookCommand#self.parse
+    :complexity: 3
+  - :lines: 7
+    :name: InputProcessor#parse_input_from_session
+    :complexity: 3
+  - :lines: 4
+    :name: SayCommand#self.parse
+    :complexity: 2
+  - :lines: 2
+    :name: Exits#find_by_destination
+    :complexity: 2
+  - :lines: 2
+    :name: Exits#find_by_name
+    :complexity: 2
+  - :lines: 5
+    :name: Location#send_target_description
+    :complexity: 2
+  - :lines: 2
+    :name: ShutdownCommand#self.parse
+    :complexity: 2
+  - :lines: 11
+    :name: Location#send_room_description
+    :complexity: 2
+  - :lines: 2
+    :name: Enumerable#except
+    :complexity: 2
+  - :lines: 5
+    :name: Location#on_talk
+    :complexity: 2
+  - :lines: 4
+    :name: EventManager#add_event
+    :complexity: 2
+  - :lines: 6
+    :name: TelnetSession#replace_color_tags
+    :complexity: 2
+  - :lines: 8
+    :name: EventManager#process_events
+    :complexity: 2
+  - :lines: 9
+    :name: Location#on_look
+    :complexity: 2
+  - :lines: 4
+    :name: EventManager#get_event
+    :complexity: 2
+  - :lines: 2
+    :name: Event#initialize
+    :complexity: 1
+  - :lines: 3
+    :name: World#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: GoCommand#execute_as
+    :complexity: 1
+  - :lines: 2
+    :name: TelnetSession#read
+    :complexity: 1
+  - :lines: 3
+    :name: GoCommand#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: TelnetSession#write
+    :complexity: 1
+  - :lines: 2
+    :name: TelnetSession#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: LookCommand#initialize
+    :complexity: 1
+  - :lines: 3
+    :name: EventManager#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: LookCommand#execute_as
+    :complexity: 1
+  - :lines: 2
+    :name: ShutdownCommand#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: InputProcessor#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: Game#shutdown
+    :complexity: 1
+  - :lines: 2
+    :name: Game#add_event
+    :complexity: 1
+  - :lines: 5
+    :name: Game#enter_game
+    :complexity: 1
+  - :lines: 3
+    :name: ShutdownCommand#execute_as
+    :complexity: 1
+  - :lines: 6
+    :name: Game#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: "#add_event"
+    :complexity: 1
+  - :lines: 3
+    :name: Exits#description_for_multiple_exits
+    :complexity: 1
+  - :lines: 2
+    :name: Exits#description_for_single_exit
+    :complexity: 1
+  - :lines: 3
+    :name: SayCommand#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: Exits#add
+    :complexity: 1
+  - :lines: 3
+    :name: SayCommand#execute_as
+    :complexity: 1
+  - :lines: 2
+    :name: Character#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: Exits#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: Character#notification
+    :complexity: 1
+  - :lines: 2
+    :name: Character#move_to
+    :complexity: 1
+  - :lines: 2
+    :name: Character#on_show
+    :complexity: 1
+  - :lines: 2
+    :name: AuthenticationProcess#initialize
+    :complexity: 1
+  - :lines: 5
+    :name: AuthenticationProcess#execute
+    :complexity: 1
+  - :lines: 2
+    :name: Exit#initialize
+    :complexity: 1
+  - :lines: 2
+    :name: Location#remove_character
+    :complexity: 1
+  - :lines: 3
+    :name: Location#add_character
+    :complexity: 1
+  - :lines: 2
+    :name: Location#add_exit
+    :complexity: 1
+  - :lines: 4
+    :name: Location#initialize
+    :complexity: 1
+  :classes: 
+  - :lines: 89
+    :defs: 
+    - :lines: 4
+      :name: Location#initialize
+      :complexity: 1
+    - :lines: 2
+      :name: Location#add_exit
+      :complexity: 1
+    - :lines: 3
+      :name: Location#add_character
+      :complexity: 1
+    - :lines: 2
+      :name: Location#remove_character
+      :complexity: 1
+    - :lines: 9
+      :name: Location#on_look
+      :complexity: 2
+    - :lines: 5
+      :name: Location#on_talk
+      :complexity: 2
+    - :lines: 11
+      :name: Location#on_leave
+      :complexity: 4
+    - :lines: 13
+      :name: Location#on_enter
+      :complexity: 3
+    - :lines: 11
+      :name: Location#send_room_description
+      :complexity: 2
+    - :lines: 5
+      :name: Location#send_target_description
+      :complexity: 2
+    :name: Location
+    :complexity: 19
+  - :lines: 37
+    :defs: 
+    - :lines: 2
+      :name: Exits#initialize
+      :complexity: 1
+    - :lines: 2
+      :name: Exits#find_by_name
+      :complexity: 2
+    - :lines: 2
+      :name: Exits#find_by_destination
+      :complexity: 2
+    - :lines: 2
+      :name: Exits#add
+      :complexity: 1
+    - :lines: 10
+      :name: Exits#get_list_of_names
+      :complexity: 4
+    - :lines: 2
+      :name: Exits#description_for_single_exit
+      :complexity: 1
+    - :lines: 3
+      :name: Exits#description_for_multiple_exits
+      :complexity: 1
+    :name: Exits
+    :complexity: 12
+  - :lines: 43
+    :defs: 
+    - :lines: 6
+      :name: Game#initialize
+      :complexity: 1
+    - :lines: 14
+      :name: Game#run
+      :complexity: 4
+    - :lines: 5
+      :name: Game#enter_game
+      :complexity: 1
+    - :lines: 2
+      :name: Game#add_event
+      :complexity: 1
+    - :lines: 2
+      :name: Game#shutdown
+      :complexity: 1
+    :name: Game
+    :complexity: 8
+  - :lines: 24
+    :defs: 
+    - :lines: 2
+      :name: InputProcessor#initialize
+      :complexity: 1
+    - :lines: 9
+      :name: InputProcessor#process_character_commands
+      :complexity: 4
+    - :lines: 7
+      :name: InputProcessor#parse_input_from_session
+      :complexity: 3
+    :name: InputProcessor
+    :complexity: 8
+  - :lines: 27
+    :defs: 
+    - :lines: 3
+      :name: EventManager#initialize
+      :complexity: 1
+    - :lines: 4
+      :name: EventManager#add_event
+      :complexity: 2
+    - :lines: 4
+      :name: EventManager#get_event
+      :complexity: 2
+    - :lines: 8
+      :name: EventManager#process_events
+      :complexity: 2
+    :name: EventManager
+    :complexity: 7
+  - :lines: 28
+    :defs: 
+    - :lines: 3
+      :name: GoCommand#initialize
+      :complexity: 1
+    - :lines: 13
+      :name: GoCommand#self.parse
+      :complexity: 4
+    - :lines: 2
+      :name: GoCommand#execute_as
+      :complexity: 1
+    :name: GoCommand
+    :complexity: 6
+  - :lines: 20
+    :defs: 
+    - :lines: 2
+      :name: LookCommand#initialize
+      :complexity: 1
+    - :lines: 8
+      :name: LookCommand#self.parse
+      :complexity: 3
+    - :lines: 2
+      :name: LookCommand#execute_as
+      :complexity: 1
+    :name: LookCommand
+    :complexity: 5
+  - :lines: 29
+    :defs: 
+    - :lines: 2
+      :name: TelnetSession#initialize
+      :complexity: 1
+    - :lines: 2
+      :name: TelnetSession#read
+      :complexity: 1
+    - :lines: 2
+      :name: TelnetSession#write
+      :complexity: 1
+    - :lines: 6
+      :name: TelnetSession#replace_color_tags
+      :complexity: 2
+    :name: TelnetSession
+    :complexity: 5
+  - :lines: 19
+    :defs: 
+    - :lines: 3
+      :name: World#initialize
+      :complexity: 1
+    - :lines: 10
+      :name: World#print_memstat
+      :complexity: 4
+    :name: World
+    :complexity: 5
+  - :lines: 15
+    :defs: 
+    - :lines: 2
+      :name: ShutdownCommand#initialize
+      :complexity: 1
+    - :lines: 2
+      :name: ShutdownCommand#self.parse
+      :complexity: 2
+    - :lines: 3
+      :name: ShutdownCommand#execute_as
+      :complexity: 1
+    :name: ShutdownCommand
+    :complexity: 4
+  - :lines: 18
+    :defs: 
+    - :lines: 3
+      :name: SayCommand#initialize
+      :complexity: 1
+    - :lines: 4
+      :name: SayCommand#self.parse
+      :complexity: 2
+    - :lines: 3
+      :name: SayCommand#execute_as
+      :complexity: 1
+    :name: SayCommand
+    :complexity: 4
+  - :lines: 18
+    :defs: 
+    - :lines: 2
+      :name: Character#initialize
+      :complexity: 1
+    - :lines: 2
+      :name: Character#notification
+      :complexity: 1
+    - :lines: 2
+      :name: Character#move_to
+      :complexity: 1
+    - :lines: 2
+      :name: Character#on_show
+      :complexity: 1
+    :name: Character
+    :complexity: 4
+  - :lines: 4
+    :defs: 
+    - :lines: 2
+      :name: Enumerable#except
+      :complexity: 2
+    :name: Enumerable
+    :complexity: 2
+  - :lines: 11
+    :defs: 
+    - :lines: 2
+      :name: AuthenticationProcess#initialize
+      :complexity: 1
+    - :lines: 5
+      :name: AuthenticationProcess#execute
+      :complexity: 1
+    :name: AuthenticationProcess
+    :complexity: 2
+  - :lines: 2
+    :defs: 
+    - :lines: 2
+      :name: "#add_event"
+      :complexity: 1
+    :name: ""
+    :complexity: 1
+  - :lines: 6
+    :defs: 
+    - :lines: 2
+      :name: Exit#initialize
+      :complexity: 1
+    :name: Exit
+    :complexity: 1
+  - :lines: 6
+    :defs: 
+    - :lines: 2
+      :name: Event#initialize
+      :complexity: 1
+    :name: Event
+    :complexity: 1
+  - :lines: 1
+    :name: NoCommandFound
+    :complexity: 0
+  :files: 
+  - :classes: 
+    - :methods: 
+      - :lines: 11
+        :name: Location#on_leave
+        :complexity: 4
+      - :lines: 13
+        :name: Location#on_enter
+        :complexity: 3
+      - :lines: 5
+        :name: Location#send_target_description
+        :complexity: 2
+      - :lines: 11
+        :name: Location#send_room_description
+        :complexity: 2
+      - :lines: 9
+        :name: Location#on_look
+        :complexity: 2
+      - :lines: 5
+        :name: Location#on_talk
+        :complexity: 2
+      - :lines: 2
+        :name: Location#remove_character
+        :complexity: 1
+      - :lines: 3
+        :name: Location#add_character
+        :complexity: 1
+      - :lines: 2
+        :name: Location#add_exit
+        :complexity: 1
+      - :lines: 4
+        :name: Location#initialize
+        :complexity: 1
+      :lines: 89
+      :class_name: Location
+      :complexity: 19
+    :filename: location.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 10
+        :name: Exits#get_list_of_names
+        :complexity: 4
+      - :lines: 2
+        :name: Exits#find_by_destination
+        :complexity: 2
+      - :lines: 2
+        :name: Exits#find_by_name
+        :complexity: 2
+      - :lines: 2
+        :name: Exits#add
+        :complexity: 1
+      - :lines: 2
+        :name: Exits#description_for_single_exit
+        :complexity: 1
+      - :lines: 3
+        :name: Exits#description_for_multiple_exits
+        :complexity: 1
+      - :lines: 2
+        :name: Exits#initialize
+        :complexity: 1
+      :lines: 37
+      :class_name: Exits
+      :complexity: 12
+    :filename: exits.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 2
+        :name: "#add_event"
+        :complexity: 1
+      :lines: 2
+      :class_name: ""
+      :complexity: 1
+    - :methods: 
+      - :lines: 14
+        :name: Game#run
+        :complexity: 4
+      - :lines: 5
+        :name: Game#enter_game
+        :complexity: 1
+      - :lines: 2
+        :name: Game#add_event
+        :complexity: 1
+      - :lines: 2
+        :name: Game#shutdown
+        :complexity: 1
+      - :lines: 6
+        :name: Game#initialize
+        :complexity: 1
+      :lines: 43
+      :class_name: Game
+      :complexity: 8
+    :filename: game.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 9
+        :name: InputProcessor#process_character_commands
+        :complexity: 4
+      - :lines: 7
+        :name: InputProcessor#parse_input_from_session
+        :complexity: 3
+      - :lines: 2
+        :name: InputProcessor#initialize
+        :complexity: 1
+      :lines: 24
+      :class_name: InputProcessor
+      :complexity: 8
+    :filename: input_processor.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 8
+        :name: EventManager#process_events
+        :complexity: 2
+      - :lines: 4
+        :name: EventManager#add_event
+        :complexity: 2
+      - :lines: 4
+        :name: EventManager#get_event
+        :complexity: 2
+      - :lines: 3
+        :name: EventManager#initialize
+        :complexity: 1
+      :lines: 27
+      :class_name: EventManager
+      :complexity: 7
+    :filename: event_manager.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 13
+        :name: GoCommand#self.parse
+        :complexity: 4
+      - :lines: 2
+        :name: GoCommand#execute_as
+        :complexity: 1
+      - :lines: 3
+        :name: GoCommand#initialize
+        :complexity: 1
+      :lines: 28
+      :class_name: GoCommand
+      :complexity: 6
+    :filename: go_command.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 10
+        :name: World#print_memstat
+        :complexity: 4
+      - :lines: 3
+        :name: World#initialize
+        :complexity: 1
+      :lines: 19
+      :class_name: World
+      :complexity: 5
+    :filename: world.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 6
+        :name: TelnetSession#replace_color_tags
+        :complexity: 2
+      - :lines: 2
+        :name: TelnetSession#write
+        :complexity: 1
+      - :lines: 2
+        :name: TelnetSession#read
+        :complexity: 1
+      - :lines: 2
+        :name: TelnetSession#initialize
+        :complexity: 1
+      :lines: 29
+      :class_name: TelnetSession
+      :complexity: 5
+    :filename: telnet_session.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 8
+        :name: LookCommand#self.parse
+        :complexity: 3
+      - :lines: 2
+        :name: LookCommand#execute_as
+        :complexity: 1
+      - :lines: 2
+        :name: LookCommand#initialize
+        :complexity: 1
+      :lines: 20
+      :class_name: LookCommand
+      :complexity: 5
+    :filename: look_command.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 2
+        :name: ShutdownCommand#self.parse
+        :complexity: 2
+      - :lines: 3
+        :name: ShutdownCommand#execute_as
+        :complexity: 1
+      - :lines: 2
+        :name: ShutdownCommand#initialize
+        :complexity: 1
+      :lines: 15
+      :class_name: ShutdownCommand
+      :complexity: 4
+    :filename: shutdown_command.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 4
+        :name: SayCommand#self.parse
+        :complexity: 2
+      - :lines: 3
+        :name: SayCommand#execute_as
+        :complexity: 1
+      - :lines: 3
+        :name: SayCommand#initialize
+        :complexity: 1
+      :lines: 18
+      :class_name: SayCommand
+      :complexity: 4
+    :filename: say_command.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 2
+        :name: Character#on_show
+        :complexity: 1
+      - :lines: 2
+        :name: Character#move_to
+        :complexity: 1
+      - :lines: 2
+        :name: Character#notification
+        :complexity: 1
+      - :lines: 2
+        :name: Character#initialize
+        :complexity: 1
+      :lines: 18
+      :class_name: Character
+      :complexity: 4
+    :filename: player.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 2
+        :name: Enumerable#except
+        :complexity: 2
+      :lines: 4
+      :class_name: Enumerable
+      :complexity: 2
+    :filename: enumerable.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 5
+        :name: AuthenticationProcess#execute
+        :complexity: 1
+      - :lines: 2
+        :name: AuthenticationProcess#initialize
+        :complexity: 1
+      :lines: 11
+      :class_name: AuthenticationProcess
+      :complexity: 2
+    :filename: authentication_process.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 2
+        :name: Exit#initialize
+        :complexity: 1
+      :lines: 6
+      :class_name: Exit
+      :complexity: 1
+    :filename: exit.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 2
+        :name: Event#initialize
+        :complexity: 1
+      :lines: 6
+      :class_name: Event
+      :complexity: 1
+    :filename: event.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 1
+      :class_name: NoCommandFound
+      :complexity: 0
+    :filename: no_command_found.rb
+:churn: 
+  :changes: 
+  - :times_changed: 7
+    :file_path: lib/location.rb
+  - :times_changed: 5
+    :file_path: spec/location_spec.rb
+  - :times_changed: 5
+    :file_path: lib/input_processor.rb
+  - :times_changed: 5
+    :file_path: lib/game.rb
+  - :times_changed: 5
+    :file_path: spec/spec_helper.rb
+:flog: 
+  :total: 321.6
+  :pages: 
+  - :path: /lib/location.rb
+    :highest_score: 24.8
+    :average_score: 9.5
+    :scanned_methods: 
+    - :score: 24.8
+      :name: Location#on_leave                lib/location.rb:41
+      :operators: 
+      - :operator: "  from"
+        :score: 6.7
+      - :operator: "  add_event"
+        :score: 4.3
+      - :operator: "  branch"
+        :score: 4.0
+      - :operator: "  name"
+        :score: 3.4
+      - :operator: "  assignment"
+        :score: 2.7
+      - :operator: "  destination"
+        :score: 1.7
+      - :operator: "  args"
+        :score: 1.6
+      - :operator: "  remove_character"
+        :score: 1.4
+      - :operator: "  each"
+        :score: 1.4
+      - :operator: "  []"
+        :score: 1.4
+      - :operator: "  find_by_name"
+        :score: 1.2
+      - :operator: "  nil?"
+        :score: 1.2
+    :score: 104.5
+  - :path: /lib/world.rb
+    :highest_score: 15.1
+    :average_score: 6.3
+    :scanned_methods: 
+    - :score: 15.1
+      :name: World#print_memstat              lib/world.rb:9
+      :operators: 
+      - :operator: "  assignment"
+        :score: 7.9
+      - :operator: "  branch"
+        :score: 4.0
+      - :operator: "  class"
+        :score: 3.2
+      - :operator: "  +"
+        :score: 3.0
+      - :operator: "  =="
+        :score: 2.8
+      - :operator: "  puts"
+        :score: 1.2
+      - :operator: "  each_object"
+        :score: 1.2
+      - :operator: "  lit_fixnum"
+        :score: 0.9
+    :score: 18.9
+  - :path: /lib/game.rb
+    :highest_score: 14.0
+    :average_score: 5.9
+    :scanned_methods: 
+    - :score: 14.0
+      :name: Game#run                         lib/game.rb:14
+      :operators: 
+      - :operator: "  branch"
+        :score: 4.2
+      - :operator: "  puts"
+        :score: 3.2
+      - :operator: "  assignment"
+        :score: 2.8
+      - :operator: "  backtrace"
+        :score: 2.0
+      - :operator: "  message"
+        :score: 1.8
+      - :operator: "  inspect"
+        :score: 1.8
+      - :operator: "  process_events"
+        :score: 1.6
+      - :operator: "  exit"
+        :score: 1.4
+      - :operator: "  new"
+        :score: 1.3
+    :score: 41.3
+  - :path: /lib/event_manager.rb
+    :highest_score: 12.0
+    :average_score: 5.1
+    :scanned_methods: 
+    - :score: 12.0
+      :name: EventManager#process_events      lib/event_manager.rb:19
+      :operators: 
+      - :operator: "  send"
+        :score: 3.6
+      - :operator: "  assignment"
+        :score: 3.6
+      - :operator: "  kind"
+        :score: 1.6
+      - :operator: "  to_s"
+        :score: 1.4
+      - :operator: "  +"
+        :score: 1.2
+      - :operator: "  branch"
+        :score: 1.2
+      - :operator: "  get_event"
+        :score: 1.2
+      - :operator: "  to"
+        :score: 1.2
+      - :operator: "  nil?"
+        :score: 1.2
+    :score: 20.2
+  - :path: /lib/exits.rb
+    :highest_score: 10.1
+    :average_score: 4.5
+    :scanned_methods: 
+    - :score: 10.1
+      :name: Exits#get_list_of_names          lib/exits.rb:18
+      :operators: 
+      - :operator: "  branch"
+        :score: 3.6
+      - :operator: "  assignment"
+        :score: 2.5
+      - :operator: "  size"
+        :score: 1.4
+      - :operator: "  description_for_single_exit"
+        :score: 1.3
+      - :operator: "  name"
+        :score: 1.3
+      - :operator: "  description_for_multiple_exits"
+        :score: 1.2
+      - :operator: "  empty?"
+        :score: 1.2
+      - :operator: "  =="
+        :score: 1.2
+      - :operator: "  map"
+        :score: 1.2
+      - :operator: "  lit_fixnum"
+        :score: 0.4
+    :score: 31.2
+  - :path: /lib/input_processor.rb
+    :highest_score: 10.0
+    :average_score: 7.2
+    :scanned_methods: 
+    - :score: 10.0
+      :name: InputProcessor#process_character_commands lib/input_processor.rb:6
+      :operators: 
+      - :operator: "  branch"
+        :score: 4.0
+      - :operator: "  session"
+        :score: 3.3
+      - :operator: "  execute_as"
+        :score: 1.6
+      - :operator: "  assignment"
+        :score: 1.5
+      - :operator: "  parse_input_from_session"
+        :score: 1.5
+      - :operator: "  write"
+        :score: 1.4
+      - :operator: "  loop"
+        :score: 1.2
+    :score: 21.5
+  - :path: /lib/event.rb
+    :highest_score: 7.2
+    :average_score: 4.2
+    :scanned_methods: 
+    - :score: 7.2
+      :name: Event#initialize                 lib/event.rb:4
+      :operators: 
+      - :operator: "  assignment"
+        :score: 7.2
+    :score: 8.3
+  - :path: /lib/authentication_process.rb
+    :highest_score: 6.3
+    :average_score: 5.0
+    :scanned_methods: 
+    - :score: 6.3
+      :name: AuthenticationProcess#execute    lib/authentication_process.rb:6
+      :operators: 
+      - :operator: "  write"
+        :score: 2.4
+      - :operator: "  read"
+        :score: 1.4
+      - :operator: "  capitalize"
+        :score: 1.2
+      - :operator: "  assignment"
+        :score: 1.2
+      - :operator: "  new"
+        :score: 1.2
+    :score: 9.9
+  - :path: /lib/exit.rb
+    :highest_score: 6.0
+    :average_score: 3.6
+    :scanned_methods: 
+    - :score: 6.0
+      :name: Exit#initialize                  lib/exit.rb:4
+      :operators: 
+      - :operator: "  assignment"
+        :score: 6.0
+    :score: 7.1
+  - :path: /lib/commands/say_command.rb
+    :highest_score: 5.2
+    :average_score: 2.7
+    :scanned_methods: 
+    - :score: 5.2
+      :name: SayCommand#execute_as            lib/commands/say_command.rb:15
+      :operators: 
+      - :operator: "  instance"
+        :score: 1.4
+      - :operator: "  current_location"
+        :score: 1.4
+      - :operator: "  notification"
+        :score: 1.2
+      - :operator: "  add_event"
+        :score: 1.2
+    :score: 10.8
+  - :path: /lib/player.rb
+    :highest_score: 4.8
+    :average_score: 2.5
+    :scanned_methods: 
+    - :score: 4.8
+      :name: Character#initialize             lib/player.rb:4
+      :operators: 
+      - :operator: "  assignment"
+        :score: 4.8
+    :score: 12.5
+  - :path: /lib/telnet_session.rb
+    :highest_score: 4.6
+    :average_score: 2.7
+    :scanned_methods: 
+    - :score: 4.6
+      :name: TelnetSession#replace_color_tags lib/telnet_session.rb:23
+      :operators: 
+      - :operator: "  gsub"
+        :score: 2.6
+      - :operator: "  []"
+        :score: 1.5
+      - :operator: "  assignment"
+        :score: 1.5
+      - :operator: "  branch"
+        :score: 1.4
+    :score: 13.7
+  - :path: /lib/commands/look_command.rb
+    :highest_score: 4.0
+    :average_score: 2.8
+    :scanned_methods: 
+    - :score: 4.0
+      :name: LookCommand#execute_as           lib/commands/look_command.rb:18
+      :operators: 
+      - :operator: "  instance"
+        :score: 1.4
+      - :operator: "  current_location"
+        :score: 1.4
+      - :operator: "  add_event"
+        :score: 1.2
+    :score: 11.0
+  - :path: /lib/commands/shutdown_command.rb
+    :highest_score: 3.8
+    :average_score: 2.0
+    :scanned_methods: 
+    - :score: 3.8
+      :name: ShutdownCommand#execute_as       lib/commands/shutdown_command.rb:12
+      :operators: 
+      - :operator: "  instance"
+        :score: 1.4
+      - :operator: "  shutdown"
+        :score: 1.2
+      - :operator: "  puts"
+        :score: 1.2
+    :score: 7.9
+  - :path: /lib/helpers/enumerable.rb
+    :highest_score: 2.8
+    :average_score: 2.8
+    :scanned_methods: 
+    - :score: 2.8
+      :name: Enumerable#except                lib/helpers/enumerable.rb:2
+      :operators: 
+      - :operator: "  assignment"
+        :score: 1.2
+      - :operator: "  =="
+        :score: 1.2
+      - :operator: "  reject"
+        :score: 1.1
+      - :operator: "  branch"
+        :score: 1.1
+    :score: 2.8
+  :average: 21.4
+:flay: 
+  :matches: 
+  - :reason: 1) Similar code found in :defn (mass = 34)
+    :matches: 
+    - :line: "26"
+      :name: lib/commands/go_command.rb
+    - :line: "18"
+      :name: lib/commands/look_command.rb
+  :total_score: "34"

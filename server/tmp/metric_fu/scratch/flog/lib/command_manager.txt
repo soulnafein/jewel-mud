@@ -1,0 +1,31 @@
+    21.1: flog total
+     4.2: flog/method average
+
+     6.5: CommandManager#get_command       lib/command_manager.rb:17
+     2.8:   branch
+     1.6:   empty?
+     1.5:   shift
+     1.5:   wait_while
+     1.3:   synchronize
+
+     4.7: CommandManager#initialize        lib/command_manager.rb:4
+     2.6:   assignment
+     2.6:   extend
+     1.3:   new_cond
+
+     4.5: CommandManager#add_command       lib/command_manager.rb:10
+     1.5:   push
+     1.5:   signal
+     1.3:   synchronize
+     1.3:   branch
+
+     4.3: CommandManager#process_commands  lib/command_manager.rb:24
+     1.3:   get_command
+     1.3:   assignment
+     1.3:   branch
+     1.3:   execute
+     1.3:   nil?
+
+     1.1: main#none
+     1.1:   require
+

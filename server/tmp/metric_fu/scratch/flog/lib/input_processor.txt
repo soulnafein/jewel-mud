@@ -1,0 +1,15 @@
+    11.2: flog total
+     5.6: flog/method average
+
+     7.6: InputProcessor#process_character_commands lib/input_processor.rb:6
+     2.8:   assignment
+     1.6:   session
+     1.4:   parse
+     1.4:   add_command
+     1.4:   read
+     1.2:   branch
+     1.2:   loop
+
+     3.6: InputProcessor#initialize        lib/input_processor.rb:2
+     3.6:   assignment
+

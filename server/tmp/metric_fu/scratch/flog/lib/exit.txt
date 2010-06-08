@@ -1,0 +1,9 @@
+     7.1: flog total
+     3.6: flog/method average
+
+     6.0: Exit#initialize                  lib/exit.rb:4
+     6.0:   assignment
+
+     1.1: Exit#none
+     1.1:   attr_reader
+

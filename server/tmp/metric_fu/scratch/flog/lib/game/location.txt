@@ -1,0 +1,65 @@
+    61.4: flog total
+     5.6: flog/method average
+
+    20.1: Location#get_entity_by_name      lib/game/location.rb:59
+     6.6:   assignment
+     6.4:   downcase
+     6.2:   branch
+     3.6:   name
+     2.8:   ==
+     2.6:   find
+     1.3:   raise
+     1.2:   find_by_name
+
+    10.2: Location#let_go                  lib/game/location.rb:40
+     2.8:   name
+     1.3:   raise
+     1.2:   branch
+     1.2:   send_to_all_except
+     1.2:   assignment
+     1.2:   find_by_name
+     1.2:   let_go
+     1.2:   remove_character
+     1.2:   nil?
+
+     8.5: Location#let_in                  lib/game/location.rb:48
+     3.9:   name
+     3.8:   assignment
+     1.2:   branch
+     1.2:   send_to_all_except
+     1.2:   push
+     1.2:   exit_to
+
+     6.5: Location#initialize              lib/game/location.rb:6
+     6.0:   assignment
+     1.2:   initialize_items_container
+     1.2:   new
+
+     4.3: Location#send_to_all_except      lib/game/location.rb:26
+     1.4:   except
+     1.3:   assignment
+     1.3:   send_to_player
+     1.2:   branch
+     1.2:   each
+
+     3.3: Location#none
+     2.2:   include
+     1.1:   attr_reader
+
+     2.6: Location#description_for         lib/game/location.rb:32
+     1.4:   new
+     1.2:   display
+
+     2.4: Location#add_character           lib/game/location.rb:17
+     1.2:   <<
+     1.2:   move_to
+
+     1.2: Location#exit_to                 lib/game/location.rb:36
+     1.2:   find_by_destination
+
+     1.2: Location#add_exit                lib/game/location.rb:13
+     1.2:   add
+
+     1.2: Location#remove_character        lib/game/location.rb:22
+     1.2:   delete
+

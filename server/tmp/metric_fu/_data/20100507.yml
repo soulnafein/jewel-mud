@@ -1,0 +1,3871 @@
+--- 
+:saikuro: 
+  :methods: 
+  - :complexity: 6
+    :lines: 14
+    :name: TelnetFilter#handle_options
+  - :complexity: 5
+    :lines: 11
+    :name: World#print_memstat
+  - :complexity: 5
+    :lines: 11
+    :name: World#print_memstat
+  - :complexity: 4
+    :lines: 11
+    :name: EventManager#process_events
+  - :complexity: 4
+    :lines: 10
+    :name: Exits#get_list_of_names
+  - :complexity: 4
+    :lines: 10
+    :name: Exits#get_list_of_names
+  - :complexity: 4
+    :lines: 11
+    :name: Location#on_leave
+  - :complexity: 4
+    :lines: 14
+    :name: Game#run
+  - :complexity: 3
+    :lines: 13
+    :name: Location#on_enter
+  - :complexity: 3
+    :lines: 14
+    :name: AuthenticationProcess#ask_description
+  - :complexity: 3
+    :lines: 7
+    :name: AuthenticationProcess#initialize
+  - :complexity: 3
+    :lines: 14
+    :name: AuthenticationProcess#ask_description
+  - :complexity: 3
+    :lines: 4
+    :name: Location#entity_by_name
+  - :complexity: 3
+    :lines: 7
+    :name: AuthenticationProcess#initialize
+  - :complexity: 2
+    :lines: 12
+    :name: SightHandler#handle_look
+  - :complexity: 2
+    :lines: 2
+    :name: Enumerable#except
+  - :complexity: 2
+    :lines: 9
+    :name: Location#let_in
+  - :complexity: 2
+    :lines: 6
+    :name: Location#let_go
+  - :complexity: 2
+    :lines: 12
+    :name: AuthenticationProcess#login
+  - :complexity: 2
+    :lines: 11
+    :name: Location#description_for
+  - :complexity: 2
+    :lines: 6
+    :name: InputProcessor#process_character_commands
+  - :complexity: 2
+    :lines: 2
+    :name: Exits#find_by_name
+  - :complexity: 2
+    :lines: 2
+    :name: Exits#find_by_destination
+  - :complexity: 2
+    :lines: 4
+    :name: EmotesHandler#initialize
+  - :complexity: 2
+    :lines: 6
+    :name: Event#==
+  - :complexity: 2
+    :lines: 5
+    :name: Location#get_entity_description
+  - :complexity: 2
+    :lines: 4
+    :name: Location#send_to_all_except
+  - :complexity: 2
+    :lines: 4
+    :name: CommunicationHandler#initialize
+  - :complexity: 2
+    :lines: 12
+    :name: AuthenticationProcess#login
+  - :complexity: 2
+    :lines: 4
+    :name: SightHandler#initialize
+  - :complexity: 2
+    :lines: 6
+    :name: TelnetSession#replace_color_tags
+  - :complexity: 2
+    :lines: 2
+    :name: World#get_character_by_name_and_password
+  - :complexity: 2
+    :lines: 4
+    :name: World#persist_world
+  - :complexity: 2
+    :lines: 5
+    :name: Location#send_target_description
+  - :complexity: 2
+    :lines: 2
+    :name: Exits#find_by_name
+  - :complexity: 2
+    :lines: 2
+    :name: Exits#find_by_destination
+  - :complexity: 2
+    :lines: 11
+    :name: Location#send_room_description
+  - :complexity: 2
+    :lines: 5
+    :name: Location#on_emote
+  - :complexity: 2
+    :lines: 2
+    :name: World#get_character_by_name_and_password
+  - :complexity: 2
+    :lines: 4
+    :name: World#persist_world
+  - :complexity: 2
+    :lines: 10
+    :name: MovementHandler#handle_leave
+  - :complexity: 2
+    :lines: 14
+    :name: MovementHandler#handle_enter
+  - :complexity: 2
+    :lines: 5
+    :name: MovementHandler#initialize
+  - :complexity: 2
+    :lines: 8
+    :name: Character#look
+  - :complexity: 2
+    :lines: 6
+    :name: Character#go
+  - :complexity: 2
+    :lines: 5
+    :name: Location#on_talk
+  - :complexity: 2
+    :lines: 4
+    :name: EventManager#add_event
+  - :complexity: 2
+    :lines: 4
+    :name: CommandManager#process_commands
+  - :complexity: 2
+    :lines: 4
+    :name: CommandManager#get_command
+  - :complexity: 2
+    :lines: 4
+    :name: CommandManager#add_command
+  - :complexity: 2
+    :lines: 4
+    :name: EventManager#get_event
+  - :complexity: 2
+    :lines: 4
+    :name: TelnetSession#adjust_backspace
+  - :complexity: 2
+    :lines: 9
+    :name: Location#on_look
+  - :complexity: 2
+    :lines: 3
+    :name: TelnetSession#replace_color_tags
+  - :complexity: 2
+    :lines: 6
+    :name: EventManager#subscribe
+  - :complexity: 2
+    :lines: 5
+    :name: CommandFactory#parse
+  - :complexity: 2
+    :lines: 5
+    :name: CommandFactory#get_command_by_name
+  - :complexity: 2
+    :lines: 6
+    :name: CommandFactory#parse_through_alias_matcher
+  - :complexity: 1
+    :lines: 2
+    :name: Character#on_show
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetSession#initialize
+  - :complexity: 1
+    :lines: 5
+    :name: TelnetSession#read
+  - :complexity: 1
+    :lines: 2
+    :name: CommandFactory#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetSession#write
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetSession#adjust_new_lines
+  - :complexity: 1
+    :lines: 3
+    :name: CommandManager#initialize
+  - :complexity: 1
+    :lines: 10
+    :name: Game#initialize
+  - :complexity: 1
+    :lines: 4
+    :name: EventManager#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: Character#get
+  - :complexity: 1
+    :lines: 4
+    :name: Character#say
+  - :complexity: 1
+    :lines: 12
+    :name: Game#enter_game
+  - :complexity: 1
+    :lines: 4
+    :name: Character#emote
+  - :complexity: 1
+    :lines: 2
+    :name: Game#shutdown
+  - :complexity: 1
+    :lines: 2
+    :name: Character#to_yaml_properties
+  - :complexity: 1
+    :lines: 2
+    :name: Character#bind_session
+  - :complexity: 1
+    :lines: 2
+    :name: Character#move_to
+  - :complexity: 1
+    :lines: 2
+    :name: Character#send_to_player
+  - :complexity: 1
+    :lines: 4
+    :name: Character#initialize
+  - :complexity: 1
+    :lines: 3
+    :name: World#load_world
+  - :complexity: 1
+    :lines: 2
+    :name: Character#initialize
+  - :complexity: 1
+    :lines: 5
+    :name: World#create_new_character
+  - :complexity: 1
+    :lines: 2
+    :name: Character#notification
+  - :complexity: 1
+    :lines: 2
+    :name: Character#move_to
+  - :complexity: 1
+    :lines: 5
+    :name: World#initialize
+  - :complexity: 1
+    :lines: 3
+    :name: Exits#description_for_multiple_exits
+  - :complexity: 1
+    :lines: 2
+    :name: Exits#description_for_single_exit
+  - :complexity: 1
+    :lines: 4
+    :name: CommandFactory#split_input
+  - :complexity: 1
+    :lines: 2
+    :name: Exits#add
+  - :complexity: 1
+    :lines: 2
+    :name: Character#bind_session
+  - :complexity: 1
+    :lines: 2
+    :name: Character#to_yaml_properties
+  - :complexity: 1
+    :lines: 2
+    :name: Exits#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetFilter#there_is_a_iac_in
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetSession#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetFilter#remove_bare_nuls
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetFilter#remove_bare_carriage_returns
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetFilter#remove_bare_line_feeds
+  - :complexity: 1
+    :lines: 5
+    :name: TelnetFilter#filter_input
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetFilter#initialize
+  - :complexity: 1
+    :lines: 3
+    :name: World#load_world
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetSession#read
+  - :complexity: 1
+    :lines: 5
+    :name: World#create_new_character
+  - :complexity: 1
+    :lines: 2
+    :name: TelnetSession#write
+  - :complexity: 1
+    :lines: 7
+    :name: CommunicationHandler#handle_talk
+  - :complexity: 1
+    :lines: 5
+    :name: World#initialize
+  - :complexity: 1
+    :lines: 3
+    :name: Exits#description_for_multiple_exits
+  - :complexity: 1
+    :lines: 2
+    :name: Exits#description_for_single_exit
+  - :complexity: 1
+    :lines: 2
+    :name: Event#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: Exits#add
+  - :complexity: 1
+    :lines: 7
+    :name: EmotesHandler#handle_emote
+  - :complexity: 1
+    :lines: 2
+    :name: InputProcessor#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: Exits#initialize
+  - :complexity: 1
+    :lines: 3
+    :name: ShutdownCommand#initialize
+  - :complexity: 1
+    :lines: 3
+    :name: AuthenticationProcess#ask_new_password
+  - :complexity: 1
+    :lines: 2
+    :name: AuthenticationProcess#visualize_welcome_message
+  - :complexity: 1
+    :lines: 3
+    :name: AuthenticationProcess#ask_name
+  - :complexity: 1
+    :lines: 2
+    :name: ShutdownCommand#execute
+  - :complexity: 1
+    :lines: 7
+    :name: AuthenticationProcess#create_new_character
+  - :complexity: 1
+    :lines: 6
+    :name: AuthenticationProcess#execute
+  - :complexity: 1
+    :lines: 3
+    :name: LookCommand#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: LookCommand#execute
+  - :complexity: 1
+    :lines: 3
+    :name: AuthenticationProcess#ask_new_password
+  - :complexity: 1
+    :lines: 2
+    :name: AuthenticationProcess#visualize_welcome_message
+  - :complexity: 1
+    :lines: 3
+    :name: AuthenticationProcess#ask_name
+  - :complexity: 1
+    :lines: 3
+    :name: Exit#initialize
+  - :complexity: 1
+    :lines: 7
+    :name: AuthenticationProcess#create_new_character
+  - :complexity: 1
+    :lines: 6
+    :name: AuthenticationProcess#execute
+  - :complexity: 1
+    :lines: 4
+    :name: Exit#let_go
+  - :complexity: 1
+    :lines: 3
+    :name: EmoteCommand#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: EmoteCommand#execute
+  - :complexity: 1
+    :lines: 3
+    :name: SayCommand#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: Location#exit_to
+  - :complexity: 1
+    :lines: 3
+    :name: SayCommand#execute
+  - :complexity: 1
+    :lines: 2
+    :name: NoCommandFound#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: NoCommandFound#execute
+  - :complexity: 1
+    :lines: 2
+    :name: Location#remove_character
+  - :complexity: 1
+    :lines: 3
+    :name: Location#add_character
+  - :complexity: 1
+    :lines: 2
+    :name: Location#add_exit
+  - :complexity: 1
+    :lines: 4
+    :name: Location#initialize
+  - :complexity: 1
+    :lines: 3
+    :name: GetCommand#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: GetCommand#execute
+  - :complexity: 1
+    :lines: 3
+    :name: GoCommand#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: GoCommand#execute
+  - :complexity: 1
+    :lines: 2
+    :name: Exit#initialize
+  - :complexity: 1
+    :lines: 2
+    :name: Item#initialize
+  - :complexity: 1
+    :lines: 1
+    :name: DoNothing#execute
+  - :complexity: 1
+    :lines: 2
+    :name: Location#remove_character
+  - :complexity: 1
+    :lines: 3
+    :name: Location#add_character
+  - :complexity: 1
+    :lines: 2
+    :name: Location#add_exit
+  - :complexity: 1
+    :lines: 4
+    :name: Location#initialize
+  :classes: 
+  - :complexity: 21
+    :lines: 96
+    :defs: 
+    - :complexity: 1
+      :lines: 4
+      :name: Location#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: Location#add_exit
+    - :complexity: 1
+      :lines: 3
+      :name: Location#add_character
+    - :complexity: 1
+      :lines: 2
+      :name: Location#remove_character
+    - :complexity: 2
+      :lines: 9
+      :name: Location#on_look
+    - :complexity: 2
+      :lines: 5
+      :name: Location#on_talk
+    - :complexity: 2
+      :lines: 5
+      :name: Location#on_emote
+    - :complexity: 4
+      :lines: 11
+      :name: Location#on_leave
+    - :complexity: 3
+      :lines: 13
+      :name: Location#on_enter
+    - :complexity: 2
+      :lines: 11
+      :name: Location#send_room_description
+    - :complexity: 2
+      :lines: 5
+      :name: Location#send_target_description
+    :name: Location
+  - :complexity: 18
+    :lines: 78
+    :defs: 
+    - :complexity: 1
+      :lines: 4
+      :name: Location#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: Location#add_exit
+    - :complexity: 1
+      :lines: 3
+      :name: Location#add_character
+    - :complexity: 1
+      :lines: 2
+      :name: Location#remove_character
+    - :complexity: 2
+      :lines: 4
+      :name: Location#send_to_all_except
+    - :complexity: 2
+      :lines: 5
+      :name: Location#get_entity_description
+    - :complexity: 2
+      :lines: 11
+      :name: Location#description_for
+    - :complexity: 1
+      :lines: 2
+      :name: Location#exit_to
+    - :complexity: 2
+      :lines: 6
+      :name: Location#let_go
+    - :complexity: 2
+      :lines: 9
+      :name: Location#let_in
+    - :complexity: 3
+      :lines: 4
+      :name: Location#entity_by_name
+    :name: Location
+  - :complexity: 13
+    :lines: 72
+    :defs: 
+    - :complexity: 3
+      :lines: 7
+      :name: AuthenticationProcess#initialize
+    - :complexity: 1
+      :lines: 6
+      :name: AuthenticationProcess#execute
+    - :complexity: 1
+      :lines: 7
+      :name: AuthenticationProcess#create_new_character
+    - :complexity: 2
+      :lines: 12
+      :name: AuthenticationProcess#login
+    - :complexity: 1
+      :lines: 3
+      :name: AuthenticationProcess#ask_name
+    - :complexity: 1
+      :lines: 2
+      :name: AuthenticationProcess#visualize_welcome_message
+    - :complexity: 1
+      :lines: 3
+      :name: AuthenticationProcess#ask_new_password
+    - :complexity: 3
+      :lines: 14
+      :name: AuthenticationProcess#ask_description
+    :name: AuthenticationProcess
+  - :complexity: 13
+    :lines: 72
+    :defs: 
+    - :complexity: 3
+      :lines: 7
+      :name: AuthenticationProcess#initialize
+    - :complexity: 1
+      :lines: 6
+      :name: AuthenticationProcess#execute
+    - :complexity: 1
+      :lines: 7
+      :name: AuthenticationProcess#create_new_character
+    - :complexity: 2
+      :lines: 12
+      :name: AuthenticationProcess#login
+    - :complexity: 1
+      :lines: 3
+      :name: AuthenticationProcess#ask_name
+    - :complexity: 1
+      :lines: 2
+      :name: AuthenticationProcess#visualize_welcome_message
+    - :complexity: 1
+      :lines: 3
+      :name: AuthenticationProcess#ask_new_password
+    - :complexity: 3
+      :lines: 14
+      :name: AuthenticationProcess#ask_description
+    :name: AuthenticationProcess
+  - :complexity: 12
+    :lines: 59
+    :defs: 
+    - :complexity: 1
+      :lines: 4
+      :name: Character#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: Character#send_to_player
+    - :complexity: 1
+      :lines: 2
+      :name: Character#move_to
+    - :complexity: 1
+      :lines: 2
+      :name: Character#bind_session
+    - :complexity: 1
+      :lines: 2
+      :name: Character#to_yaml_properties
+    - :complexity: 2
+      :lines: 8
+      :name: Character#look
+    - :complexity: 1
+      :lines: 4
+      :name: Character#emote
+    - :complexity: 2
+      :lines: 6
+      :name: Character#go
+    - :complexity: 1
+      :lines: 4
+      :name: Character#say
+    - :complexity: 1
+      :lines: 2
+      :name: Character#get
+    :name: Character
+  - :complexity: 12
+    :lines: 44
+    :defs: 
+    - :complexity: 1
+      :lines: 5
+      :name: World#initialize
+    - :complexity: 5
+      :lines: 11
+      :name: World#print_memstat
+    - :complexity: 2
+      :lines: 2
+      :name: World#get_character_by_name_and_password
+    - :complexity: 1
+      :lines: 5
+      :name: World#create_new_character
+    - :complexity: 2
+      :lines: 4
+      :name: World#persist_world
+    - :complexity: 1
+      :lines: 3
+      :name: World#load_world
+    :name: World
+  - :complexity: 12
+    :lines: 50
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetFilter#initialize
+    - :complexity: 1
+      :lines: 5
+      :name: TelnetFilter#filter_input
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetFilter#remove_bare_line_feeds
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetFilter#remove_bare_carriage_returns
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetFilter#remove_bare_nuls
+    - :complexity: 6
+      :lines: 14
+      :name: TelnetFilter#handle_options
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetFilter#there_is_a_iac_in
+    :name: TelnetFilter
+  - :complexity: 12
+    :lines: 37
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: Exits#initialize
+    - :complexity: 2
+      :lines: 2
+      :name: Exits#find_by_name
+    - :complexity: 2
+      :lines: 2
+      :name: Exits#find_by_destination
+    - :complexity: 1
+      :lines: 2
+      :name: Exits#add
+    - :complexity: 4
+      :lines: 10
+      :name: Exits#get_list_of_names
+    - :complexity: 1
+      :lines: 2
+      :name: Exits#description_for_single_exit
+    - :complexity: 1
+      :lines: 3
+      :name: Exits#description_for_multiple_exits
+    :name: Exits
+  - :complexity: 12
+    :lines: 44
+    :defs: 
+    - :complexity: 1
+      :lines: 5
+      :name: World#initialize
+    - :complexity: 5
+      :lines: 11
+      :name: World#print_memstat
+    - :complexity: 2
+      :lines: 2
+      :name: World#get_character_by_name_and_password
+    - :complexity: 1
+      :lines: 5
+      :name: World#create_new_character
+    - :complexity: 2
+      :lines: 4
+      :name: World#persist_world
+    - :complexity: 1
+      :lines: 3
+      :name: World#load_world
+    :name: World
+  - :complexity: 12
+    :lines: 37
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: Exits#initialize
+    - :complexity: 2
+      :lines: 2
+      :name: Exits#find_by_name
+    - :complexity: 2
+      :lines: 2
+      :name: Exits#find_by_destination
+    - :complexity: 1
+      :lines: 2
+      :name: Exits#add
+    - :complexity: 4
+      :lines: 10
+      :name: Exits#get_list_of_names
+    - :complexity: 1
+      :lines: 2
+      :name: Exits#description_for_single_exit
+    - :complexity: 1
+      :lines: 3
+      :name: Exits#description_for_multiple_exits
+    :name: Exits
+  - :complexity: 11
+    :lines: 39
+    :defs: 
+    - :complexity: 1
+      :lines: 4
+      :name: EventManager#initialize
+    - :complexity: 2
+      :lines: 4
+      :name: EventManager#add_event
+    - :complexity: 2
+      :lines: 4
+      :name: EventManager#get_event
+    - :complexity: 4
+      :lines: 11
+      :name: EventManager#process_events
+    - :complexity: 2
+      :lines: 6
+      :name: EventManager#subscribe
+    :name: EventManager
+  - :complexity: 8
+    :lines: 35
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: CommandFactory#initialize
+    - :complexity: 2
+      :lines: 5
+      :name: CommandFactory#parse
+    - :complexity: 2
+      :lines: 5
+      :name: CommandFactory#get_command_by_name
+    - :complexity: 1
+      :lines: 4
+      :name: CommandFactory#split_input
+    - :complexity: 2
+      :lines: 6
+      :name: CommandFactory#parse_through_alias_matcher
+    :name: CommandFactory
+  - :complexity: 8
+    :lines: 39
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetSession#initialize
+    - :complexity: 1
+      :lines: 5
+      :name: TelnetSession#read
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetSession#write
+    - :complexity: 2
+      :lines: 3
+      :name: TelnetSession#replace_color_tags
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetSession#adjust_new_lines
+    - :complexity: 2
+      :lines: 4
+      :name: TelnetSession#adjust_backspace
+    :name: TelnetSession
+  - :complexity: 7
+    :lines: 24
+    :defs: 
+    - :complexity: 1
+      :lines: 3
+      :name: CommandManager#initialize
+    - :complexity: 2
+      :lines: 4
+      :name: CommandManager#add_command
+    - :complexity: 2
+      :lines: 4
+      :name: CommandManager#get_command
+    - :complexity: 2
+      :lines: 4
+      :name: CommandManager#process_commands
+    :name: CommandManager
+  - :complexity: 7
+    :lines: 50
+    :defs: 
+    - :complexity: 1
+      :lines: 10
+      :name: Game#initialize
+    - :complexity: 4
+      :lines: 14
+      :name: Game#run
+    - :complexity: 1
+      :lines: 12
+      :name: Game#enter_game
+    - :complexity: 1
+      :lines: 2
+      :name: Game#shutdown
+    :name: Game
+  - :complexity: 6
+    :lines: 35
+    :defs: 
+    - :complexity: 2
+      :lines: 5
+      :name: MovementHandler#initialize
+    - :complexity: 2
+      :lines: 14
+      :name: MovementHandler#handle_enter
+    - :complexity: 2
+      :lines: 10
+      :name: MovementHandler#handle_leave
+    :name: MovementHandler
+  - :complexity: 6
+    :lines: 26
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: Character#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: Character#notification
+    - :complexity: 1
+      :lines: 2
+      :name: Character#move_to
+    - :complexity: 1
+      :lines: 2
+      :name: Character#on_show
+    - :complexity: 1
+      :lines: 2
+      :name: Character#bind_session
+    - :complexity: 1
+      :lines: 2
+      :name: Character#to_yaml_properties
+    :name: Character
+  - :complexity: 5
+    :lines: 29
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetSession#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetSession#read
+    - :complexity: 1
+      :lines: 2
+      :name: TelnetSession#write
+    - :complexity: 2
+      :lines: 6
+      :name: TelnetSession#replace_color_tags
+    :name: TelnetSession
+  - :complexity: 4
+    :lines: 20
+    :defs: 
+    - :complexity: 2
+      :lines: 4
+      :name: SightHandler#initialize
+    - :complexity: 2
+      :lines: 12
+      :name: SightHandler#handle_look
+    :name: SightHandler
+  - :complexity: 3
+    :lines: 15
+    :defs: 
+    - :complexity: 2
+      :lines: 4
+      :name: CommunicationHandler#initialize
+    - :complexity: 1
+      :lines: 7
+      :name: CommunicationHandler#handle_talk
+    :name: CommunicationHandler
+  - :complexity: 3
+    :lines: 14
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: Event#initialize
+    - :complexity: 2
+      :lines: 6
+      :name: Event#==
+    :name: Event
+  - :complexity: 3
+    :lines: 15
+    :defs: 
+    - :complexity: 2
+      :lines: 4
+      :name: EmotesHandler#initialize
+    - :complexity: 1
+      :lines: 7
+      :name: EmotesHandler#handle_emote
+    :name: EmotesHandler
+  - :complexity: 3
+    :lines: 12
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: InputProcessor#initialize
+    - :complexity: 2
+      :lines: 6
+      :name: InputProcessor#process_character_commands
+    :name: InputProcessor
+  - :complexity: 2
+    :lines: 12
+    :defs: 
+    - :complexity: 1
+      :lines: 3
+      :name: SayCommand#initialize
+    - :complexity: 1
+      :lines: 3
+      :name: SayCommand#execute
+    :name: SayCommand
+  - :complexity: 2
+    :lines: 11
+    :defs: 
+    - :complexity: 1
+      :lines: 3
+      :name: LookCommand#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: LookCommand#execute
+    :name: LookCommand
+  - :complexity: 2
+    :lines: 4
+    :defs: 
+    - :complexity: 2
+      :lines: 2
+      :name: Enumerable#except
+    :name: Enumerable
+  - :complexity: 2
+    :lines: 13
+    :defs: 
+    - :complexity: 1
+      :lines: 3
+      :name: Exit#initialize
+    - :complexity: 1
+      :lines: 4
+      :name: Exit#let_go
+    :name: Exit
+  - :complexity: 2
+    :lines: 11
+    :defs: 
+    - :complexity: 1
+      :lines: 3
+      :name: EmoteCommand#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: EmoteCommand#execute
+    :name: EmoteCommand
+  - :complexity: 2
+    :lines: 11
+    :defs: 
+    - :complexity: 1
+      :lines: 3
+      :name: ShutdownCommand#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: ShutdownCommand#execute
+    :name: ShutdownCommand
+  - :complexity: 2
+    :lines: 8
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: NoCommandFound#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: NoCommandFound#execute
+    :name: NoCommandFound
+  - :complexity: 2
+    :lines: 11
+    :defs: 
+    - :complexity: 1
+      :lines: 3
+      :name: GoCommand#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: GoCommand#execute
+    :name: GoCommand
+  - :complexity: 2
+    :lines: 11
+    :defs: 
+    - :complexity: 1
+      :lines: 3
+      :name: GetCommand#initialize
+    - :complexity: 1
+      :lines: 2
+      :name: GetCommand#execute
+    :name: GetCommand
+  - :complexity: 1
+    :lines: 6
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: Exit#initialize
+    :name: Exit
+  - :complexity: 1
+    :lines: 4
+    :defs: 
+    - :complexity: 1
+      :lines: 2
+      :name: Item#initialize
+    :name: Item
+  - :complexity: 1
+    :lines: 3
+    :defs: 
+    - :complexity: 1
+      :lines: 1
+      :name: DoNothing#execute
+    :name: DoNothing
+  - :complexity: 0
+    :lines: 1
+    :name: ExitNotAvailable
+  - :complexity: 0
+    :lines: 12
+    :name: TelnetCodes
+  - :complexity: 0
+    :lines: 1
+    :name: ExitNotAvailable
+  :files: 
+  - :classes: 
+    - :complexity: 21
+      :methods: 
+      - :complexity: 4
+        :lines: 11
+        :name: Location#on_leave
+      - :complexity: 3
+        :lines: 13
+        :name: Location#on_enter
+      - :complexity: 2
+        :lines: 5
+        :name: Location#send_target_description
+      - :complexity: 2
+        :lines: 11
+        :name: Location#send_room_description
+      - :complexity: 2
+        :lines: 5
+        :name: Location#on_emote
+      - :complexity: 2
+        :lines: 9
+        :name: Location#on_look
+      - :complexity: 2
+        :lines: 5
+        :name: Location#on_talk
+      - :complexity: 1
+        :lines: 2
+        :name: Location#remove_character
+      - :complexity: 1
+        :lines: 3
+        :name: Location#add_character
+      - :complexity: 1
+        :lines: 2
+        :name: Location#add_exit
+      - :complexity: 1
+        :lines: 4
+        :name: Location#initialize
+      :lines: 96
+      :class_name: Location
+    :filename: location.rb
+  - :classes: 
+    - :complexity: 18
+      :methods: 
+      - :complexity: 3
+        :lines: 4
+        :name: Location#entity_by_name
+      - :complexity: 2
+        :lines: 5
+        :name: Location#get_entity_description
+      - :complexity: 2
+        :lines: 6
+        :name: Location#let_go
+      - :complexity: 2
+        :lines: 9
+        :name: Location#let_in
+      - :complexity: 2
+        :lines: 11
+        :name: Location#description_for
+      - :complexity: 2
+        :lines: 4
+        :name: Location#send_to_all_except
+      - :complexity: 1
+        :lines: 2
+        :name: Location#exit_to
+      - :complexity: 1
+        :lines: 2
+        :name: Location#remove_character
+      - :complexity: 1
+        :lines: 3
+        :name: Location#add_character
+      - :complexity: 1
+        :lines: 2
+        :name: Location#add_exit
+      - :complexity: 1
+        :lines: 4
+        :name: Location#initialize
+      :lines: 78
+      :class_name: Location
+    :filename: location.rb
+  - :classes: 
+    - :complexity: 13
+      :methods: 
+      - :complexity: 3
+        :lines: 14
+        :name: AuthenticationProcess#ask_description
+      - :complexity: 3
+        :lines: 7
+        :name: AuthenticationProcess#initialize
+      - :complexity: 2
+        :lines: 12
+        :name: AuthenticationProcess#login
+      - :complexity: 1
+        :lines: 2
+        :name: AuthenticationProcess#visualize_welcome_message
+      - :complexity: 1
+        :lines: 3
+        :name: AuthenticationProcess#ask_new_password
+      - :complexity: 1
+        :lines: 7
+        :name: AuthenticationProcess#create_new_character
+      - :complexity: 1
+        :lines: 6
+        :name: AuthenticationProcess#execute
+      - :complexity: 1
+        :lines: 3
+        :name: AuthenticationProcess#ask_name
+      :lines: 72
+      :class_name: AuthenticationProcess
+    :filename: authentication_process.rb
+  - :classes: 
+    - :complexity: 13
+      :methods: 
+      - :complexity: 3
+        :lines: 14
+        :name: AuthenticationProcess#ask_description
+      - :complexity: 3
+        :lines: 7
+        :name: AuthenticationProcess#initialize
+      - :complexity: 2
+        :lines: 12
+        :name: AuthenticationProcess#login
+      - :complexity: 1
+        :lines: 2
+        :name: AuthenticationProcess#visualize_welcome_message
+      - :complexity: 1
+        :lines: 3
+        :name: AuthenticationProcess#ask_new_password
+      - :complexity: 1
+        :lines: 7
+        :name: AuthenticationProcess#create_new_character
+      - :complexity: 1
+        :lines: 6
+        :name: AuthenticationProcess#execute
+      - :complexity: 1
+        :lines: 3
+        :name: AuthenticationProcess#ask_name
+      :lines: 72
+      :class_name: AuthenticationProcess
+    :filename: authentication_process.rb
+  - :classes: 
+    - :complexity: 12
+      :methods: 
+      - :complexity: 4
+        :lines: 10
+        :name: Exits#get_list_of_names
+      - :complexity: 2
+        :lines: 2
+        :name: Exits#find_by_destination
+      - :complexity: 2
+        :lines: 2
+        :name: Exits#find_by_name
+      - :complexity: 1
+        :lines: 2
+        :name: Exits#add
+      - :complexity: 1
+        :lines: 2
+        :name: Exits#description_for_single_exit
+      - :complexity: 1
+        :lines: 3
+        :name: Exits#description_for_multiple_exits
+      - :complexity: 1
+        :lines: 2
+        :name: Exits#initialize
+      :lines: 37
+      :class_name: Exits
+    :filename: exits.rb
+  - :classes: 
+    - :complexity: 12
+      :methods: 
+      - :complexity: 5
+        :lines: 11
+        :name: World#print_memstat
+      - :complexity: 2
+        :lines: 4
+        :name: World#persist_world
+      - :complexity: 2
+        :lines: 2
+        :name: World#get_character_by_name_and_password
+      - :complexity: 1
+        :lines: 5
+        :name: World#create_new_character
+      - :complexity: 1
+        :lines: 3
+        :name: World#load_world
+      - :complexity: 1
+        :lines: 5
+        :name: World#initialize
+      :lines: 44
+      :class_name: World
+    :filename: world.rb
+  - :classes: 
+    - :complexity: 12
+      :methods: 
+      - :complexity: 6
+        :lines: 14
+        :name: TelnetFilter#handle_options
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetFilter#remove_bare_carriage_returns
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetFilter#remove_bare_nuls
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetFilter#there_is_a_iac_in
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetFilter#remove_bare_line_feeds
+      - :complexity: 1
+        :lines: 5
+        :name: TelnetFilter#filter_input
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetFilter#initialize
+      :lines: 50
+      :class_name: TelnetFilter
+    :filename: telnet_filter.rb
+  - :classes: 
+    - :complexity: 12
+      :methods: 
+      - :complexity: 4
+        :lines: 10
+        :name: Exits#get_list_of_names
+      - :complexity: 2
+        :lines: 2
+        :name: Exits#find_by_destination
+      - :complexity: 2
+        :lines: 2
+        :name: Exits#find_by_name
+      - :complexity: 1
+        :lines: 2
+        :name: Exits#add
+      - :complexity: 1
+        :lines: 2
+        :name: Exits#description_for_single_exit
+      - :complexity: 1
+        :lines: 3
+        :name: Exits#description_for_multiple_exits
+      - :complexity: 1
+        :lines: 2
+        :name: Exits#initialize
+      :lines: 37
+      :class_name: Exits
+    :filename: exits.rb
+  - :classes: 
+    - :complexity: 12
+      :methods: 
+      - :complexity: 5
+        :lines: 11
+        :name: World#print_memstat
+      - :complexity: 2
+        :lines: 4
+        :name: World#persist_world
+      - :complexity: 2
+        :lines: 2
+        :name: World#get_character_by_name_and_password
+      - :complexity: 1
+        :lines: 5
+        :name: World#create_new_character
+      - :complexity: 1
+        :lines: 3
+        :name: World#load_world
+      - :complexity: 1
+        :lines: 5
+        :name: World#initialize
+      :lines: 44
+      :class_name: World
+    :filename: world.rb
+  - :classes: 
+    - :complexity: 12
+      :methods: 
+      - :complexity: 2
+        :lines: 8
+        :name: Character#look
+      - :complexity: 2
+        :lines: 6
+        :name: Character#go
+      - :complexity: 1
+        :lines: 2
+        :name: Character#get
+      - :complexity: 1
+        :lines: 4
+        :name: Character#emote
+      - :complexity: 1
+        :lines: 4
+        :name: Character#say
+      - :complexity: 1
+        :lines: 2
+        :name: Character#to_yaml_properties
+      - :complexity: 1
+        :lines: 2
+        :name: Character#bind_session
+      - :complexity: 1
+        :lines: 2
+        :name: Character#move_to
+      - :complexity: 1
+        :lines: 2
+        :name: Character#send_to_player
+      - :complexity: 1
+        :lines: 4
+        :name: Character#initialize
+      :lines: 59
+      :class_name: Character
+    :filename: character.rb
+  - :classes: 
+    - :complexity: 11
+      :methods: 
+      - :complexity: 4
+        :lines: 11
+        :name: EventManager#process_events
+      - :complexity: 2
+        :lines: 6
+        :name: EventManager#subscribe
+      - :complexity: 2
+        :lines: 4
+        :name: EventManager#add_event
+      - :complexity: 2
+        :lines: 4
+        :name: EventManager#get_event
+      - :complexity: 1
+        :lines: 4
+        :name: EventManager#initialize
+      :lines: 39
+      :class_name: EventManager
+    :filename: event_manager.rb
+  - :classes: 
+    - :complexity: 8
+      :methods: 
+      - :complexity: 2
+        :lines: 6
+        :name: CommandFactory#parse_through_alias_matcher
+      - :complexity: 2
+        :lines: 5
+        :name: CommandFactory#parse
+      - :complexity: 2
+        :lines: 5
+        :name: CommandFactory#get_command_by_name
+      - :complexity: 1
+        :lines: 4
+        :name: CommandFactory#split_input
+      - :complexity: 1
+        :lines: 2
+        :name: CommandFactory#initialize
+      :lines: 35
+      :class_name: CommandFactory
+    :filename: command_factory.rb
+  - :classes: 
+    - :complexity: 8
+      :methods: 
+      - :complexity: 2
+        :lines: 4
+        :name: TelnetSession#adjust_backspace
+      - :complexity: 2
+        :lines: 3
+        :name: TelnetSession#replace_color_tags
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetSession#adjust_new_lines
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetSession#write
+      - :complexity: 1
+        :lines: 5
+        :name: TelnetSession#read
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetSession#initialize
+      :lines: 39
+      :class_name: TelnetSession
+    :filename: telnet_session.rb
+  - :classes: 
+    - :complexity: 7
+      :methods: 
+      - :complexity: 2
+        :lines: 4
+        :name: CommandManager#process_commands
+      - :complexity: 2
+        :lines: 4
+        :name: CommandManager#add_command
+      - :complexity: 2
+        :lines: 4
+        :name: CommandManager#get_command
+      - :complexity: 1
+        :lines: 3
+        :name: CommandManager#initialize
+      :lines: 24
+      :class_name: CommandManager
+    :filename: command_manager.rb
+  - :classes: 
+    - :complexity: 7
+      :methods: 
+      - :complexity: 4
+        :lines: 14
+        :name: Game#run
+      - :complexity: 1
+        :lines: 12
+        :name: Game#enter_game
+      - :complexity: 1
+        :lines: 2
+        :name: Game#shutdown
+      - :complexity: 1
+        :lines: 10
+        :name: Game#initialize
+      :lines: 50
+      :class_name: Game
+    :filename: game.rb
+  - :classes: 
+    - :complexity: 6
+      :methods: 
+      - :complexity: 2
+        :lines: 10
+        :name: MovementHandler#handle_leave
+      - :complexity: 2
+        :lines: 14
+        :name: MovementHandler#handle_enter
+      - :complexity: 2
+        :lines: 5
+        :name: MovementHandler#initialize
+      :lines: 35
+      :class_name: MovementHandler
+    :filename: movement_handler.rb
+  - :classes: 
+    - :complexity: 6
+      :methods: 
+      - :complexity: 1
+        :lines: 2
+        :name: Character#to_yaml_properties
+      - :complexity: 1
+        :lines: 2
+        :name: Character#bind_session
+      - :complexity: 1
+        :lines: 2
+        :name: Character#on_show
+      - :complexity: 1
+        :lines: 2
+        :name: Character#move_to
+      - :complexity: 1
+        :lines: 2
+        :name: Character#notification
+      - :complexity: 1
+        :lines: 2
+        :name: Character#initialize
+      :lines: 26
+      :class_name: Character
+    :filename: player.rb
+  - :classes: 
+    - :complexity: 5
+      :methods: 
+      - :complexity: 2
+        :lines: 6
+        :name: TelnetSession#replace_color_tags
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetSession#write
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetSession#read
+      - :complexity: 1
+        :lines: 2
+        :name: TelnetSession#initialize
+      :lines: 29
+      :class_name: TelnetSession
+    :filename: telnet_session.rb
+  - :classes: 
+    - :complexity: 4
+      :methods: 
+      - :complexity: 2
+        :lines: 12
+        :name: SightHandler#handle_look
+      - :complexity: 2
+        :lines: 4
+        :name: SightHandler#initialize
+      :lines: 20
+      :class_name: SightHandler
+    :filename: sight_handler.rb
+  - :classes: 
+    - :complexity: 3
+      :methods: 
+      - :complexity: 2
+        :lines: 4
+        :name: CommunicationHandler#initialize
+      - :complexity: 1
+        :lines: 7
+        :name: CommunicationHandler#handle_talk
+      :lines: 15
+      :class_name: CommunicationHandler
+    :filename: communication_handler.rb
+  - :classes: 
+    - :complexity: 3
+      :methods: 
+      - :complexity: 2
+        :lines: 6
+        :name: Event#==
+      - :complexity: 1
+        :lines: 2
+        :name: Event#initialize
+      :lines: 14
+      :class_name: Event
+    :filename: event.rb
+  - :classes: 
+    - :complexity: 3
+      :methods: 
+      - :complexity: 2
+        :lines: 4
+        :name: EmotesHandler#initialize
+      - :complexity: 1
+        :lines: 7
+        :name: EmotesHandler#handle_emote
+      :lines: 15
+      :class_name: EmotesHandler
+    :filename: emotes_handler.rb
+  - :classes: 
+    - :complexity: 3
+      :methods: 
+      - :complexity: 2
+        :lines: 6
+        :name: InputProcessor#process_character_commands
+      - :complexity: 1
+        :lines: 2
+        :name: InputProcessor#initialize
+      :lines: 12
+      :class_name: InputProcessor
+    :filename: input_processor.rb
+  - :classes: 
+    - :complexity: 2
+      :methods: 
+      - :complexity: 1
+        :lines: 2
+        :name: ShutdownCommand#execute
+      - :complexity: 1
+        :lines: 3
+        :name: ShutdownCommand#initialize
+      :lines: 11
+      :class_name: ShutdownCommand
+    :filename: shutdown_command.rb
+  - :classes: 
+    - :complexity: 2
+      :methods: 
+      - :complexity: 1
+        :lines: 2
+        :name: LookCommand#execute
+      - :complexity: 1
+        :lines: 3
+        :name: LookCommand#initialize
+      :lines: 11
+      :class_name: LookCommand
+    :filename: look_command.rb
+  - :classes: 
+    - :complexity: 2
+      :methods: 
+      - :complexity: 2
+        :lines: 2
+        :name: Enumerable#except
+      :lines: 4
+      :class_name: Enumerable
+    :filename: enumerable.rb
+  - :classes: 
+    - :complexity: 2
+      :methods: 
+      - :complexity: 1
+        :lines: 4
+        :name: Exit#let_go
+      - :complexity: 1
+        :lines: 3
+        :name: Exit#initialize
+      :lines: 13
+      :class_name: Exit
+    :filename: exit.rb
+  - :classes: 
+    - :complexity: 2
+      :methods: 
+      - :complexity: 1
+        :lines: 2
+        :name: EmoteCommand#execute
+      - :complexity: 1
+        :lines: 3
+        :name: EmoteCommand#initialize
+      :lines: 11
+      :class_name: EmoteCommand
+    :filename: emote_command.rb
+  - :classes: 
+    - :complexity: 2
+      :methods: 
+      - :complexity: 1
+        :lines: 3
+        :name: SayCommand#execute
+      - :complexity: 1
+        :lines: 3
+        :name: SayCommand#initialize
+      :lines: 12
+      :class_name: SayCommand
+    :filename: say_command.rb
+  - :classes: 
+    - :complexity: 2
+      :methods: 
+      - :complexity: 1
+        :lines: 2
+        :name: NoCommandFound#execute
+      - :complexity: 1
+        :lines: 2
+        :name: NoCommandFound#initialize
+      :lines: 8
+      :class_name: NoCommandFound
+    :filename: no_command_found.rb
+  - :classes: 
+    - :complexity: 2
+      :methods: 
+      - :complexity: 1
+        :lines: 2
+        :name: GetCommand#execute
+      - :complexity: 1
+        :lines: 3
+        :name: GetCommand#initialize
+      :lines: 11
+      :class_name: GetCommand
+    :filename: get_command.rb
+  - :classes: 
+    - :complexity: 2
+      :methods: 
+      - :complexity: 1
+        :lines: 2
+        :name: GoCommand#execute
+      - :complexity: 1
+        :lines: 3
+        :name: GoCommand#initialize
+      :lines: 11
+      :class_name: GoCommand
+    :filename: go_command.rb
+  - :classes: 
+    - :complexity: 1
+      :methods: 
+      - :complexity: 1
+        :lines: 2
+        :name: Exit#initialize
+      :lines: 6
+      :class_name: Exit
+    :filename: exit.rb
+  - :classes: 
+    - :complexity: 1
+      :methods: 
+      - :complexity: 1
+        :lines: 2
+        :name: Item#initialize
+      :lines: 4
+      :class_name: Item
+    :filename: item.rb
+  - :classes: 
+    - :complexity: 1
+      :methods: 
+      - :complexity: 1
+        :lines: 1
+        :name: DoNothing#execute
+      :lines: 3
+      :class_name: DoNothing
+    :filename: do_nothing.rb
+  - :classes: 
+    - :complexity: 0
+      :methods: []
+
+      :lines: 1
+      :class_name: ExitNotAvailable
+    :filename: exit_not_available.rb
+  - :classes: 
+    - :complexity: 0
+      :methods: []
+
+      :lines: 12
+      :class_name: TelnetCodes
+    :filename: telnet_codes.rb
+  - :classes: 
+    - :complexity: 0
+      :methods: []
+
+      :lines: 1
+      :class_name: ExitNotAvailable
+    :filename: exit_not_available.rb
+:churn: 
+  :changes: 
+  - :times_changed: 13
+    :file_path: lib/game.rb
+  - :times_changed: 11
+    :file_path: lib/location.rb
+  - :times_changed: 11
+    :file_path: lib/game/location.rb
+  - :times_changed: 10
+    :file_path: lib/commands/go_command.rb
+  - :times_changed: 9
+    :file_path: spec/commands/go_command_spec.rb
+  - :times_changed: 9
+    :file_path: lib/game/character.rb
+  - :times_changed: 9
+    :file_path: spec/game/location_spec.rb
+  - :times_changed: 9
+    :file_path: lib/input_processor.rb
+  - :times_changed: 9
+    :file_path: lib/commands/say_command.rb
+  - :times_changed: 8
+    :file_path: spec/location_spec.rb
+  - :times_changed: 8
+    :file_path: lib/commands/look_command.rb
+  - :times_changed: 8
+    :file_path: spec/commands/look_command_spec.rb
+  - :times_changed: 8
+    :file_path: lib/commands/shutdown_command.rb
+  - :times_changed: 8
+    :file_path: spec/commands/say_command_spec.rb
+  - :times_changed: 7
+    :file_path: spec/authentication_process_spec.rb
+  - :times_changed: 7
+    :file_path: lib/commands/emote_command.rb
+  - :times_changed: 7
+    :file_path: lib/authentication_process.rb
+  - :times_changed: 7
+    :file_path: spec/commands/emote_command_spec.rb
+  - :times_changed: 7
+    :file_path: lib/world.rb
+  - :times_changed: 7
+    :file_path: lib/player.rb
+  - :times_changed: 6
+    :file_path: spec/commands/shutdown_command_spec.rb
+  - :times_changed: 5
+    :file_path: spec/game/perception/sight_handler_spec.rb
+  - :times_changed: 5
+    :file_path: bin/jewel_mud.rb
+  - :times_changed: 5
+    :file_path: jewel_mud.rb
+  - :times_changed: 5
+    :file_path: lib/event.rb
+  - :times_changed: 5
+    :file_path: spec/game/character_spec.rb
+  - :times_changed: 5
+    :file_path: db/characters.yaml
+  - :times_changed: 5
+    :file_path: spec/input_processor_spec.rb
+  - :times_changed: 5
+    :file_path: lib/exits.rb
+  - :times_changed: 5
+    :file_path: spec/spec_helper.rb
+:rcov: 
+  lib/game/world.rb: 
+    :percent_run: 75
+    :lines: 
+    - :content: "   class World"
+      :was_run: true
+    - :content: "     attr_reader :locations"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def initialize"
+      :was_run: true
+    - :content: "       @locations = []"
+      :was_run: true
+    - :content: "       @characters = []"
+      :was_run: true
+    - :content: "       load_world"
+      :was_run: true
+    - :content: "       print_memstat"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def print_memstat"
+      :was_run: true
+    - :content: "       locations = exits = characters = 0"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       ObjectSpace.each_object do |obj|"
+      :was_run: true
+    - :content: "         locations += 1 if obj.class == Location"
+      :was_run: true
+    - :content: "         exits += 1 if obj.class == Exit"
+      :was_run: true
+    - :content: "         characters += 1 if obj.class == Character"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       statistics = \"\"\""
+      :was_run: true
+    - :content: "         --------------------------"
+      :was_run: false
+    - :content: "                 STATISTICS"
+      :was_run: false
+    - :content: "         --------------------------"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "           Locations: #{locations}"
+      :was_run: false
+    - :content: "           Exits: #{exits}"
+      :was_run: false
+    - :content: "           Characters: #{characters}"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "         --------------------------"
+      :was_run: false
+    - :content: "       \"\"\""
+      :was_run: false
+    - :content: "       puts statistics"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def get_character_by_name_and_password(name, password)"
+      :was_run: true
+    - :content: "       @characters.find { |c| c.name == name and c.password == password }"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def create_new_character(name, session, password, description)"
+      :was_run: true
+    - :content: "       character = Character.new(name, session, password, description)"
+      :was_run: true
+    - :content: "       @characters.push(character)"
+      :was_run: true
+    - :content: "       persist_world"
+      :was_run: true
+    - :content: "       character"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def persist_world"
+      :was_run: true
+    - :content: "       File.open( 'db/characters.yaml', 'w' ) do |out|"
+      :was_run: false
+    - :content: "         YAML.dump(@characters, out )"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "     def load_world"
+      :was_run: true
+    - :content: "       @locations = YAML.load_file('db/dikuworld.yaml')"
+      :was_run: true
+    - :content: "       @characters = YAML.load_file('db/characters.yaml')"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/commands/shutdown_command.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class ShutdownCommand"
+      :was_run: true
+    - :content: "     attr_reader :args"
+      :was_run: true
+    - :content: "     "
+      :was_run: true
+    - :content: "     def initialize(character, *args)"
+      :was_run: true
+    - :content: "       @character = character"
+      :was_run: true
+    - :content: "       @args = args"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def execute"
+      :was_run: true
+    - :content: "       Game.instance.shutdown"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/game/character.rb: 
+    :percent_run: 97
+    :lines: 
+    - :content: "   class Character"
+      :was_run: true
+    - :content: "     attr_reader :name, :password, :location, :session, :description,"
+      :was_run: true
+    - :content: "                 :inventory"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def initialize(name, session=nil, password=nil, description=nil)"
+      :was_run: true
+    - :content: "       @name, @session, @password, @description ="
+      :was_run: true
+    - :content: "       name, session, password, description"
+      :was_run: true
+    - :content: "       @inventory = []"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def send_to_player(msg)"
+      :was_run: true
+    - :content: "       @session.write msg"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def move_to(location)"
+      :was_run: true
+    - :content: "       @location = location"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def bind_session(session)"
+      :was_run: true
+    - :content: "       @session = session"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def to_yaml_properties"
+      :was_run: true
+    - :content: "       ['@name', '@password', '@description']"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "     def look(target=\"\")"
+      :was_run: true
+    - :content: "       if not target.empty?"
+      :was_run: true
+    - :content: "         description = @location.get_entity_description(target)"
+      :was_run: true
+    - :content: "       else"
+      :was_run: true
+    - :content: "         description = @location.description_for(self)"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       send_to_player(description)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def emote(emote_description)"
+      :was_run: true
+    - :content: "       emote_message = \"#{@name} #{emote_description}\""
+      :was_run: true
+    - :content: "       @session.write \"You emote: #{emote_message}\""
+      :was_run: true
+    - :content: "       @location.send_to_all_except(self, emote_message)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def go(direction)"
+      :was_run: true
+    - :content: "       begin"
+      :was_run: true
+    - :content: "         @location.let_go(self, direction)"
+      :was_run: true
+    - :content: "       rescue ExitNotAvailable"
+      :was_run: true
+    - :content: "         @session.write \"You can't go in that direction.\""
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def say(message)"
+      :was_run: true
+    - :content: "       send_to_player(\"You said: #{message}\")"
+      :was_run: true
+    - :content: "       notification = \"#{self.name} said: #{message}\""
+      :was_run: true
+    - :content: "       @location.send_to_all_except(self, notification)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def get(item_name)"
+      :was_run: true
+    - :content: "       @inventory.push @location.get_item(item_name)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/commands/emote_command.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class EmoteCommand"
+      :was_run: true
+    - :content: "     attr_reader :message"
+      :was_run: true
+    - :content: "     "
+      :was_run: true
+    - :content: "     def initialize(character, *args)"
+      :was_run: true
+    - :content: "       @character = character"
+      :was_run: true
+    - :content: "       @message = args.first"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def execute"
+      :was_run: true
+    - :content: "       @character.emote(@message)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/input_processor.rb: 
+    :percent_run: 46
+    :lines: 
+    - :content: "   class InputProcessor"
+      :was_run: true
+    - :content: "     def initialize(command_factory, command_manager)"
+      :was_run: true
+    - :content: "       @command_factory, @command_manager = command_factory, command_manager"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def process_character_commands(character)"
+      :was_run: true
+    - :content: "       loop do"
+      :was_run: false
+    - :content: "         input = character.session.read"
+      :was_run: false
+    - :content: "         cmd = @command_factory.parse(input, character)"
+      :was_run: false
+    - :content: "         @command_manager.add_command(cmd)"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+  lib/commands/look_command.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class LookCommand"
+      :was_run: true
+    - :content: "     attr_reader :target"
+      :was_run: true
+    - :content: "     "
+      :was_run: true
+    - :content: "     def initialize(character, target=nil)"
+      :was_run: true
+    - :content: "       @character = character"
+      :was_run: true
+    - :content: "       @target = target"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def execute"
+      :was_run: true
+    - :content: "       @character.look(@target)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/game/exit.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class Exit"
+      :was_run: true
+    - :content: "     attr_reader :name, :destination, :description, :location"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def initialize(name, destination, description=\"\", location=nil)"
+      :was_run: true
+    - :content: "       @name, @destination, @description, @location ="
+      :was_run: true
+    - :content: "               name, destination, description, location"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def let_go(character)"
+      :was_run: true
+    - :content: "       @destination.let_in(character, @location)"
+      :was_run: true
+    - :content: "       character.move_to(@destination)"
+      :was_run: true
+    - :content: "       character.look"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/protocol/telnet_filter.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class TelnetFilter"
+      :was_run: true
+    - :content: "     include TelnetCodes"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def initialize(socket)"
+      :was_run: true
+    - :content: "       @socket = socket"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def filter_input(input)"
+      :was_run: true
+    - :content: "       input = remove_bare_line_feeds input"
+      :was_run: true
+    - :content: "       input = remove_bare_carriage_returns input"
+      :was_run: true
+    - :content: "       input = remove_bare_nuls input"
+      :was_run: true
+    - :content: "       handle_options input"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     private"
+      :was_run: true
+    - :content: "     LF_NOT_PRECEDED_BY_CR = Regexp.new(\"(^|[^#{CR}])#{LF}\")"
+      :was_run: true
+    - :content: "     def remove_bare_line_feeds(input)"
+      :was_run: true
+    - :content: "       input.gsub(LF_NOT_PRECEDED_BY_CR, '\\1')"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     CR_FOLLOWED_BY_A_NUL = Regexp.new(\"#{CR}#{NUL}\")"
+      :was_run: true
+    - :content: "     def remove_bare_carriage_returns(input)"
+      :was_run: true
+    - :content: "       input.gsub(CR_FOLLOWED_BY_A_NUL, '')"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     JUST_A_NULL = Regexp.new(\"#{NUL}\")"
+      :was_run: true
+    - :content: "     def remove_bare_nuls(input)"
+      :was_run: true
+    - :content: "       input.gsub(JUST_A_NULL, '')"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def handle_options(input)"
+      :was_run: true
+    - :content: "       while there_is_a_iac_in input"
+      :was_run: true
+    - :content: "         if input.sub!(Regexp.new(\"(^|[^#{IAC}])#{IAC}[#{DO}#{DONT}](.)\"), '\\1')"
+      :was_run: true
+    - :content: "           @socket.print \"#{IAC+WONT}#{$2}\""
+      :was_run: true
+    - :content: "         elsif input.sub!(Regexp.new(\"(^|[^#{IAC}])#{IAC}[#{WILL}#{WONT}](.)\"), '\\1')"
+      :was_run: true
+    - :content: "           @socket.print \"#{IAC+DONT}#{$2}\""
+      :was_run: true
+    - :content: "         elsif input.sub!(Regexp.new(\"(^|[^#{IAC}])#{IAC}#{AYT}\"), \"\\\\1\")"
+      :was_run: true
+    - :content: "           @socket.puts \"JewelMUD is still here\""
+      :was_run: true
+    - :content: "         elsif input.sub!(Regexp.new(\"(^|[^#{IAC}])#{IAC}[^#{IAC}]\"), \"\\\\1\")"
+      :was_run: true
+    - :content: "         else"
+      :was_run: true
+    - :content: "           input.sub!(Regexp.new(\"[#{IAC}]\"), \"\")"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "       input"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def there_is_a_iac_in(input)"
+      :was_run: true
+    - :content: "       input.index(\"#{IAC}\")"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/commands/get_command.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class GetCommand"
+      :was_run: true
+    - :content: "     attr_reader :item"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def initialize(character, *args)"
+      :was_run: true
+    - :content: "       @character = character"
+      :was_run: true
+    - :content: "       @item = args.first"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def execute"
+      :was_run: true
+    - :content: "       @character.get(@item)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  :global_percent_run: 88.8
+  lib/game.rb: 
+    :percent_run: 43
+    :lines: 
+    - :content: "   class Game"
+      :was_run: true
+    - :content: "     include Singleton"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     attr_reader :world"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def initialize"
+      :was_run: true
+    - :content: "       @world = World.new"
+      :was_run: true
+    - :content: "       @command_manager = CommandManager.new"
+      :was_run: true
+    - :content: "       @command_factory = CommandFactory.new"
+      :was_run: true
+    - :content: "       @command_factory.aliases = {"
+      :was_run: true
+    - :content: "         \"s\" => \"go south\", \"n\" => \"go north\", \"w\" => \"go west\", \"e\" => \"go east\","
+      :was_run: true
+    - :content: "         \"u\" => \"go up\", \"d\" => \"go down\", \"l\" => \"look\""
+      :was_run: true
+    - :content: "       }"
+      :was_run: true
+    - :content: "       @input_processor = InputProcessor.new(@command_factory, @command_manager)"
+      :was_run: true
+    - :content: "       @shutdown_requested = false"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def run"
+      :was_run: true
+    - :content: "       Thread.abort_on_exception = true"
+      :was_run: false
+    - :content: "       Thread.new do"
+      :was_run: false
+    - :content: "         begin"
+      :was_run: false
+    - :content: "           until @shutdown_requested"
+      :was_run: false
+    - :content: "             @command_manager.process_commands"
+      :was_run: false
+    - :content: "           end"
+      :was_run: false
+    - :content: "         rescue Exception => e"
+      :was_run: false
+    - :content: "           puts e.message"
+      :was_run: false
+    - :content: "           puts e.backtrace.inspect"
+      :was_run: false
+    - :content: "         ensure"
+      :was_run: false
+    - :content: "           exit"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "     def enter_game(session)"
+      :was_run: true
+    - :content: "       authentication_process = AuthenticationProcess.new(session, @world)"
+      :was_run: false
+    - :content: "       character = authentication_process.execute"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "       ############# NOT THREAD SAFE ###############################"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "       first_location = @world.locations.first"
+      :was_run: false
+    - :content: "       character.move_to(first_location)"
+      :was_run: false
+    - :content: "       first_location.let_in(character, nil)"
+      :was_run: false
+    - :content: "       character.go(\"up\")"
+      :was_run: false
+    - :content: "       ##############################################################"
+      :was_run: false
+    - :content: "       @input_processor.process_character_commands(character)"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "     def shutdown"
+      :was_run: true
+    - :content: "       @shutdown_requested = true"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+  lib/command_manager.rb: 
+    :percent_run: 48
+    :lines: 
+    - :content: "   class CommandManager"
+      :was_run: true
+    - :content: "     def initialize()"
+      :was_run: true
+    - :content: "       @commands = []"
+      :was_run: true
+    - :content: "       @mutex = Mutex.new"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def add_command(command)"
+      :was_run: true
+    - :content: "       @mutex.synchronize do"
+      :was_run: false
+    - :content: "         @commands.push(command)"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "     def get_command"
+      :was_run: true
+    - :content: "       @mutex.synchronize do"
+      :was_run: true
+    - :content: "         @commands.shift"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "     def process_commands"
+      :was_run: true
+    - :content: "       command = get_command"
+      :was_run: false
+    - :content: "       return if command.nil?"
+      :was_run: false
+    - :content: "       command.execute"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+  lib/helpers/enumerable.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   module Enumerable"
+      :was_run: true
+    - :content: "     def except(item)"
+      :was_run: true
+    - :content: "       reject {|x| x == item }"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/game/item.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class Item"
+      :was_run: true
+    - :content: "     def initialize(name, description)"
+      :was_run: true
+    - :content: "       @name, @description = name, description"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/commands/go_command.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class GoCommand"
+      :was_run: true
+    - :content: "     attr_reader :exit"
+      :was_run: true
+    - :content: "     "
+      :was_run: true
+    - :content: "     def initialize(character, *args)"
+      :was_run: true
+    - :content: "       @character = character"
+      :was_run: true
+    - :content: "       @exit = args.first #TODO: Rename to direction"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def execute"
+      :was_run: true
+    - :content: "       @character.go(@exit)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/game/location.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class Location"
+      :was_run: true
+    - :content: "     attr_reader :title, :description, :characters, :uid"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def initialize(uid, title, description)"
+      :was_run: true
+    - :content: "       @uid, @title, @description = uid, title, description"
+      :was_run: true
+    - :content: "       @characters = []"
+      :was_run: true
+    - :content: "       @exits = Exits.new"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def add_exit(exit)"
+      :was_run: true
+    - :content: "       @exits.add(exit)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def add_character(character)"
+      :was_run: true
+    - :content: "       @characters << character"
+      :was_run: true
+    - :content: "       character.move_to(self)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def remove_character(character)"
+      :was_run: true
+    - :content: "       @characters.delete(character)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def send_to_all_except(excluded_character, notification)"
+      :was_run: true
+    - :content: "       @characters.except(excluded_character).each do |character|"
+      :was_run: true
+    - :content: "         character.send_to_player(notification)"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def get_entity_description(target)"
+      :was_run: true
+    - :content: "       entity = entity_by_name(target)"
+      :was_run: true
+    - :content: "       message = \"There isn't anything called '#{target}' here.\""
+      :was_run: true
+    - :content: "       message = entity.description if entity"
+      :was_run: true
+    - :content: "       message"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def description_for(observer)"
+      :was_run: true
+    - :content: "       output = \"You see:\\n\" +"
+      :was_run: true
+    - :content: "               \"[color=red]#{title}[/color]\\n\" +"
+      :was_run: true
+    - :content: "               \"#{description}\\n\"+"
+      :was_run: true
+    - :content: "               \"People:\\n\""
+      :was_run: true
+    - :content: "       other_characters = @characters.except(observer)"
+      :was_run: true
+    - :content: "       other_characters.each do |p|"
+      :was_run: true
+    - :content: "         output += \"#{p.name}\\n\""
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "       output += @exits.get_list_of_names"
+      :was_run: true
+    - :content: "       output"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def exit_to(destination)"
+      :was_run: true
+    - :content: "       @exits.find_by_destination(destination)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def let_go(character, direction)"
+      :was_run: true
+    - :content: "       exit = @exits.find_by_name(direction)"
+      :was_run: true
+    - :content: "       raise ExitNotAvailable if exit.nil?"
+      :was_run: true
+    - :content: "       exit.let_go(character)"
+      :was_run: true
+    - :content: "       remove_character(character)"
+      :was_run: true
+    - :content: "       send_to_all_except(character, \"#{character.name} leaves #{exit.name}\")"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def let_in(character, origin)"
+      :was_run: true
+    - :content: "       @characters.push(character)"
+      :was_run: true
+    - :content: "       exit_to_origin = exit_to(origin)"
+      :was_run: true
+    - :content: "       if exit_to_origin"
+      :was_run: true
+    - :content: "         notification = \"#{character.name} arrives walking from #{exit_to_origin.name}\""
+      :was_run: true
+    - :content: "       else"
+      :was_run: true
+    - :content: "         notification = \"#{character.name} appears out of thin air\""
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "       send_to_all_except(character, notification)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     private"
+      :was_run: true
+    - :content: "     def entity_by_name(name)"
+      :was_run: true
+    - :content: "       entity = @exits.find_by_name(name)"
+      :was_run: true
+    - :content: "       entity = @characters.find { |c| c.name.downcase == name.downcase } if not entity"
+      :was_run: true
+    - :content: "       entity"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/game/authentication_process.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class AuthenticationProcess"
+      :was_run: true
+    - :content: "     def initialize(session, world)"
+      :was_run: true
+    - :content: "       @session, @world = session, world"
+      :was_run: true
+    - :content: "       @choices ="
+      :was_run: true
+    - :content: "               {"
+      :was_run: true
+    - :content: "                 \"1\" => lambda { login },"
+      :was_run: true
+    - :content: "                 \"2\" => lambda { create_new_character }"
+      :was_run: true
+    - :content: "               }"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def execute"
+      :was_run: true
+    - :content: "       @session.write(\"What would you like to do?\\n\" +"
+      :was_run: true
+    - :content: "               \"1) Login with existing character\\n\" +"
+      :was_run: true
+    - :content: "               \"2) Create a new character\\n\")"
+      :was_run: true
+    - :content: "       choice = @session.read"
+      :was_run: true
+    - :content: "       @choices[choice].call"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     private"
+      :was_run: true
+    - :content: "     def create_new_character"
+      :was_run: true
+    - :content: "       @name = ask_name"
+      :was_run: true
+    - :content: "       @password = ask_new_password"
+      :was_run: true
+    - :content: "       @description = ask_description"
+      :was_run: true
+    - :content: "       @character = @world.create_new_character(@name, @session, @password, @description)"
+      :was_run: true
+    - :content: "       visualize_welcome_message(@character.name)"
+      :was_run: true
+    - :content: "       @character"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def login"
+      :was_run: true
+    - :content: "       @name = ask_name"
+      :was_run: true
+    - :content: "       @session.write(\"Password:\")"
+      :was_run: true
+    - :content: "       @password = @session.read"
+      :was_run: true
+    - :content: "       @character = @world.get_character_by_name_and_password(@name, @password)"
+      :was_run: true
+    - :content: "       if not @character"
+      :was_run: true
+    - :content: "         @session.write(\"Wrong details, try again.\")"
+      :was_run: true
+    - :content: "         return login"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "       @character.bind_session(@session)"
+      :was_run: true
+    - :content: "       @session.write(\"Welcome to Britannia #{@name}!\")"
+      :was_run: true
+    - :content: "       @character"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def ask_name"
+      :was_run: true
+    - :content: "       @session.write(\"What's your character name?\")"
+      :was_run: true
+    - :content: "       @session.read.capitalize"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def visualize_welcome_message(name)"
+      :was_run: true
+    - :content: "       @session.write(\"Welcome to Britannia #{name}!\")"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def ask_new_password"
+      :was_run: true
+    - :content: "       @session.write(\"Choose a password for #{@name}:\")"
+      :was_run: true
+    - :content: "       @session.read"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def ask_description"
+      :was_run: true
+    - :content: "       @session.write \"Choose a description that other players will \" +"
+      :was_run: true
+    - :content: "                       \"see when they look to your character.\\r\\n\" +"
+      :was_run: true
+    - :content: "                       \"Enter a line with END written in it when you finished.\""
+      :was_run: true
+    - :content: "       description = \"\""
+      :was_run: true
+    - :content: "       line = \"\""
+      :was_run: true
+    - :content: "       while line.downcase != \"end\""
+      :was_run: true
+    - :content: "         line = @session.read"
+      :was_run: true
+    - :content: "         if line.downcase != \"end\""
+      :was_run: true
+    - :content: "           description += line + \"\\n\""
+      :was_run: true
+    - :content: "           @session.write line"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "       description"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/protocol/telnet_session.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class TelnetSession"
+      :was_run: true
+    - :content: "     def initialize(socket)"
+      :was_run: true
+    - :content: "       @socket = socket"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def read"
+      :was_run: true
+    - :content: "       input = @socket.readline"
+      :was_run: true
+    - :content: "       input = TelnetFilter.new(@socket).filter_input(input)"
+      :was_run: true
+    - :content: "       input = adjust_backspace(input)"
+      :was_run: true
+    - :content: "       input.chomp.strip"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def write(text)"
+      :was_run: true
+    - :content: "       @socket.print adjust_new_lines(replace_color_tags(text))"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     private"
+      :was_run: true
+    - :content: "     COLOR_CODES = {"
+      :was_run: true
+    - :content: "             \"red\" => \"\\e[31m\","
+      :was_run: true
+    - :content: "             \"blue\" => \"\\e[34m\","
+      :was_run: true
+    - :content: "             \"green\" => \"\\e[32m\""
+      :was_run: true
+    - :content: "     }"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     RESET_CODE = \"\\e[0m\""
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def replace_color_tags(text)"
+      :was_run: true
+    - :content: "       text.gsub(/\\[color=([a-z]+)\\]/im){ |m| COLOR_CODES[$1] }."
+      :was_run: true
+    - :content: "               gsub(/\\[\\/color\\]/i, RESET_CODE)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def adjust_new_lines(text)"
+      :was_run: true
+    - :content: "       text.gsub(/\\n/,\"\\r\\n\") + \"\\r\\n\""
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def adjust_backspace(text)"
+      :was_run: true
+    - :content: "       return text if not text.include?(\"\\b\")"
+      :was_run: true
+    - :content: "       a_character_followed_by_backspace = Regexp.new(\"(^|[^\\b])\\b\")"
+      :was_run: true
+    - :content: "       adjust_backspace text.sub(a_character_followed_by_backspace, \"\")"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/commands/say_command.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class SayCommand"
+      :was_run: true
+    - :content: "     attr_reader :message"
+      :was_run: true
+    - :content: "     "
+      :was_run: true
+    - :content: "     def initialize(character, *args)"
+      :was_run: true
+    - :content: "       @character = character"
+      :was_run: true
+    - :content: "       @message = args.first"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def execute"
+      :was_run: true
+    - :content: "       @character.say(@message)"
+      :was_run: true
+    - :content: "       "
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/game/exit_not_available.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class ExitNotAvailable < Exception"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/commands/no_command_found.rb: 
+    :percent_run: 67
+    :lines: 
+    - :content: "   class NoCommandFound"
+      :was_run: true
+    - :content: "     def initialize(character, args)"
+      :was_run: true
+    - :content: "       @character = character"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def execute"
+      :was_run: true
+    - :content: "       @character.send_to_player(\"I beg you pardon? What are you trying to say?\")"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+  lib/protocol/telnet_codes.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   module TelnetCodes"
+      :was_run: true
+    - :content: "     NUL = 0.chr"
+      :was_run: true
+    - :content: "     LF = 10.chr"
+      :was_run: true
+    - :content: "     CR = 13.chr"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     IAC = 255.chr"
+      :was_run: true
+    - :content: "     WILL = 251.chr"
+      :was_run: true
+    - :content: "     WONT = 252.chr"
+      :was_run: true
+    - :content: "     DO   = 253.chr"
+      :was_run: true
+    - :content: "     DONT = 254.chr"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     AYT = 246.chr"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/game/exits.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class Exits"
+      :was_run: true
+    - :content: "     def initialize(exits = [])"
+      :was_run: true
+    - :content: "       @exits = exits"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def find_by_name(name)"
+      :was_run: true
+    - :content: "       @exits.find { |exit| exit.name.downcase == name.downcase}"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def find_by_destination(destination)"
+      :was_run: true
+    - :content: "       @exits.find { |exit| exit.destination == destination}"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def add(exit)"
+      :was_run: true
+    - :content: "       @exits << exit"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def get_list_of_names"
+      :was_run: true
+    - :content: "       exit_names = @exits.map {|exit| exit.name }"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       return \"\" if exit_names.empty?"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       if exit_names.size == 1"
+      :was_run: true
+    - :content: "         return description_for_single_exit(exit_names)"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       description_for_multiple_exits(exit_names)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def description_for_single_exit(exit_names)"
+      :was_run: true
+    - :content: "       \"[color=green]You see only one exit leading #{exit_names.first}[/color]\\n\""
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def description_for_multiple_exits(exit_names)"
+      :was_run: true
+    - :content: "       names_separated = exit_names[0..-2].join(\", \") + \" and \" + exit_names[-1]"
+      :was_run: true
+    - :content: "       \"[color=green]You see exits leading #{names_separated}.[/color]\\n\""
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/commands/do_nothing.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class DoNothing"
+      :was_run: true
+    - :content: "     def execute"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  lib/command_factory.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   class CommandFactory"
+      :was_run: true
+    - :content: "     attr_accessor :aliases"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def initialize"
+      :was_run: true
+    - :content: "       @aliases = {}"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def parse(input, character)"
+      :was_run: true
+    - :content: "       return DoNothing.new if input.empty?"
+      :was_run: true
+    - :content: "       command_name, arguments = split_input(input)"
+      :was_run: true
+    - :content: "       command_class = get_command_by_name(command_name)"
+      :was_run: true
+    - :content: "       command_class.new(character, arguments)"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     private"
+      :was_run: true
+    - :content: "     def get_command_by_name(name)"
+      :was_run: true
+    - :content: "       command_class = ObjectSpace.each_object.find do |o|"
+      :was_run: true
+    - :content: "         o.class == Class and o.name == \"#{name.capitalize}Command\""
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "       command_class || NoCommandFound"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def split_input(input)"
+      :was_run: true
+    - :content: "       input = parse_through_alias_matcher(input)"
+      :was_run: true
+    - :content: "       input =~ /^(\\w+)(.*)/i"
+      :was_run: true
+    - :content: "       return $1, $2.strip"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     def parse_through_alias_matcher(input)"
+      :was_run: true
+    - :content: "       input =~ /^(\\w+)(.*)/i"
+      :was_run: true
+    - :content: "       if @aliases.has_key?($1.downcase)"
+      :was_run: true
+    - :content: "         return input.gsub(/^(\\w+)/, @aliases[$1.downcase])"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "       input"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+  jewel_mud.rb: 
+    :percent_run: 65
+    :lines: 
+    - :content: "   require 'gserver'"
+      :was_run: true
+    - :content: "   require 'singleton'"
+      :was_run: true
+    - :content: "   require 'yaml'"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   Dir[\"lib/**/*.rb\"].each {|file| require file }"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   class JewelMud < GServer"
+      :was_run: true
+    - :content: "     def starting"
+      :was_run: true
+    - :content: "       Game.instance.run"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "     def serve(socket)"
+      :was_run: true
+    - :content: "       telnet_session = TelnetSession.new(socket)"
+      :was_run: false
+    - :content: "       Game.instance.enter_game(telnet_session)"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+:flog: 
+  :average: 25.2
+  :total: 880.7
+  :pages: 
+  - :path: /lib/location.rb
+    :highest_score: 27.8
+    :average_score: 10.0
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  from"
+        :score: 6.7
+      - :operator: "  branch"
+        :score: 5.2
+      - :operator: "  add_event"
+        :score: 4.3
+      - :operator: "  name"
+        :score: 3.4
+      - :operator: "  destination"
+        :score: 3.2
+      - :operator: "  assignment"
+        :score: 2.7
+      - :operator: "  nil?"
+        :score: 2.6
+      - :operator: "  args"
+        :score: 1.6
+      - :operator: "  each"
+        :score: 1.4
+      - :operator: "  remove_character"
+        :score: 1.4
+      - :operator: "  []"
+        :score: 1.4
+      - :operator: "  find_by_name"
+        :score: 1.2
+      :name: Location#on_leave                lib/location.rb:48
+      :score: 27.8
+    :score: 119.5
+  - :path: /lib/protocol/telnet_filter.rb
+    :highest_score: 26.1
+    :average_score: 5.6
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  new"
+        :score: 8.5
+      - :operator: "  sub!"
+        :score: 7.5
+      - :operator: "  branch"
+        :score: 7.0
+      - :operator: "  +"
+        :score: 3.3
+      - :operator: "  print"
+        :score: 2.9
+      - :operator: "  puts"
+        :score: 1.6
+      - :operator: "  there_is_a_iac_in"
+        :score: 1.3
+      :name: TelnetFilter#handle_options      lib/protocol/telnet_filter.rb:31
+      :score: 26.1
+    :score: 44.7
+  - :path: /lib/world.rb
+    :highest_score: 20.9
+    :average_score: 6.2
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 10.6
+      - :operator: "  branch"
+        :score: 5.4
+      - :operator: "  class"
+        :score: 4.8
+      - :operator: "  +"
+        :score: 4.5
+      - :operator: "  =="
+        :score: 4.2
+      - :operator: "  lit_fixnum"
+        :score: 1.3
+      - :operator: "  puts"
+        :score: 1.2
+      - :operator: "  each_object"
+        :score: 1.2
+      :name: World#print_memstat              lib/world.rb:11
+      :score: 20.9
+    :score: 43.4
+  - :path: /lib/game/world.rb
+    :highest_score: 20.9
+    :average_score: 6.2
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 10.6
+      - :operator: "  branch"
+        :score: 5.4
+      - :operator: "  class"
+        :score: 4.8
+      - :operator: "  +"
+        :score: 4.5
+      - :operator: "  =="
+        :score: 4.2
+      - :operator: "  lit_fixnum"
+        :score: 1.3
+      - :operator: "  puts"
+        :score: 1.2
+      - :operator: "  each_object"
+        :score: 1.2
+      :name: World#print_memstat              lib/game/world.rb:11
+      :score: 20.9
+    :score: 43.4
+  - :path: /lib/game/authentication_process.rb
+    :highest_score: 17.5
+    :average_score: 6.8
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  +"
+        :score: 6.4
+      - :operator: "  assignment"
+        :score: 5.4
+      - :operator: "  downcase"
+        :score: 3.1
+      - :operator: "  write"
+        :score: 2.8
+      - :operator: "  =="
+        :score: 2.7
+      - :operator: "  branch"
+        :score: 2.6
+      - :operator: "  read"
+        :score: 1.4
+      :name: AuthenticationProcess#ask_description lib/game/authentication_process.rb:57
+      :score: 17.5
+    :score: 60.9
+  - :path: /lib/authentication_process.rb
+    :highest_score: 17.5
+    :average_score: 6.8
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  +"
+        :score: 6.4
+      - :operator: "  assignment"
+        :score: 5.4
+      - :operator: "  downcase"
+        :score: 3.1
+      - :operator: "  write"
+        :score: 2.8
+      - :operator: "  =="
+        :score: 2.7
+      - :operator: "  branch"
+        :score: 2.6
+      - :operator: "  read"
+        :score: 1.4
+      :name: AuthenticationProcess#ask_description lib/authentication_process.rb:57
+      :score: 17.5
+    :score: 60.9
+  - :path: /lib/game/location.rb
+    :highest_score: 16.6
+    :average_score: 5.8
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  +"
+        :score: 6.7
+      - :operator: "  assignment"
+        :score: 6.2
+      - :operator: "  title"
+        :score: 1.8
+      - :operator: "  description"
+        :score: 1.6
+      - :operator: "  name"
+        :score: 1.5
+      - :operator: "  get_list_of_names"
+        :score: 1.4
+      - :operator: "  branch"
+        :score: 1.2
+      - :operator: "  each"
+        :score: 1.2
+      - :operator: "  except"
+        :score: 1.2
+      :name: Location#description_for         lib/game/location.rb:36
+      :score: 16.6
+    :score: 69.8
+  - :path: /lib/game/movement/movement_handler.rb
+    :highest_score: 15.5
+    :average_score: 9.2
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 7.3
+      - :operator: "  name"
+        :score: 3.8
+      - :operator: "  args"
+        :score: 1.4
+      - :operator: "  branch"
+        :score: 1.2
+      - :operator: "  notify_all_characters_except"
+        :score: 1.2
+      - :operator: "  add_character"
+        :score: 1.2
+      - :operator: "  from"
+        :score: 1.2
+      - :operator: "  add_event"
+        :score: 1.2
+      - :operator: "  exit_to"
+        :score: 1.2
+      - :operator: "  []"
+        :score: 1.2
+      - :operator: "  to"
+        :score: 1.2
+      :name: MovementHandler#handle_enter     lib/game/movement/movement_handler.rb:9
+      :score: 15.5
+    :score: 27.6
+  - :path: /lib/event_manager.rb
+    :highest_score: 14.9
+    :average_score: 5.7
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  send"
+        :score: 4.2
+      - :operator: "  assignment"
+        :score: 3.8
+      - :operator: "  branch"
+        :score: 3.7
+      - :operator: "  kind"
+        :score: 3.2
+      - :operator: "  to_s"
+        :score: 1.6
+      - :operator: "  each"
+        :score: 1.3
+      - :operator: "  []"
+        :score: 1.2
+      - :operator: "  get_event"
+        :score: 1.2
+      - :operator: "  nil?"
+        :score: 1.2
+      :name: EventManager#process_events      lib/event_manager.rb:20
+      :score: 14.9
+    :score: 28.4
+  - :path: /lib/event.rb
+    :highest_score: 14.3
+    :average_score: 7.5
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  =="
+        :score: 5.7
+      - :operator: "  branch"
+        :score: 5.1
+      - :operator: "  kind"
+        :score: 1.7
+      - :operator: "  args"
+        :score: 1.7
+      - :operator: "  to"
+        :score: 1.6
+      - :operator: "  from"
+        :score: 1.5
+      - :operator: "  nil?"
+        :score: 1.2
+      :name: Event#==                         lib/event.rb:8
+      :score: 14.3
+    :score: 22.6
+  - :path: /lib/game.rb
+    :highest_score: 13.2
+    :average_score: 7.4
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  branch"
+        :score: 3.9
+      - :operator: "  puts"
+        :score: 3.0
+      - :operator: "  assignment"
+        :score: 2.6
+      - :operator: "  backtrace"
+        :score: 1.9
+      - :operator: "  inspect"
+        :score: 1.7
+      - :operator: "  message"
+        :score: 1.7
+      - :operator: "  process_commands"
+        :score: 1.5
+      - :operator: "  exit"
+        :score: 1.3
+      - :operator: "  new"
+        :score: 1.2
+      :name: Game#run                         lib/game.rb:18
+      :score: 13.2
+    :score: 36.8
+  - :path: /lib/protocol/telnet_codes.rb
+    :highest_score: 12.5
+    :average_score: 12.5
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  chr"
+        :score: 9.9
+      - :operator: "  lit_fixnum"
+        :score: 2.6
+      :name: TelnetCodes#none
+      :score: 12.5
+    :score: 12.5
+  - :path: /lib/command_factory.rb
+    :highest_score: 11.1
+    :average_score: 5.4
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  branch"
+        :score: 3.7
+      - :operator: "  =="
+        :score: 2.8
+      - :operator: "  assignment"
+        :score: 2.5
+      - :operator: "  capitalize"
+        :score: 1.6
+      - :operator: "  class"
+        :score: 1.6
+      - :operator: "  name"
+        :score: 1.6
+      - :operator: "  each_object"
+        :score: 1.4
+      - :operator: "  find"
+        :score: 1.2
+      :name: CommandFactory#get_command_by_name lib/command_factory.rb:16
+      :score: 11.1
+    :score: 32.3
+  - :path: /lib/game/character.rb
+    :highest_score: 10.8
+    :average_score: 3.4
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 10.8
+      :name: Character#initialize             lib/game/character.rb:5
+      :score: 10.8
+    :score: 33.8
+  - :path: /lib/game/perception/sight_handler.rb
+    :highest_score: 10.8
+    :average_score: 6.9
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 6.2
+      - :operator: "  args"
+        :score: 1.4
+      - :operator: "  get_entity_description"
+        :score: 1.3
+      - :operator: "  description_for"
+        :score: 1.3
+      - :operator: "  from"
+        :score: 1.2
+      - :operator: "  branch"
+        :score: 1.2
+      - :operator: "  notification"
+        :score: 1.2
+      - :operator: "  []"
+        :score: 1.2
+      - :operator: "  to"
+        :score: 1.2
+      :name: SightHandler#handle_look         lib/game/perception/sight_handler.rb:8
+      :score: 10.8
+    :score: 13.8
+  - :path: /lib/game/exits.rb
+    :highest_score: 10.1
+    :average_score: 4.9
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  branch"
+        :score: 3.6
+      - :operator: "  assignment"
+        :score: 2.5
+      - :operator: "  size"
+        :score: 1.4
+      - :operator: "  description_for_single_exit"
+        :score: 1.3
+      - :operator: "  name"
+        :score: 1.3
+      - :operator: "  description_for_multiple_exits"
+        :score: 1.2
+      - :operator: "  empty?"
+        :score: 1.2
+      - :operator: "  =="
+        :score: 1.2
+      - :operator: "  map"
+        :score: 1.2
+      - :operator: "  lit_fixnum"
+        :score: 0.4
+      :name: Exits#get_list_of_names          lib/game/exits.rb:18
+      :score: 10.1
+    :score: 34.2
+  - :path: /lib/exits.rb
+    :highest_score: 10.1
+    :average_score: 4.5
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  branch"
+        :score: 3.6
+      - :operator: "  assignment"
+        :score: 2.5
+      - :operator: "  size"
+        :score: 1.4
+      - :operator: "  description_for_single_exit"
+        :score: 1.3
+      - :operator: "  name"
+        :score: 1.3
+      - :operator: "  description_for_multiple_exits"
+        :score: 1.2
+      - :operator: "  empty?"
+        :score: 1.2
+      - :operator: "  =="
+        :score: 1.2
+      - :operator: "  map"
+        :score: 1.2
+      - :operator: "  lit_fixnum"
+        :score: 0.4
+      :name: Exits#get_list_of_names          lib/exits.rb:18
+      :score: 10.1
+    :score: 31.2
+  - :path: /lib/game/socials/communication_handler.rb
+    :highest_score: 8.8
+    :average_score: 5.9
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 4.8
+      - :operator: "  args"
+        :score: 1.4
+      - :operator: "  from"
+        :score: 1.2
+      - :operator: "  notify_all_characters_except"
+        :score: 1.2
+      - :operator: "  name"
+        :score: 1.2
+      - :operator: "  []"
+        :score: 1.2
+      - :operator: "  to"
+        :score: 1.2
+      :name: CommunicationHandler#handle_talk lib/game/socials/communication_handler.rb:8
+      :score: 8.8
+    :score: 11.8
+  - :path: /lib/game/socials/emotes_handler.rb
+    :highest_score: 8.8
+    :average_score: 5.9
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 4.8
+      - :operator: "  args"
+        :score: 1.4
+      - :operator: "  from"
+        :score: 1.2
+      - :operator: "  notify_all_characters_except"
+        :score: 1.2
+      - :operator: "  name"
+        :score: 1.2
+      - :operator: "  []"
+        :score: 1.2
+      - :operator: "  to"
+        :score: 1.2
+      :name: EmotesHandler#handle_emote       lib/game/socials/emotes_handler.rb:8
+      :score: 8.8
+    :score: 11.8
+  - :path: /lib/protocol/telnet_session.rb
+    :highest_score: 8.4
+    :average_score: 3.9
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 3.6
+      - :operator: "  chomp"
+        :score: 1.4
+      - :operator: "  new"
+        :score: 1.4
+      - :operator: "  strip"
+        :score: 1.2
+      - :operator: "  readline"
+        :score: 1.2
+      - :operator: "  filter_input"
+        :score: 1.2
+      - :operator: "  adjust_backspace"
+        :score: 1.2
+      :name: TelnetSession#read               lib/protocol/telnet_session.rb:6
+      :score: 8.4
+    :score: 27.4
+  - :path: /lib/game/exit.rb
+    :highest_score: 8.4
+    :average_score: 4.4
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 8.4
+      :name: Exit#initialize                  lib/game/exit.rb:4
+      :score: 8.4
+    :score: 13.1
+  - :path: /lib/input_processor.rb
+    :highest_score: 7.6
+    :average_score: 5.6
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 2.8
+      - :operator: "  session"
+        :score: 1.6
+      - :operator: "  parse"
+        :score: 1.4
+      - :operator: "  add_command"
+        :score: 1.4
+      - :operator: "  read"
+        :score: 1.4
+      - :operator: "  branch"
+        :score: 1.2
+      - :operator: "  loop"
+        :score: 1.2
+      :name: InputProcessor#process_character_commands lib/input_processor.rb:6
+      :score: 7.6
+    :score: 11.2
+  - :path: /lib/player.rb
+    :highest_score: 7.2
+    :average_score: 2.7
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 7.2
+      :name: Character#initialize             lib/player.rb:4
+      :score: 7.2
+    :score: 16.1
+  - :path: /lib/exit.rb
+    :highest_score: 6.0
+    :average_score: 3.6
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 6.0
+      :name: Exit#initialize                  lib/exit.rb:4
+      :score: 6.0
+    :score: 7.1
+  - :path: /lib/telnet_session.rb
+    :highest_score: 4.6
+    :average_score: 2.7
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  gsub"
+        :score: 2.6
+      - :operator: "  []"
+        :score: 1.5
+      - :operator: "  assignment"
+        :score: 1.5
+      - :operator: "  branch"
+        :score: 1.4
+      :name: TelnetSession#replace_color_tags lib/telnet_session.rb:23
+      :score: 4.6
+    :score: 13.7
+  - :path: /lib/command_manager.rb
+    :highest_score: 4.0
+    :average_score: 3.1
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 1.2
+      - :operator: "  branch"
+        :score: 1.2
+      - :operator: "  execute"
+        :score: 1.2
+      - :operator: "  nil?"
+        :score: 1.2
+      - :operator: "  get_command"
+        :score: 1.2
+      :name: CommandManager#process_commands  lib/command_manager.rb:19
+      :score: 4.0
+    :score: 12.2
+  - :path: /lib/commands/look_command.rb
+    :highest_score: 3.6
+    :average_score: 2.0
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 3.6
+      :name: LookCommand#initialize           lib/commands/look_command.rb:4
+      :score: 3.6
+    :score: 5.9
+  - :path: /lib/game/item.rb
+    :highest_score: 3.3
+    :average_score: 3.3
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 3.3
+      :name: Item#initialize                  lib/game/item.rb:2
+      :score: 3.3
+    :score: 3.3
+  - :path: /lib/helpers/enumerable.rb
+    :highest_score: 2.8
+    :average_score: 2.8
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 1.2
+      - :operator: "  =="
+        :score: 1.2
+      - :operator: "  reject"
+        :score: 1.1
+      - :operator: "  branch"
+        :score: 1.1
+      :name: Enumerable#except                lib/helpers/enumerable.rb:2
+      :score: 2.8
+    :score: 2.8
+  - :path: /lib/commands/go_command.rb
+    :highest_score: 2.7
+    :average_score: 1.7
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 2.4
+      - :operator: "  first"
+        :score: 1.2
+      :name: GoCommand#initialize             lib/commands/go_command.rb:4
+      :score: 2.7
+    :score: 5.0
+  - :path: /lib/commands/get_command.rb
+    :highest_score: 2.7
+    :average_score: 1.7
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 2.4
+      - :operator: "  first"
+        :score: 1.2
+      :name: GetCommand#initialize            lib/commands/get_command.rb:4
+      :score: 2.7
+    :score: 5.0
+  - :path: /lib/commands/emote_command.rb
+    :highest_score: 2.7
+    :average_score: 1.7
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 2.4
+      - :operator: "  first"
+        :score: 1.2
+      :name: EmoteCommand#initialize          lib/commands/emote_command.rb:4
+      :score: 2.7
+    :score: 5.0
+  - :path: /lib/commands/say_command.rb
+    :highest_score: 2.7
+    :average_score: 1.7
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 2.4
+      - :operator: "  first"
+        :score: 1.2
+      :name: SayCommand#initialize            lib/commands/say_command.rb:4
+      :score: 2.7
+    :score: 5.0
+  - :path: /lib/commands/shutdown_command.rb
+    :highest_score: 2.6
+    :average_score: 2.0
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  instance"
+        :score: 1.4
+      - :operator: "  shutdown"
+        :score: 1.2
+      :name: ShutdownCommand#execute          lib/commands/shutdown_command.rb:9
+      :score: 2.6
+    :score: 6.1
+  - :path: /lib/commands/no_command_found.rb
+    :highest_score: 1.2
+    :average_score: 1.2
+    :scanned_methods: 
+    - :operators: 
+      - :operator: "  assignment"
+        :score: 1.2
+      :name: NoCommandFound#initialize        lib/commands/no_command_found.rb:2
+      :score: 1.2
+    :score: 2.4
+:flay: 
+  :matches: 
+  - :reason: 1) Similar code found in :scope (mass = 92)
+    :matches: 
+    - :line: "12"
+      :name: lib/commands/emote_command.rb
+    - :line: "12"
+      :name: lib/commands/get_command.rb
+    - :line: "12"
+      :name: lib/commands/go_command.rb
+    - :line: "13"
+      :name: lib/commands/say_command.rb
+  :total_score: "92"
+:reek: 
+  :matches: 
+  - :code_smells: []
+
+    :file_path: lib/command_factory.rb
+:roodi: 
+  :total: 
+  - Found 0 errors.
+  :problems: []
+

@@ -1,0 +1,14 @@
+    13.1: flog total
+     4.4: flog/method average
+
+     8.4: Exit#initialize                  lib/game/exit.rb:4
+     8.4:   assignment
+
+     3.6: Exit#let_go                      lib/game/exit.rb:9
+     1.2:   look
+     1.2:   let_in
+     1.2:   move_to
+
+     1.1: Exit#none
+     1.1:   attr_reader
+

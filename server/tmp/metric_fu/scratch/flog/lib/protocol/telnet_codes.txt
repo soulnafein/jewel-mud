@@ -1,0 +1,7 @@
+    12.5: flog total
+    12.5: flog/method average
+
+    12.5: TelnetCodes#none
+     9.9:   chr
+     2.6:   lit_fixnum
+

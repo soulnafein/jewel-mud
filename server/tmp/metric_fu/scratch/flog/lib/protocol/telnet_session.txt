@@ -1,0 +1,44 @@
+    28.5: flog total
+     4.1: flog/method average
+
+     8.4: TelnetSession#read               lib/protocol/telnet_session.rb:6
+     3.6:   assignment
+     1.4:   chomp
+     1.4:   new
+     1.2:   strip
+     1.2:   readline
+     1.2:   filter_input
+     1.2:   adjust_backspace
+
+     5.3: TelnetSession#write              lib/protocol/telnet_session.rb:13
+     1.4:   replace_color_tags
+     1.2:   branch
+     1.2:   assignment
+     1.2:   adjust_new_lines
+     1.2:   print
+     1.2:   closed?
+
+     5.3: TelnetSession#adjust_backspace   lib/protocol/telnet_session.rb:39
+     1.4:   sub
+     1.2:   branch
+     1.2:   assignment
+     1.2:   include?
+     1.2:   adjust_backspace
+     1.2:   new
+
+     4.6: TelnetSession#replace_color_tags lib/protocol/telnet_session.rb:30
+     2.6:   gsub
+     1.5:   []
+     1.5:   assignment
+     1.4:   branch
+
+     2.6: TelnetSession#adjust_new_lines   lib/protocol/telnet_session.rb:35
+     1.4:   gsub
+     1.2:   +
+
+     1.2: TelnetSession#initialize         lib/protocol/telnet_session.rb:2
+     1.2:   assignment
+
+     1.1: TelnetSession#none
+     1.1:   private
+

@@ -1,0 +1,24 @@
+    13.7: flog total
+     2.7: flog/method average
+
+     4.6: TelnetSession#replace_color_tags lib/telnet_session.rb:23
+     2.6:   gsub
+     1.5:   []
+     1.5:   assignment
+     1.4:   branch
+
+     4.2: TelnetSession#read               lib/telnet_session.rb:6
+     1.6:   readline
+     1.4:   chomp
+     1.2:   strip
+
+     2.6: TelnetSession#write              lib/telnet_session.rb:10
+     1.4:   replace_color_tags
+     1.2:   puts
+
+     1.2: TelnetSession#initialize         lib/telnet_session.rb:2
+     1.2:   assignment
+
+     1.1: TelnetSession#none
+     1.1:   private
+

@@ -1,0 +1,22 @@
+    13.9: flog total
+     3.5: flog/method average
+
+    10.3: ItemsContainer#pick_item         lib/game/items_container.rb:10
+     3.0:   downcase
+     2.5:   assignment
+     2.4:   branch
+     1.7:   name
+     1.3:   raise
+     1.3:   ==
+     1.2:   delete
+     1.2:   find
+
+     1.2: ItemsContainer#initialize_items_container lib/game/items_container.rb:2
+     1.2:   assignment
+
+     1.2: ItemsContainer#include?          lib/game/items_container.rb:16
+     1.2:   include?
+
+     1.2: ItemsContainer#add_item          lib/game/items_container.rb:6
+     1.2:   push
+
