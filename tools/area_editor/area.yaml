@@ -1,0 +1,33 @@
+--- !ruby/object:Area 
+height: 50
+locations: 
+- !ruby/object:Location 
+  coordinate: "5,3"
+  description: Somewhere
+  title: Pub
+- !ruby/object:Location 
+  coordinate: "5,4"
+  description: Coolio
+  title: Amazing
+- !ruby/object:Location 
+  coordinate: "5,5"
+  description: elsewhere
+  title: Something else
+- !ruby/object:Location 
+  coordinate: "4,5"
+  description: xxxxx
+  title: Cool
+- !ruby/object:Location 
+  coordinate: "4,6"
+  description: xxxxx
+  exits: {}
+
+  title: xxx
+- !ruby/object:Location 
+  coordinate: "4,7"
+  description: xxxxx
+  exits: {}
+
+  title: xxx
+name: Arundel
+width: 40
